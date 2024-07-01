@@ -38,9 +38,9 @@ const {sticky} = useSticky()
                           <li>
                             <a href="#">
                               Categorie {" "}
-                              <span>
+                              {/* <span>
                                 <i className="arrow_carrot-down"></i>
-                              </span>
+                              </span> */}
                             </a>
                             <ul className="sub-menu">
                               {category_data.map((item, i) => 
