@@ -33,12 +33,55 @@
 
 import React, { useState } from "react";
 import Link from 'next/link';
+import {toast} from 'react-hot-toast';
+// import { useNavigate } from "react-router";
 // import "./Login.css";
 // import "../Footer/Footer.css";
 
 function Login() {
   const [role, setRole] = useState("student");
-  
+  const [formData, setFormData] = useState({
+   email: "",
+   password: ""
+ });
+//  const navigate = useNavigate();
+
+ const handleInputChange = (e) => {
+   const { name, value } = e.target;
+   setFormData({ ...formData, [name]: value });
+ };
+
+ const handleLogin = async (e) => {
+   e.preventDefault();
+   const url = role === "student" ? "https://novajobs.us/api/students/login" : "https://novajobs.us/api/trainers/login";
+   console.log(url);
+   if (!formData.email || !formData.password) {
+     toast.error("Email and Password are required");
+   } else {
+     try {
+       const response = await axios.post(
+         url,
+         formData,
+         {
+           // withCredentials: true,
+           headers: {
+             'Content-Type': 'application/json',
+           },
+         }
+       );
+       if (response.status === 200) {
+         toast.success("Logged-in successfully!");
+         // navigate(role === "student" ? '/' : '/trainers');
+       } else {
+         toast.error("Failed to log in.");
+       }
+       console.log("login Response", response);
+     } catch (err) {
+       console.log(err);
+       toast.error("An error occurred. Please try again.");
+     }
+   }
+ };
 
   return (
     <>
@@ -66,14 +109,14 @@ function Login() {
               </button>
             </div>
 
-            <form >
+            <form onSubmit={handleLogin} >
               <div className="mb-3">
                 <label className="form-label text-black">Email ID</label>
                 <input
                   type="email"
                   name="email"
-                  // value={formData.email}
-                  // onChange={handleInputChange}
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="form-control"
                   placeholder="Enter your email ID"
                 />
@@ -83,8 +126,8 @@ function Login() {
                 <input
                   type="password"
                   name="password"
-                  // value={formData.password}
-                  // onChange={handleInputChange}
+                  value={formData.password}
+                  onChange={handleInputChange}
                   className="form-control"
                   placeholder="Enter your password"
                 />
