@@ -7,11 +7,11 @@ import Sidebar from "./sidebar";
 
 // category_data
 const category_data = [
-  {title: "Bangla Medium"},
-  {title: "English Medium"},
-  {title: "Video Edition"},
-  {title: "Logo Design"},
-  {title: "Francy Medium"},
+  {title: "SuperMinds"},
+  {title: "FutureMinds"},
+  {title: "MasterMinds"},
+  {title: "CreativeMinds"},
+  {title: "UniqueMinds"},
 
 ]
 const Header = () => {
