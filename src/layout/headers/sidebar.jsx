@@ -17,7 +17,7 @@ const Sidebar = ({ isActive, setIsActive }) => {
         <div className="mobile-menu mean-container">
             <MobileMenus />
         </div>
-        <div className="sidebar-info">
+        {/* <div className="sidebar-info">
           <h4 className="mb-15">Contact Info</h4>
           <ul className="side_circle">
             <li>27 Division St, New York</li>
@@ -42,7 +42,7 @@ const Sidebar = ({ isActive, setIsActive }) => {
               <i className="fab fa-instagram"></i>
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className={`body-overlay ${isActive ? "opened" : ""} `} onClick={() => setIsActive(false)}></div>
     </>
