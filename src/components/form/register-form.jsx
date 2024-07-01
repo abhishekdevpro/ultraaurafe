@@ -448,7 +448,7 @@ function Signup() {
     try {
       console.log('Request Body:', body);
       const response = await axios.post(
-        role === 'student' ? 'https://novajobs.us/api/students/register' : 'https://novajobs.us/api/trainers/register',
+        role === 'student' ? 'https://api.novajobs.us/api/students/register' : 'https://api.novajobs.us/api/trainers/register',
         body,
         {
           headers: {
@@ -485,7 +485,7 @@ function Signup() {
     const fetchCountries = async () => {
       try {
         const response = await axios.get(
-          role === 'student' ? 'https://novajobs.us/api/students/countries' : 'https://novajobs.us/api/trainers/countries'
+          role === 'student' ? 'https://api.novajobs.us/api/students/countries' : 'https://api.novajobs.us/api/trainers/countries'
         );
         console.log('Countries Response:', response.data.data);
         setCountries(response.data.data);
@@ -501,7 +501,7 @@ function Signup() {
       const fetchStates = async () => {
         try {
           const response = await axios.get(
-            role === 'student' ? `https://novajobs.us/api/students/states/${registerValues.country_id}` : `https://novajobs.us/api/trainers/states/${registerValues.country_id}`
+            role === 'student' ? `https://api.novajobs.us/api/students/states/${registerValues.country_id}` : `https://api.novajobs.us/api/trainers/states/${registerValues.country_id}`
           );
           console.log('States Response:', response.data.data);
           setStates(response.data.data);
@@ -518,7 +518,7 @@ function Signup() {
       const fetchCities = async () => {
         try {
           const response = await axios.get(
-            role === 'student' ? `https://novajobs.us/api/students/cities/${registerValues.state_id}` : `https://novajobs.us/api/trainers/cities/${registerValues.state_id}`
+            role === 'student' ? `https://api.novajobs.us/api/students/cities/${registerValues.state_id}` : `https://api.novajobs.us/api/trainers/cities/${registerValues.state_id}`
           );
           console.log('Cities Response:', response.data.data);
           setCities(response.data.data);
@@ -534,7 +534,7 @@ function Signup() {
     if (role === 'student') {
       const fetchQualifications = async () => {
         try {
-          const response = await axios.get('https://novajobs.us/api/students/qualifications');
+          const response = await axios.get('https://api.novajobs.us/api/students/qualifications');
           setQualifications(response.data.data);
         } catch (error) {
           console.error('Error fetching qualifications:', error);
