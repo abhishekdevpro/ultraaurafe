@@ -132,7 +132,7 @@ const CourseDetailsArea = () => {
                      </div>
                      <div className="course-details-widget">
                         <div className="cd-video-price">
-                           <h3 className="pricing-video text-center mb-15">$29.99</h3>
+                           <h3 className="pricing-video text-center mb-15">$0.00</h3>
                            <div className="cd-pricing-btn text-center mb-30">
                               <Link className="tp-vp-btn" href="/course-details">Add To Cart</Link>
                               <Link className="tp-vp-btn-green" href="/course-details">Enroll Now</Link>

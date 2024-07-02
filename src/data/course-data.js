@@ -10,7 +10,7 @@ const course_data = [
         course_title: "Design",
         course_link: "/course-details",
         course_name: "Development",
-        course_price: "29.99",
+        course_price: "0.00",
     },
     {
         id: 2, 
@@ -23,7 +23,7 @@ const course_data = [
         course_title: "Design",
         course_link: "/course-details",
         course_name: "Development",
-        course_price: "30.00",
+        course_price: "0.00",
     },
     {
         id: 3, 
@@ -36,7 +36,7 @@ const course_data = [
         course_title: "Design",
         course_link: "/course-details",
         course_name: "Development",
-        course_price: "25.00",
+        course_price: "0.00",
     },
   
     {
@@ -50,7 +50,7 @@ const course_data = [
         course_title: "Design",
         course_link: "/course-details",
         course_name: "Development",
-        course_price: "20.00",
+        course_price: "0.00",
     },
     {
         id: 5, 
@@ -63,7 +63,7 @@ const course_data = [
         course_title: "Design",
         course_link: "/course-details",
         course_name: "Development",
-        course_price: "20.00",
+        course_price: "0.00",
     },
     {
         id: 6, 
@@ -76,7 +76,7 @@ const course_data = [
         course_title: "Design",
         course_link: "/course-details",
         course_name: "Development",
-        course_price: "20.00",
+        course_price: "0.00",
     }
   
 ]

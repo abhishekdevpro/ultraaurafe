@@ -13,7 +13,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -29,7 +29,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Content",
     cn_color: "c-color-blue",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -45,7 +45,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -61,7 +61,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-yellow",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -77,7 +77,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "date",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -93,7 +93,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "UI/UX",
     cn_color: "c-color-purple",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -112,7 +112,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-yellow",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -128,7 +128,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Data",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -144,7 +144,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "UI/UX",
     cn_color: "c-color-purple",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -161,7 +161,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -178,7 +178,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Content",
     cn_color: "c-color-blue",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -195,7 +195,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Content",
     cn_color: "c-color-purple",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -214,7 +214,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -231,7 +231,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Content",
     cn_color: "c-color-blue",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -248,7 +248,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -265,7 +265,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-yellow",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -282,7 +282,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Data",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -299,7 +299,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "UI/UX",
     cn_color: "c-color-purple",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -318,7 +318,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "UI/UX",
     cn_color: "c-color-purple",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -334,7 +334,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -350,7 +350,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Data",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -366,7 +366,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Content",
     cn_color: "c-color-blue",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -382,7 +382,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-yellow",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -398,7 +398,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -417,7 +417,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -433,7 +433,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-yellow",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -449,7 +449,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Content",
     cn_color: "c-color-blue",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -465,7 +465,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Data",
     cn_color: "c-color-purple",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -481,7 +481,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "UI/UX",
     cn_color: "c-color-purple",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
   {
@@ -497,7 +497,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -516,7 +516,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "UI/UX",
     cn_color: "c-color-purple",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -533,7 +533,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Data",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -550,7 +550,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -567,7 +567,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Content",
     cn_color: "c-color-blue",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -584,7 +584,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-red",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 
@@ -601,7 +601,7 @@ const our_course_data = [
     course_link: "/course-details",
     course_name: "Development",
     cn_color: "c-color-yellow",
-    course_price: "29.99",
+    course_price: "0.00",
     total_start: "125"
   },
 ];

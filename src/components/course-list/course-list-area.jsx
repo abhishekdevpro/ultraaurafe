@@ -339,7 +339,7 @@ const  CourseListArea = () => {
                             <p>(125)</p>
                           </div>
                           <div className="tpcourse__pricing">
-                            <h5 className="price-title">$29.99</h5>
+                            <h5 className="price-title">$0.00</h5>
                           </div>
                         </div>
                       </div>
