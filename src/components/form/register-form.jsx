@@ -384,7 +384,7 @@ function Signup() {
   const [cities, setCities] = useState([]);
   const [qualifications, setQualifications] = useState([]);
 
-  role === "student" ? '/' : '/trainers'
+  const router = useRouter();
 
   const handleRegisterChange = (e) => {
     const { name, value } = e.target;
@@ -474,10 +474,10 @@ function Signup() {
     } catch (err) {
       console.error('Error Response:', err.response); // Log the error response
       if (err.response && err.response.data && err.response.data.message) {
-        toast.error(`Error: ${err.response.data.message}`);
-      } else {
-        toast.error('An error occurred. Please try again.');
-      }
+        toast.error(`Error: ${err.response.data.message}`);}
+      // } else {
+      //   toast.error('An error occurred. Please try again.');
+      // }
     }
   };
 
