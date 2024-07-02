@@ -384,7 +384,7 @@ function Signup() {
   const [cities, setCities] = useState([]);
   const [qualifications, setQualifications] = useState([]);
 
-  const router = useRouter();
+  role === "student" ? '/' : '/trainers'
 
   const handleRegisterChange = (e) => {
     const { name, value } = e.target;
@@ -461,7 +461,7 @@ function Signup() {
 
       if (response.status === 200) {
         toast.success('Signed up successfully!');
-        router.push('/login');
+        router.push('/sign-in');
       } else {
         toast.error('Failed to sign up.');
       }

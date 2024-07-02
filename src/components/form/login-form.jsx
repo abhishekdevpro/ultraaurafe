@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from 'next/link';
 import {toast} from 'react-hot-toast';
+import { useRouter } from "next/router";
 // import { useNavigate } from "react-router";
 // import "./Login.css";
 // import "../Footer/Footer.css";
@@ -12,7 +13,7 @@ function Login() {
    password: ""
  });
 //  const navigate = useNavigate();
-
+const router = useRouter();
  const handleInputChange = (e) => {
    const { name, value } = e.target;
    setFormData({ ...formData, [name]: value });
@@ -38,6 +39,7 @@ function Login() {
        );
        if (response.status === 200) {
          toast.success("Logged-in successfully!");
+         router.push(role === "student" ? '/' : '/trainers');
          // navigate(role === "student" ? '/' : '/trainers');
        } else {
          toast.error("Failed to log in.");
