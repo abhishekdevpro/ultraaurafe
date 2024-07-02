@@ -372,17 +372,17 @@ function Signup() {
     email: '',
     phone: '',
     password: '',
-    // country_id: 0,
-    // state_id: 0,
-    // city_id: 0,
-    // qualification_id: 0,
+    country_id: 0,
+    state_id: 0,
+    city_id: 0,
+    qualification_id: 0,
   });
 
   const [errors, setErrors] = useState({});
-  // const [countries, setCountries] = useState([]);
-  // const [states, setStates] = useState([]);
-  // const [cities, setCities] = useState([]);
-  // const [qualifications, setQualifications] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [qualifications, setQualifications] = useState([]);
 
   const router = useRouter();
 
@@ -439,10 +439,10 @@ function Signup() {
       email: registerValues.email,
       phone: registerValues.phone,
       password: registerValues.password,
-      // country_id: registerValues.country_id,
-      // state_id: registerValues.state_id,
-      // city_id: registerValues.city_id,
-      // qualification_id: role === 'student' ? registerValues.qualification_id : undefined,
+      country_id: registerValues.country_id,
+      state_id: registerValues.state_id,
+      city_id: registerValues.city_id,
+      qualification_id: role === 'student' ? registerValues.qualification_id : undefined,
     };
 
     try {
@@ -481,68 +481,68 @@ function Signup() {
     }
   };
 
-  // useEffect(() => {
-  //   const fetchCountries = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         role === 'student' ? 'https://api.novajobs.us/api/students/countries' : 'https://api.novajobs.us/api/trainers/countries'
-  //       );
-  //       console.log('Countries Response:', response.data.data);
-  //       setCountries(response.data.data);
-  //     } catch (error) {
-  //       console.error('Error fetching countries:', error);
-  //     }
-  //   };
-  //   fetchCountries();
-  // }, [role]);
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const response = await axios.get(
+          role === 'student' ? 'https://api.novajobs.us/api/students/countries' : 'https://api.novajobs.us/api/trainers/countries'
+        );
+        console.log('Countries Response:', response.data.data);
+        setCountries(response.data.data);
+      } catch (error) {
+        console.error('Error fetching countries:', error);
+      }
+    };
+    fetchCountries();
+  }, [role]);
 
-  // useEffect(() => {
-  //   if (registerValues.country_id) {
-  //     const fetchStates = async () => {
-  //       try {
-  //         const response = await axios.get(
-  //           role === 'student' ? `https://api.novajobs.us/api/students/states/${registerValues.country_id}` : `https://api.novajobs.us/api/trainers/states/${registerValues.country_id}`
-  //         );
-  //         console.log('States Response:', response.data.data);
-  //         setStates(response.data.data);
-  //       } catch (error) {
-  //         console.error('Error fetching states:', error);
-  //       }
-  //     };
-  //     fetchStates();
-  //   }
-  // }, [registerValues.country_id, role]);
+  useEffect(() => {
+    if (registerValues.country_id) {
+      const fetchStates = async () => {
+        try {
+          const response = await axios.get(
+            role === 'student' ? `https://api.novajobs.us/api/students/stats/${registerValues.country_id}` : `https://api.novajobs.us/api/trainers/stats/${registerValues.country_id}`
+          );
+          console.log('States Response:', response.data.data);
+          setStates(response.data.data);
+        } catch (error) {
+          console.error('Error fetching states:', error);
+        }
+      };
+      fetchStates();
+    }
+  }, [registerValues.country_id, role]);
 
-  // useEffect(() => {
-  //   if (registerValues.state_id) {
-  //     const fetchCities = async () => {
-  //       try {
-  //         const response = await axios.get(
-  //           role === 'student' ? `https://api.novajobs.us/api/students/cities/${registerValues.state_id}` : `https://api.novajobs.us/api/trainers/cities/${registerValues.state_id}`
-  //         );
-  //         console.log('Cities Response:', response.data.data);
-  //         setCities(response.data.data);
-  //       } catch (error) {
-  //         console.error('Error fetching cities:', error);
-  //       }
-  //     };
-  //     fetchCities();
-  //   }
-  // }, [registerValues.state_id, role]);
+  useEffect(() => {
+    if (registerValues.state_id) {
+      const fetchCities = async () => {
+        try {
+          const response = await axios.get(
+            role === 'student' ? `https://api.novajobs.us/api/students/cities/${registerValues.state_id}` : `https://api.novajobs.us/api/trainers/cities/${registerValues.state_id}`
+          );
+          console.log('Cities Response:', response.data.data);
+          setCities(response.data.data);
+        } catch (error) {
+          console.error('Error fetching cities:', error);
+        }
+      };
+      fetchCities();
+    }
+  }, [registerValues.state_id, role]);
 
-  // useEffect(() => {
-  //   if (role === 'student') {
-  //     const fetchQualifications = async () => {
-  //       try {
-  //         const response = await axios.get('https://api.novajobs.us/api/students/qualifications');
-  //         setQualifications(response.data.data);
-  //       } catch (error) {
-  //         console.error('Error fetching qualifications:', error);
-  //       }
-  //     };
-  //     fetchQualifications();
-  //   }
-  // }, [role]);
+  useEffect(() => {
+    if (role === 'student') {
+      const fetchQualifications = async () => {
+        try {
+          const response = await axios.get('https://api.novajobs.us/api/students/qualifications');
+          setQualifications(response.data.data);
+        } catch (error) {
+          console.error('Error fetching qualifications:', error);
+        }
+      };
+      fetchQualifications();
+    }
+  }, [role]);
 
   return (
     <div id='bgimage'>
@@ -636,7 +636,7 @@ function Signup() {
               />
               {errors.password && <p className="text-danger text-xs">{errors.password}</p>}
             </div>
-            {/* <div className='mb-3'>
+            <div className='mb-3'>
               <label className='form-label text-black'>Country</label>
               <select
                 name='country_id'
@@ -706,7 +706,7 @@ function Signup() {
                 </select>
                 {errors.qualification_id && <p className="text-danger text-xs">{errors.qualification_id}</p>}
               </div>
-            )} */}
+            )}
 
             <button type='submit' className='w-100 py-2 px-3 bgchange text-white h4 font-weight-bold rounded'>
               Sign Up

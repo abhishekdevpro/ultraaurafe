@@ -8,6 +8,7 @@ const SignIn = () => {
     <>
     <Breadcrumb title="Log In" subtitle="Login" isDbbl="Pages" />
       <LoginForm />
+      <Toaster/>
     </>
   );
 };
