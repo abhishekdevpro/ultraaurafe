@@ -39,7 +39,7 @@ const router = useRouter();
        );
        if (response.status === 200) {
          toast.success("Logged-in successfully!");
-         router.push(role === "student" ? '/' : '/trainers');
+         router.push('/');
          // navigate(role === "student" ? '/' : '/trainers');
        } else {
          toast.error("Failed to log in.");
