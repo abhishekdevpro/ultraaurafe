@@ -14,8 +14,8 @@ const  CourseListArea = () => {
           <div className="row text-center">
             <div className="col-lg-12">
               <div className="section-title mb-60">
-                <span className="tp-sub-title-box mb-15">Our Courses</span>
-                <h2 className="tp-section-title">Explore Popular Courses</h2>
+                {/* <span className="tp-sub-title-box mb-15">Our Courses</span> */}
+                <h2 className="tp-section-title mt-3">Courses which you have uploaded</h2>
               </div>
             </div>
           </div>
@@ -352,25 +352,25 @@ const  CourseListArea = () => {
           <div className="basic-pagination text-center">
             <nav>
               <ul>
-                <li>
+                {/* <li>
                   <Link href="/blog">
                     <i className="far fa-angle-left"></i>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <span className="current">1</span>
                 </li>
                 <li>
-                  <Link href="/blog">2</Link>
+                  <Link href="/course-list">2</Link>
                 </li>
                 <li>
-                  <Link href="/blog">3</Link>
+                  <Link href="/course-list">3</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/blog">
                     <i className="far fa-angle-right"></i>
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>

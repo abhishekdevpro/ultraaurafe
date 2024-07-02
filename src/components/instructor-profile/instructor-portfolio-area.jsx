@@ -118,6 +118,26 @@ const InstructorPortfolioArea = () => {
                   </div>
                   <div className="cd-information instruc-profile-info mb-35">
                     <ul>
+                      <Link href='/create-course'>
+                      <li>
+                        <i className="fi fi-rr-briefcase"></i>{" "}
+                        <label>Create Course</label> <span></span>
+                      </li>
+                      </Link>
+                     
+                      <Link href='/course-update'>
+                      <li>
+                        <i className="fi fi-rr-briefcase"></i>{" "}
+                        <label>Update Course</label> <span></span>
+                      </li>
+                      </Link>
+
+                      <Link href='/course-list'>
+                      <li>
+                        <i className="fi fi-rr-briefcase"></i>{" "}
+                        <label>Course LiST</label> <span></span>
+                      </li>
+                      </Link>
                       <li>
                         <i className="fi fi-rr-briefcase"></i>{" "}
                         <label>Job Title</label> <span>Lead UX Engineer</span>
@@ -214,7 +234,7 @@ const InstructorPortfolioArea = () => {
                   <div className="row">
                     <div className="col-md-12">
                       <div className="instruc-biography">
-                        <h2 className="ins-bio-title mb-35">Courses</h2>
+                        <h2 className="ins-bio-title mb-35">Courses which you have created</h2>
                       </div>
                     </div>
                   </div>
@@ -290,7 +310,7 @@ const InstructorPortfolioArea = () => {
                                 <p>(125)</p>
                               </div>
                               <div className="tpcourse__pricing">
-                                <h5 className="price-title">$29.99</h5>
+                                <h5 className="price-title">$0.00</h5>
                               </div>
                             </div>
                           </div>

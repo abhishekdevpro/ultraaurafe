@@ -15,7 +15,7 @@ const HeroBanner = () => {
                         <p>Dramatically supply transparent deliverables before backward<br />comp internal or "organic"
                            sources. Competently leverage other.</p>
                         <div className="tp-banner-btn">
-                           <Link href="/course-list" className="tp-btn">Explore Courses</Link>
+                           <Link href="/course-grid" className="tp-btn">Explore Courses</Link>
                         </div>
                      </div>
                   </div>

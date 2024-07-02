@@ -9,10 +9,10 @@ const CourseList = () => {
   return (
     <>
       <Breadcrumb title="Course List" subtitle="Course List" isDbbl="Course" />
-      <FeatureArea style_about={true} />
+      {/* <FeatureArea style_about={true} /> */}
       <CourseListArea />
-      <SuitableArea style_2={true} />
-      <CounterArea />
+      {/* <SuitableArea style_2={true} /> */}
+      {/* <CounterArea /> */}
     </>
   );
 };
