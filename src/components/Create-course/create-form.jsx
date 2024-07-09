@@ -1,47 +1,55 @@
-// components/CourseForm.js
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
 function CourseForm() {
-//   const [formData, setFormData] = useState({
-//     courseName: "",
-//     courseDescription: "",
-//     courseDuration: ""
-//   });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-//   const handleChange = (e) => {
-//     setFormData({
-//       ...formData,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
+    const formData = {
+      course_Name: e.target.course_Name.value,
+      courseCategory: e.target.courseCategory.value,
+      course_description: e.target.course_description.value,
+      numberOfClasses: e.target.numberOfClasses.value,
+      numberOfStudentsAllowed: e.target.numberOfStudentsAllowed.value,
+      coursePrice: e.target.coursePrice.value,
+      // Add other fields as per your form
+    };
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await axios.post('/api/courses', formData);
-//       if (response.status === 200) {
-//         toast.success("Course created successfully!");
-//       }
-//     } catch (error) {
-//       toast.error("Failed to create course.");
-//     }
-//   };
+    const token = localStorage.getItem('token'); // Example: Fetch token from local storage
+
+    const config = {
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const response = await axios.post('https://api.novajobs.us/api/trainers/create-course', formData, config);
+      if (response.status === 200 && response.data.status === 'success') {
+        toast.success(response.data.message);
+        // Optionally reset form fields after successful submission
+        e.target.reset();
+      } else {
+        toast.error("Failed to create course.");
+      }
+    } catch (error) {
+      toast.error("Failed to create course.");
+    }
+  };
 
   return (
     <div className="container mt-5 mb-5">
-      <h2 className=" text-center">Create a New Course</h2>
-      <form className=" mb-4 pt-20 pb-20 pl-20 pr-20 rounded shadow" >
-      <div className="mb-3">
-          <label htmlFor="courseName" className="form-label">Course Image url</label>
+      <h2 className="text-center">Create a New Course</h2>
+      <form className="mb-4 pt-20 pb-20 pl-20 pr-20 rounded shadow" onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="courseName" className="form-label">Course Image URL</label>
           <input 
             type="url" 
             className="form-control" 
             id="courseName" 
             name="courseName" 
-            // value={formData.courseName} 
-            // onChange={handleChange} 
             required 
           />
         </div>
@@ -50,86 +58,61 @@ function CourseForm() {
           <input 
             type="text" 
             className="form-control" 
-            id="courseName" 
-            name="courseName" 
-            // value={formData.courseName} 
-            // onChange={handleChange} 
+            id="course_Name" 
+            name="course_Name" 
             required 
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="courseName" className="form-label">Course Category</label>
+          <label htmlFor="courseCategory" className="form-label">Course Category</label>
           <input 
             type="text" 
             className="form-control" 
             id="courseCategory" 
             name="courseCategory" 
-            // value={formData.courseName} 
-            // onChange={handleChange} 
             required 
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="courseName" className="form-label" >Course Description</label>
-          <textarea 
-            // type="textarea" 
-            className="form-control" 
-            id="courseCategory" 
-            name="courseCategory" 
-            // value={formData.courseName} 
-            // onChange={handleChange} 
-            required 
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="courseName" className="form-label">Number of classes</label>
-          <input 
-            type="text" 
-            className="form-control" 
-            id="courseCategory" 
-            name="courseCategory" 
-            // value={formData.courseName} 
-            // onChange={handleChange} 
-            required 
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="courseName" className="form-label">Number of students allowed</label>
-          <input 
-            type="text" 
-            className="form-control" 
-            id="courseCategory" 
-            name="courseCategory" 
-            // value={formData.courseName} 
-            // onChange={handleChange} 
-            required 
-          />
-        </div>
-        
-        {/* <div className="mb-3">
-          <label htmlFor="courseDescription" className="form-label">Course Description</label>
+          <label htmlFor="course_description" className="form-label">Course Description</label>
           <textarea 
             className="form-control" 
-            id="courseDescription" 
-            name="courseDescription" 
-            // value={formData.courseDescription} 
-            // onChange={handleChange} 
+            id="course_description" 
+            name="course_description" 
             required 
           />
-        </div> */}
+        </div>
         <div className="mb-3">
-          <label htmlFor="courseDuration" className="form-label">Course Price ($)</label>
+          <label htmlFor="numberOfClasses" className="form-label">Number of Classes</label>
+          <input 
+            type="text" 
+            className="form-control" 
+            id="numberOfClasses" 
+            name="numberOfClasses" 
+            required 
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="numberOfStudentsAllowed" className="form-label">Number of Students Allowed</label>
+          <input 
+            type="text" 
+            className="form-control" 
+            id="numberOfStudentsAllowed" 
+            name="numberOfStudentsAllowed" 
+            required 
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="coursePrice" className="form-label">Course Price ($)</label>
           <input 
             type='number' 
             className="form-control" 
-            id="courseDuration" 
-            name="courseDuration" 
-            // value={formData.courseDuration} 
-            // onChange={handleChange} 
+            id="coursePrice" 
+            name="coursePrice" 
             required 
           />
         </div>
-        <button type="submit" className="btn btn-success text-center justify-content-center d-flex ">Submit</button>
+        <button type="submit" className="btn btn-success">Submit</button>
       </form>
     </div>
   );

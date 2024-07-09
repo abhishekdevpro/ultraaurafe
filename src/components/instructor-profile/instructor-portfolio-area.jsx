@@ -1,9 +1,9 @@
+import React, { useState } from "react";
+import Link from "next/link";
+import EditProfileModal from "./EditProfileModal";
 import Count from "@/src/common/count.jsx";
 import our_course_data from "@/src/data/our-course-data.js";
-import Link from "next/link";
-import React from "react";
 import course_data_2 from "../../data/course-data-2.js";
-
 
 // instructor_portfolio_data
 const instructor_portfolio_data = [
@@ -24,6 +24,7 @@ const instructor_portfolio_data = [
     experiences_year: "12+ Years",
     skill_level: "Pro Level",
     language: "English",
+    linkdin:'',
     biography: (
       <>
         <p>
@@ -47,33 +48,49 @@ const instructor_portfolio_data = [
   },
 ];
 
-
-// counter data 
+// counter data
 const counter_data = [
-   {
-     id: 1,
-     icon: "fi fi-rr-user",
-     count_number: 276,
-     thousand: "K",
-     title: "Worldwide Students",
-   },
-   {
-     id: 2,
-     icon: "fi fi-rr-document",
-     count_number: 35,
-     thousand: "",
-     title: "Professional Courses",
-   },
-   {
-     id: 3,
-     icon: "fi fi-rr-star",
-     count_number: 407,
-     thousand: "K",
-     title: "Beautiful Review",
-   },
- ];
+  {
+    id: 1,
+    icon: "fi fi-rr-user",
+    count_number: 276,
+    thousand: "K",
+    title: "Worldwide Students",
+  },
+  {
+    id: 2,
+    icon: "fi fi-rr-document",
+    count_number: 35,
+    thousand: "",
+    title: "Professional Courses",
+  },
+  {
+    id: 3,
+    icon: "fi fi-rr-star",
+    count_number: 407,
+    thousand: "K",
+    title: "Beautiful Review",
+  },
+];
 
 const InstructorPortfolioArea = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [profileData, setProfileData] = useState(instructor_portfolio_data[0]);
+
+  const handleOpenModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const handleSaveProfile = (updatedProfile) => {
+    setProfileData(updatedProfile);
+  };
+
+
+
   return (
     <>
       <section
@@ -94,94 +111,111 @@ const InstructorPortfolioArea = () => {
                 <div className="instructor-sidebar-widget">
                   <div className="isntruc-side-content text-center">
                     <h4 className="side-instructor-title mb-15">
-                      Emilia Williamson
+                      {profileData.name}
                     </h4>
-                    <p>
-                      UX/UI Designer, Chemical Engineer, Youtuber, Life Style
-                      Blogger
-                    </p>
+                    <p>{profileData.sub_title}</p>
                   </div>
                   <div className="instruc-follower d-flex align-items-center justify-content-center mb-25">
                     <div className="ins-followers">
-                      <h4>35,600</h4>
+                      <h4>{profileData.followers}</h4>
                       <span>Followers</span>
                     </div>
                     <div className="ins-following">
-                      <h4>135</h4>
+                      <h4>{profileData.following}</h4>
                       <span>Following</span>
                     </div>
                   </div>
+                  
                   <div className="instruc-side-btn text-center mb-40">
-                    <Link className="ins-btn" href="#">
-                      Follow +
-                    </Link>
+                    <button className="ins-btn" onClick={handleOpenModal}>
+                      Edit Profile
+                    </button>
                   </div>
                   <div className="cd-information instruc-profile-info mb-35">
                     <ul>
-                      <Link href='/create-course'>
                       <li>
-                        <i className="fi fi-rr-briefcase"></i>{" "}
-                        <label>Create Course</label> <span></span>
+                        <Link href="/create-course">
+                          <i className="fi fi-rr-briefcase"></i>{" "}
+                          <label>Create Course</label>
+                          <span></span>
+                        </Link>
                       </li>
-                      </Link>
-                     
-                      <Link href='/course-update'>
                       <li>
-                        <i className="fi fi-rr-briefcase"></i>{" "}
-                        <label>Update Course</label> <span></span>
+                        <Link href="/course-update">
+                          <i className="fi fi-rr-briefcase"></i>{" "}
+                          <label>Update Course</label>
+                          <span></span>
+                        </Link>
                       </li>
-                      </Link>
-
-                      <Link href='/course-list'>
                       <li>
-                        <i className="fi fi-rr-briefcase"></i>{" "}
-                        <label>Course LiST</label> <span></span>
+                        <Link href="/course-list">
+                          <i className="fi fi-rr-briefcase"></i>{" "}
+                          <label>Course List</label>
+                          <span></span>
+                        </Link>
                       </li>
-                      </Link>
                       <li>
                         <i className="fi fi-rr-briefcase"></i>{" "}
-                        <label>Job Title</label> <span>Lead UX Engineer</span>
+                        <label>Job Title</label>{" "}
+                        <span>{profileData.job_title}</span>
                       </li>
                       <li>
                         <i className="fi fi-rr-phone-call"></i>{" "}
-                        <label>Phone</label> <span>+00 365 9852 65</span>
+                        <label>Phone</label>{" "}
+                        <span>{profileData.phone}</span>
                       </li>
                       <li>
                         <i className="fi fi-rr-envelope"></i>{" "}
-                        <label>Email</label> <span>epora@mail.com</span>
+                        <label>Email</label>{" "}
+                        <span>{profileData.email}</span>
                       </li>
                       <li>
                         <i className="fi fi-rr-time-forward"></i>{" "}
-                        <label>Experiences</label> <span>12+ Years</span>
+                        <label>Experiences</label>{" "}
+                        <span>{profileData.experiences_year}</span>
                       </li>
                       <li>
                         <i className="fi fi-rs-time-check"></i>{" "}
-                        <label>Skill Level</label> <span>Pro Level</span>
+                        <label>Skill Level</label>{" "}
+                        <span>{profileData.skill_level}</span>
                       </li>
                       <li>
                         <i className="fi fi-br-comments"></i>{" "}
-                        <label>Language</label> <span>English</span>
+                        <label>Language</label>{" "}
+                        <span>{profileData.language}</span>
+                      </li>
+                      <li>
+                        <i className="fa-brands fa-linkedin-in"></i>{" "}
+                        <label>LinkedIn</label> 
+                        <span>{profileData.linkdin}</span>
                       </li>
                     </ul>
                   </div>
                   <div className="c-details-social">
                     <h5 className="cd-social-title mb-25">Follow More:</h5>
-                    <Link href="#">
-                      <i className="fa-brands fa-facebook-f"></i>
-                    </Link>
-                    <Link href="#">
-                      <i className="fa-brands fa-twitter"></i>
-                    </Link>
-                    <Link href="#">
-                      <i className="fa-brands fa-instagram"></i>
-                    </Link>
-                    <Link href="#">
-                      <i className="fa-brands fa-youtube"></i>
-                    </Link>
+                    <div className="cd-social-icon">
+                      <a href="#">
+                        <i className="fa-brands fa-facebook-f"></i>
+                      </a>
+                      <a href="#">
+                        <i className="fa-brands fa-twitter"></i>
+                      </a>
+                      <a href="#">
+                        <i className="fa-brands fa-instagram"></i>
+                      </a>
+                      <a href="#">
+                        <i className="fa-brands fa-linkedin-in"></i>
+                      </a>
+                      <a href="#">
+                        <i className="fa-brands fa-youtube"></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            
+          
             <div className="col-xl-8 col-lg-7">
               <div className="instructor-main-content ml-30 mb-40">
                 <div className="instruc-biography mb-50">
@@ -347,8 +381,14 @@ const InstructorPortfolioArea = () => {
               </div>
             </div>
           </div>
-        </div>
+          </div>
       </section>
+      <EditProfileModal
+        isOpen={modalIsOpen}
+        onRequestClose={handleCloseModal}
+        profile={profileData}
+        onSave={handleSaveProfile}
+      />
     </>
   );
 };

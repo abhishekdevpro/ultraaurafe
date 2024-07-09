@@ -6,53 +6,53 @@ import { useRouter } from "next/router";
 // import { useNavigate } from "react-router";
 // import "./Login.css";
 // import "../Footer/Footer.css";
-
 function Login() {
   const [role, setRole] = useState("student");
   const [formData, setFormData] = useState({
-   email: "",
-   password: ""
- });
-//  const navigate = useNavigate();
-const router = useRouter();
- const handleInputChange = (e) => {
-   const { name, value } = e.target;
-   setFormData({ ...formData, [name]: value });
- };
+    email: "",
+    password: ""
+  });
+  const router = useRouter();
 
- const handleLogin = async (e) => {
-   e.preventDefault();
-   const url = role === "student" ? "https://api.novajobs.us/api/students/login" : "https://api.novajobs.us/api/trainers/login";
-   console.log(url);
-   if (!formData.email || !formData.password) {
-     toast.error("Email and Password are required");
-   } else {
-     try {
-       const response = await axios.post(
-         url,
-         formData,
-         {
-           // withCredentials: true,
-           headers: {
-             'Content-Type': 'application/json',
-           },
-         }
-       );
-       if (response.status === 200) {
-         toast.success("Logged-in successfully!");
-         router.push(role === "student" ? '/' : '/instructor-profile');
-         // navigate(role === "student" ? '/' : '/trainers');
-       } else {
-         toast.error("Failed to log in.");
-       }
-       console.log("login Response", response);
-     } catch (err) {
-       console.log(err);
-       toast.error("An error occurred. Please try again.");
-     }
-   }
- };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const url = role === "student" ? "https://api.novajobs.us/api/students/login" : "https://api.novajobs.us/api/trainers/login";
+    console.log(url);
+    if (!formData.email || !formData.password) {
+      toast.error("Email and Password are required");
+    } else {
+      try {
+        const response = await axios.post(
+          url,
+          formData,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+        if (response.status === 200) {
+           // Ensure this matches your API response structure
+          localStorage.setItem("token",  response.data.data.token);
+          console.log("token", response.data.data.token);
+          toast.success("Logged-in successfully!");
+          router.push(role === "student" ? '/' : '/instructor-profile');
+        } else {
+          toast.error("Failed to log in.");
+        }
+        console.log("login Response", response);
+        
+      } catch (err) {
+        console.log(err);
+        toast.error("An error occurred. Please try again.");
+      }
+    }
+  };
   return (
     <>
       <div className="" >

@@ -1,0 +1,50 @@
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  .popup-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .popup-content .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .popup-content .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .popup-content .form-group input,
+  .popup-content .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .popup-content .form-group input[type="file"] {
+    padding: 3px;
+  }
+  
+  .popup-content button {
+    margin-right: 10px;
+  }
+  
