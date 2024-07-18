@@ -56,9 +56,9 @@ function Login() {
   return (
     <>
       <div className="" >
-        <div className="min-vh-100 d-flex justify-content-end px-2 px-md-4 py-3">
+        <div className="min-vh-100 d-flex justify-content-end px-9 px-md-4 py-3">
           <div
-            className="p-4 rounded shadow-lg w-100 max-w-lg"
+            className="p-4 rounded shadow-lg w-100"
             
           >
             <h2 className="h4 text-black font-weight-bold mb-4 text-center">

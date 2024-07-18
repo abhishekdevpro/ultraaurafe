@@ -7,11 +7,13 @@ import Sidebar from "./sidebar";
 
 // category_data
 const category_data = [
-  {title: "SuperMinds"},
-  {title: "FutureMinds"},
-  {title: "MasterMinds"},
-  {title: "CreativeMinds"},
-  {title: "UniqueMinds"},
+  {title: "IT courses -Basic and Advanced"},
+  {title: "Home services - Housekeeping,Plumbing, Electrical"},
+  {title: "Home care- Child care, Aging care and Nursing"},
+  {title: "Soft skills"},
+  {title: "Corporate training"},
+  {title: "Hospitality"},
+  {title: "Agriculture"},
 
 ]
 const Header = () => {
