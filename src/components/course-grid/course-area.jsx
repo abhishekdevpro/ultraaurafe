@@ -10,9 +10,9 @@ const CourseArea = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="section-title text-center mb-65">
-                <span className="tp-sub-title-box mb-15">Our Courses</span>
+                {/* <span className="tp-sub-title-box mb-15">Our Courses</span> */}
                 <h2 className="tp-section-title mb-20">
-                  Explore Popular Courses
+                  Explore Courses
                 </h2>
               </div>
             </div>
@@ -101,7 +101,7 @@ const CourseArea = () => {
               </div>
             ))}
           </div>
-          <div className="basic-pagination">
+          {/* <div className="basic-pagination">
             <nav>
               <ul>
                 <li>
@@ -125,7 +125,7 @@ const CourseArea = () => {
                 </li>
               </ul>
             </nav>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

@@ -35,6 +35,10 @@ const EditCourseDetailsModal = ({ show, onHide, onSave, courseDetails }) => {
             <Form.Control as="textarea" rows={3} name="description" style={{height:"150px"}} value={formState.description} onChange={handleChange} />
           </Form.Group>
           <Form.Group>
+            <Form.Label>Course Price</Form.Label>
+            <Form.Control type="number" name="title" value={formState.title} onChange={handleChange} />
+          </Form.Group>
+          <Form.Group>
             <Form.Label className='mt-3'>Photo</Form.Label>
             <Form.Control type="file" name="photo" onChange={handleFileChange} />
           </Form.Group>

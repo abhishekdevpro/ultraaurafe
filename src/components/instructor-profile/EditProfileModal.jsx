@@ -30,6 +30,8 @@ const EditProfileModal = ({ isOpen, onRequestClose, profile, onSave }) => {
         <div className="modal-body">
           <form onSubmit={handleSubmit}>
             <div className="d-flex gap-2">
+            
+            
             <div className="mb-1">
               <label className="form-label">Name</label>
               <input

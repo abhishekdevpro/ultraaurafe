@@ -104,7 +104,7 @@ const InstructorPortfolioArea = () => {
               <div className="instruc-sidebar mb-40">
                 <div className="isntruc-side-thumb mb-30">
                   <img
-                    src="/assets/img/bg/instruc-sibedar-thumb-01.jpg"
+                    src={profileData.img}
                     alt="instructor-thumb"
                   />
                 </div>
