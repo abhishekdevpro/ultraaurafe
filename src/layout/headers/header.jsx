@@ -8,7 +8,9 @@ import Sidebar from "./sidebar";
 // category_data
 const category_data = [
   {title: "IT courses -Basic and Advanced"},
-  {title: "Home services - Housekeeping,Plumbing, Electrical"},
+  {title: "Home services - Housekeeping"},
+  {title: "Plumbing"},
+  {title: "Electrical"},
   {title: "Home care- Child care, Aging care and Nursing"},
   {title: "Soft skills"},
   {title: "Corporate training"},
