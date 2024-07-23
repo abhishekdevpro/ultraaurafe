@@ -1,81 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Link from "next/link";
 import EditProfileModal from "./EditProfileModal";
 import Count from "@/src/common/count.jsx";
 import our_course_data from "@/src/data/our-course-data.js";
 import course_data_2 from "../../data/course-data-2.js";
 
-// instructor_portfolio_data
-const instructor_portfolio_data = [
-  {
-    id: 6,
-    img: "/assets/img/bg/instruc-in-06.jpg",
-    name: "Esther Howard",
-    total_class: "35",
-    total_st: "291",
-    title: "Instructor",
-    sub_title:
-      "UX/UI Designer, Chemical Engineer, Youtuber, Life Style Blogger",
-    followers: "35,600",
-    following: "135",
-    job_title: "Lead UX Engineer",
-    phone: "+00 365 9852 65",
-    email: "epora@mail.com",
-    experiences_year: "12+ Years",
-    skill_level: "Pro Level",
-    language: "English",
-    linkdin:'',
-    biography: (
-      <>
-        <p>
-          Synergistically foster 24/7 leadership rather than scalable platforms.
-          Conveniently visualize installed base products before interactive
-          results. Collaboratively restore corporate experiences and open-source
-          applications. Proactively mesh cooperative growth strategies for
-          covalent opportunities. Competently create efficient markets through
-          best-of-breed potentialities.
-        </p>
-        <p>
-          Compellingly exploit B2B vortals with emerging total linkage.
-          Appropriately pursue strategic leadership whe intermandated ideas.
-          Proactively revolutionize interoperable "outside the box" thinking
-          with fully researched innovation. Dramatically facilitate exceptional
-          architectures and bricks-and-clicks data. Progressively genera
-          extensible e-services for.
-        </p>
-      </>
-    ),
-  },
-];
-
-// counter data
-const counter_data = [
-  {
-    id: 1,
-    icon: "fi fi-rr-user",
-    count_number: 276,
-    thousand: "K",
-    title: "Worldwide Students",
-  },
-  {
-    id: 2,
-    icon: "fi fi-rr-document",
-    count_number: 35,
-    thousand: "",
-    title: "Professional Courses",
-  },
-  {
-    id: 3,
-    icon: "fi fi-rr-star",
-    count_number: 407,
-    thousand: "K",
-    title: "Beautiful Review",
-  },
-];
-
 const InstructorPortfolioArea = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [profileData, setProfileData] = useState(instructor_portfolio_data[0]);
+  const [profileData, setProfileData] = useState({});
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try { const token = localStorage.getItem('token');
+        const response = await axios.get("https://api.novajobs.us/api/trainers/profile", {
+          headers: {
+            Authorization: token,
+          },
+        });
+        const data = response.data.data;
+        setProfileData({
+          img: data.photo,
+          name: `${data.first_name} ${data.last_name}`,
+          email: data.email,
+          phone: data.phone,
+          job_title: data.jobtitle,
+          biography: data.biography,
+          linkedin: data.linkedin,
+          // Add any other fields you need here
+        });
+      } catch (error) {
+        console.error("Error fetching the profile data:", error);
+      }
+    };
+
+    fetchProfileData();
+  }, []);
 
   const handleOpenModal = () => {
     setModalIsOpen(true);
@@ -89,7 +49,30 @@ const InstructorPortfolioArea = () => {
     setProfileData(updatedProfile);
   };
 
-
+  const counter_data = [
+    {
+      id: 1,
+      icon: "fi fi-rr-user",
+      count_number: 276,
+      thousand: "K",
+      title: "Worldwide Students",
+    },
+    {
+      id: 2,
+      icon: "fi fi-rr-document",
+      count_number: 35,
+      thousand: "",
+      title: "Professional Courses",
+    },
+    {
+      id: 3,
+      icon: "fi fi-rr-star",
+      count_number: 407,
+      thousand: "K",
+      title: "Beautiful Review",
+    },
+  ];
+  
 
   return (
     <>

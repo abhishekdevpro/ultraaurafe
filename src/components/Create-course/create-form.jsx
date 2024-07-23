@@ -2,7 +2,13 @@ import React from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+
 function CourseForm() {
+  const router = useRouter();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -16,7 +22,7 @@ function CourseForm() {
       // Add other fields as per your form
     };
 
-    const token = localStorage.getItem('token'); // Example: Fetch token from local storage
+    const token = localStorage.getItem('token'); // Fetch token from local storage
 
     const config = {
       headers: {
@@ -29,10 +35,12 @@ function CourseForm() {
       const response = await axios.post('https://api.novajobs.us/api/trainers/create-course', formData, config);
       if (response.status === 200 && response.data.status === 'success') {
         toast.success(response.data.message);
+        router.push('/instructor-profile');
         // Optionally reset form fields after successful submission
         e.target.reset();
       } else {
         toast.error("Failed to create course.");
+
       }
     } catch (error) {
       toast.error("Failed to create course.");
@@ -41,6 +49,7 @@ function CourseForm() {
 
   return (
     <div className="container mt-5 mb-5">
+      <ToastContainer/>
       <h2 className="text-center">Create a New Course</h2>
       <form className="mb-4 pt-20 pb-20 pl-20 pr-20 rounded shadow" onSubmit={handleSubmit}>
         <div className="mb-3">
