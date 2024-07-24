@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Link from 'next/link';
-import {toast} from 'react-hot-toast';
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import  axios  from "axios";
 import { useRouter } from "next/router";
+import { ToastContainer } from "react-toastify";
 // import { useNavigate } from "react-router";
 // import "./Login.css";
 // import "../Footer/Footer.css";
@@ -56,6 +58,7 @@ function Login() {
   return (
     <>
       <div className="" >
+        <ToastContainer/>
         <div className="min-vh-100 d-flex justify-content-end px-9 px-md-4 py-3">
           <div
             className="p-4 rounded shadow-lg w-100"
