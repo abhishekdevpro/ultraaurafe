@@ -469,7 +469,7 @@ function Signup() {
       if (role === 'student' && !response.data.data.isTrainer) {
         router.push('/');
       } else {
-        router.push('/trainer');
+        router.push('/sign-in');
       }
     } catch (err) {
       console.error('Error Response:', err.response); // Log the error response
