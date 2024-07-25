@@ -23,12 +23,12 @@
     }
 }
 .hero-content {
-    padding-top: 350px;
+    padding-top: 150px;
     @media #{$xl,$lg,$md,$sm,$xs} {
-        padding-top: 290px;
+        padding-top: 200px;
     }
     @media #{$xs} {
-        padding-top: 190px;
+        padding-top: 90px;
     }
     & span {
         font-weight: 400 ;
@@ -212,6 +212,6 @@
 }
 .hero-content-black {
     @media #{$xs} {
-        padding-top: 220px;
+        padding-top: 20px;
     }
 }

@@ -114,7 +114,7 @@ const Dashboard = () => {
                   <div className="instruc-side-btn text-center float-end">
                    
                     <section
-          className="instructor-portfolio pt-5 wow fadeInUp border-2"
+          className="instructor-portfolio pt-5 wow fadeInUp border-4"
           data-wow-duration=".8s"
           data-wow-delay=".2s"
         >
@@ -162,76 +162,76 @@ const Dashboard = () => {
                 </div>
                 <div className="instructor-sidebar-widget">
                   <div className="cd-information instruc-profile-info ">
-                    <ul>
+                    <ul className="p-5">
                       
                       <li>
-                        <i className="fi fi-rr-briefcase"></i>{" "}
+                      <i className="fa-brands fa-spotify"></i>{" "}
                         <label>First Name</label>{" "}
-                        <span>{profileData.first_name}</span>
+                        <span className="fs-4">{profileData.first_name}</span>
                       </li>
                       <li>
                         <i className="fi fi-rr-briefcase"></i>{" "}
                         <label>Last Name</label>{" "}
-                        <span>{profileData.last_name}</span>
+                        <span className="fs-4">{profileData.last_name}</span>
                       </li>
                       <li>
                         <i className="fi fi-rr-briefcase"></i>{" "}
                         <label>Job Title</label>{" "}
-                        <span>{profileData.jobtitle}</span>
+                        <span className="fs-4">{profileData.jobtitle}</span>
                       </li>
                       <li>
                         <i className="fi fi-rr-phone-call"></i>{" "}
                         <label>Phone</label>{" "}
-                        <span>{profileData.phone}</span>
+                        <span className="fs-4">{profileData.phone}</span>
                       </li>
                       <li>
                         <i className="fi fi-rr-envelope"></i>{" "}
                         <label>Email</label>{" "}
-                        <span>{profileData.email}</span>
+                        <span className="fs-4">{profileData.email}</span>
                       </li>
                       <li>
                         <i className="fi fi-rr-time-forward"></i>{" "}
                         <label>Biography</label>{" "}
-                        <span>{profileData.biography}</span>
+                        <span className="fs-4">{profileData.biography}</span>
                       </li>
                       <li>
                         <i className="fi fi-rs-time-check"></i>{" "}
                         <label>headline</label>{" "}
-                        <span>{profileData.headline}</span>
+                        <span className="fs-4">{profileData.headline}</span>
                       </li>
                       <li>
-                        <i className="fi fi-br-comments"></i>{" "}
+                        <i className="fi fi-br-browser"></i>{" "}
                         <label>website</label>{" "}
-                        <span>{profileData.website}</span>
+                        <span className="fs-4">{profileData.website}</span>
                       </li>
 
                       <li>
-                        <i className="fi fi-rr-certificate"></i>{" "}
+                      <i className="fa-brands fa-safari"></i>{" "}
                         <label>address</label>{" "}
-                        <span>{profileData.address}</span>
+                        <span className="fs-4">{profileData.address}</span>
                       </li>
                       <li>
                         <i className="fa-brands fa-linkedin-in"></i>{" "}
                         <label>LinkedIn</label>
-                        <span>{profileData.linkedin}</span>
+                        <span className="fs-4">{profileData.linkedin}</span>
                       </li>
 
                       <li>
-                        <i className="fi fi-rr-facebook"></i>{" "}
+                        <i className="fa-brands fa-facebook"></i>{" "}
                         <label>Facebook</label>{" "}
-                        <span>{profileData.facebook}</span>
+                        <span className="fs-4">{profileData.facebook}</span>
                       </li>
 
                       <li>
-                        <i className="fi fi-rr-checkbox"></i>{" "}
+                      <i className="fa-brands fa-youtube"></i>{" "}
                         <label>youtube</label>{" "}
-                        <span>{profileData.youtube}</span>
+                        <span className="fs-4">{profileData.youtube}</span>
                       </li>
 
                       <li>
-                        <i className="fi fi-rr-twitter"></i>{" "}
+                      <i className="fa-brands fa-twitter"></i>{" "}
                         <label>Twitter</label>{" "}
-                        <span>{profileData.twitter}</span>
+                        <span className="fs-4">{profileData.twitter}</span>
                       </li>
                     </ul>
                   </div>
@@ -413,16 +413,18 @@ const Dashboard = () => {
                         className="form-control"
                       />
                     </div>
-                    <button type="submit" className="btn btn-primary">
+                  <div>
+                      <button type="submit" className="btn btn-warning text-white me-4 mt-2">
                       Save
                     </button>
                     <button
                       type="button"
-                      className="btn btn-secondary"
+                      className="btn btn-secondary mt-2"
                       onClick={handleCloseModal}
                     >
                       Cancel
                     </button>
+                  </div>
                   </form>
                 </Modal>
               </div>

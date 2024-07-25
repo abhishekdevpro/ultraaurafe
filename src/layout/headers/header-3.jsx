@@ -31,7 +31,7 @@ const HeaderThree = () => {
                   <div className="logo-area d-flex align-items-center">
                     <div className="logo">
                       <Link href="/">
-                        <img src="/assets/img/logo/logo-black.png" alt="logo" />
+                        <img src="/assets/img/logo/logo-black.png" alt="logo" style={{width:"350px"}}/>
                       </Link>
                     </div>
                     <div className="header-cat-menu ml-40 d-none d-md-block">

@@ -16,13 +16,22 @@ const {title,sub_title, des, experiences_years} = choose_data
 // choose list data
 const choose_list_data = [
   {
-    list: "Increasing Your Learning Skills",
+    list: "Cutting-Edge AI Integration: Ultra Aura leverages advanced AI to personalize learning paths, ensuring each student receives tailored content that matches their pace and learning style.",
   },
   {
-    list: "High Quality Video  & Audio Classes",
+    list: "Expert-Led Instruction: Our courses are designed and taught by industry experts, providing practical insights and real-world knowledge that enhance the learning experience.",
   },
   {
-    list: "Finish Your Course, Get Certificate",
+    list: "Comprehensive Certification Programs: Gain industry-recognized certifications that validate your skills and knowledge, boosting your professional credibility and career prospects.",
+  },
+  {
+    list: "Extensive Course Library: With a 1-year subscription included, enjoy unlimited access to a vast array of courses covering diverse subjects and the latest industry trends.",
+  },
+  {
+    list: "Engaging Learning Experience: Our platform incorporates interactive tools, hands-on projects, and real-time feedback to ensure an engaging and effective learning journey.",
+  },
+  {
+    list: "Commitment to Excellence: At Ultra Aura, we are dedicated to providing high-quality education and continuous support to help you achieve your learning goals and advance your career.",
   },
 ];
 const ChooseArea = ({style_about, style_2}) => {
@@ -47,11 +56,11 @@ const ChooseArea = ({style_about, style_2}) => {
                     {des}
                   </p>
                 </div>
-                <div className="tp-choose-list tp-choose-bg mb-60">
+                <div className="tp-choose-list tp-choose-bg mb">
                   <ul>
                     {choose_list_data.map((item, i) => (
                       <li key={i}>
-                        <div className="tp-list-bg">
+                        <div className="tp-list-bg fs-6 fw-light" style={{fontSize:"10px"}}>
                           <i className="fa-light fa-check"></i>
                           {item.list}
                         </div>

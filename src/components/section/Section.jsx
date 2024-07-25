@@ -81,7 +81,7 @@ const Section = () => {
 
   const handleAddLecture = () => {
     if (sectionId) {
-      router.push(`/add-lecture?sectionId=${sectionId}`);
+      router.push(`/leacture?sectionId=${sectionId}&courseId=1`);
     }
   };
 
@@ -153,19 +153,19 @@ const Section = () => {
         closeTimeoutMS={200}
       >
         <div className="text-center mt-80">
-          <h1 className="h1 m-4">Section added successfully!</h1>
+          <h1 className="h1 m-4">Section added successfully!!!  🎉</h1>
           <div className="mt-3 m-5 ">
             <button
               onClick={handleAddAnotherSection}
-              className="btn btn-success me-2 mx-5 mt-5"
+              className="btn btn-success me-2 mx-3 mt-5 p-4"
             >
-              (+) Add Another Section
+              📌 Add Another Section
             </button>
             <button
               onClick={handleAddLecture}
-              className="btn btn-warning mx-5 text-white"
+              className="btn btn-warning mx-3 text-white p-4"
             >
-              Add Lecture to this Section
+             📖 Add Lecture to this Section
             </button>
           </div>
         </div>

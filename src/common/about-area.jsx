@@ -17,13 +17,13 @@ const  { students, review, pro_courses, title, des} = about_info
 
 const about_list_data = [
   {
-    name: "Create an Ultra Aura account",
+    name: "Worldwide students",
   },
   {
-    name: "Choose Your Perfect Courses",
+    name: "100+ pro courses",
   },
   {
-    name: "After Finished Courses, Get Certificate",
+    name: "Get started in 30 seconds, sign up free to access our huge AI & video enabled modules",
   },
 ];
 const AboutArea = ({style_about}) => {
