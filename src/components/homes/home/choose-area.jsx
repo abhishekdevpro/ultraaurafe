@@ -9,7 +9,7 @@ const choose_data = {
     <>
       Why You Choose Our
       <br />
-      Ultra Aura Online learning
+      Ultra Aura Online learnin
     </>
   ),
   des: 'Dramatically supply transparent deliverables before & can backward comp internal or "organic" sources.',
@@ -57,9 +57,7 @@ const ChooseArea = () => {
                   <h2 className="tp-section-title mb-20">
                    {sub_title}
                   </h2>
-                  <p>
-                    {des}
-                  </p>
+                  
                 </div>
                 <div className="tp-choose-list mb-35">
                   <ul>

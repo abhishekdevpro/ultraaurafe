@@ -46,10 +46,10 @@ const {sticky} = useSticky()
                                 <i className="arrow_carrot-down"></i>
                               </span> */}
                             </a>
-                            <ul className="sub-menu">
+                            <ul className="sub-menu border">
                               {category_data.map((item, i) => 
                                <li key={i}>
-                               <Link href="/course-grid">{item.title}</Link>
+                               <Link href="/course-grid" className="border-bottom p-2">{item.title}</Link>
                              </li>
                               )}
                             </ul>

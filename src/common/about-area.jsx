@@ -54,7 +54,7 @@ const AboutArea = ({style_about}) => {
                 <div className="tp-about-class-info">
                   <ul>
                     <li>
-                      <span>{students}</span>Worldwide Students
+                      <span>{students}</span>Worldwide Student
                     </li>
                     <li>
                       <span>

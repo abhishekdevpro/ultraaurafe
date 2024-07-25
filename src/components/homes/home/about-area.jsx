@@ -28,7 +28,7 @@ const about_info = {
     about_title: "About Our Courses",
     sub_title:"Explore Thousands of Creative Classes.",
     des: <> Our edtech platform offers a diverse range of AI-powered courses, designed by expert trainers to provide comprehensive, hands-on learning experiences.</>,
-    about_btn: "Search Jobs"
+    about_btn: "About US"
 }
 
 const {img_1, img_2, img_3, about_title, sub_title, des, about_btn} = about_info
@@ -83,7 +83,7 @@ const AboutArea = () => {
                   </p>
                 </div>
                 <div className="about-btn">
-                  <Link href="https://novajobs.us/user/register-2" className="tp-btn">
+                  <Link href="/about" className="tp-btn">
                     {about_btn}
                   </Link>
                 </div>
