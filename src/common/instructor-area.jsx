@@ -147,8 +147,8 @@ const InstructorArea = ({ style_2 }) => {
               {instructorInfo.map(({ trainer }) => (
                 <div key={trainer.id} className="tp-instruc-item">
                   <div className="tp-instructor text-center p-relative mb-30">
-                    <div className="tp-instructor__thumb mb-25">
-                      <img src={`https://api.novajobs.us${trainer.photo}`} alt="instructor-profile" style={{width:"250px",height:"250px"}}/>
+                    <div className="tp-instructor__thumb mb-25 d-flex justify-content-center">
+                      <img src={`https://api.novajobs.us${trainer.photo}`} alt="instructor-profile" style={{width:"310px",height:"250px"}}/>
                     </div>
                     <div className="tp-instructor__content">
                       <h4 className="tp-instructor__title mb-20">
