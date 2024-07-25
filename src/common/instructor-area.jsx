@@ -1,34 +1,7 @@
 import Link from "next/link";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
-
-// instructor_info
-const instructor_info = [
-  {
-    id: 1,
-    img: "/assets/img/bg/instructor-bg-01.jpg",
-    name: "Devon Lane",
-    title: "Instructor",
-  },
-  {
-    id: 2,
-    img: "/assets/img/bg/instructor-bg-02.jpg",
-    name: "Jane Cooper",
-    title: "Instructor",
-  },
-  {
-    id: 3,
-    img: "/assets/img/bg/instructor-bg-03.jpg",
-    name: "Courtney Henry",
-    title: "Instructor",
-  },
-  {
-    id: 4,
-    img: "/assets/img/bg/instructor-bg-04.jpg",
-    name: "Devon Lane",
-    title: "Instructor",
-  },
-];
+import axios from "axios";
 
 // social_links
 const social_links = [
@@ -106,8 +79,21 @@ const setting = {
 };
 
 const InstructorArea = ({ style_2 }) => {
- 
   const sliderRef = useRef(null);
+  const [instructorInfo, setInstructorInfo] = useState([]);
+
+  useEffect(() => {
+    const fetchInstructors = async () => {
+      try {
+        const response = await axios.get("https://api.novajobs.us/api/trainers/getalltrainer");
+        setInstructorInfo(response.data.data); // Adjust according to the response structure
+      } catch (error) {
+        console.error("Error fetching instructors:", error);
+      }
+    };
+
+    fetchInstructors();
+  }, []);
 
   return (
     <>
@@ -157,18 +143,20 @@ const InstructorArea = ({ style_2 }) => {
             )}
           </div>
           <div className="intruc-active mb-15 tp-slide-space">
-            <Slider {...setting}  ref={sliderRef}>
-              {instructor_info.map((item) => (
-                <div key={item.id} className="tp-instruc-item">
+            <Slider {...setting} ref={sliderRef}>
+              {instructorInfo.map(({ trainer }) => (
+                <div key={trainer.id} className="tp-instruc-item">
                   <div className="tp-instructor text-center p-relative mb-30">
                     <div className="tp-instructor__thumb mb-25">
-                      <img src={item.img} alt="instructor-profile" />
+                      <img src={`https://api.novajobs.us${trainer.photo}`} alt="instructor-profile" style={{width:"250px",height:"250px"}}/>
                     </div>
                     <div className="tp-instructor__content">
                       <h4 className="tp-instructor__title mb-20">
-                        <Link href="/instructor-profile">{item.name}</Link>
+                        <Link href={`/instructor-profile/${trainer.id}`}>
+                          {trainer.first_name} {trainer.last_name}
+                        </Link>
                       </h4>
-                      <span>{item.title}</span>
+                      <span>{trainer.jobtitle}</span>
                       <div className="tp-instructor__social">
                         <ul>
                           {social_links.map((link, i) => (
