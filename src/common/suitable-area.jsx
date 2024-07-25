@@ -13,9 +13,7 @@ const suitable_data = [
     des: <>
     <ul className="pb-4 pt-2" style={{fontSize:"12px",fontWeight:"700"}}>
     <li> Enroll & Learn from experts recorded sessions </li>
-      <li> +1 (803) 967 7715</li>
-      <li> 1509 Lady St, Columbia SC-29201</li>
-      <li> info@ultraaura.education</li>
+      
     </ul>
     </>,
     img: "/assets/img/bg/suit-bg-01.png",
@@ -30,9 +28,7 @@ const suitable_data = [
     des: <>
     <ul className="" style={{fontSize:"12px",fontWeight:"700"}}>
     <li> Enroll & Learn from experts live sessions </li>
-      <li> +1 (803) 967 7715</li>
-      <li> 1509 Lady St, Columbia SC-29201</li>
-      <li> info@ultraaura.education</li>
+      
     </ul>
     </>,
     img: "/assets/img/bg/suit-bg-02.png",

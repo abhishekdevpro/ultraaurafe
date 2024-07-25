@@ -5,17 +5,17 @@ const location_info = [
     {
         id: 1,
         icon: "fa-light fa-phone",
-        info: "(209) 555-0104"
+        info: "1(803) 967 7715"
     }, 
     {
         id: 2,
         icon: "fa-light fa-location-dot",
-        info: "1901 Thornridge Cir. Shiloh, Hawaii 81063"
+        info: "1509 Lady St, Columbia SC-29201"
     }, 
     {
         id: 3,
         icon: "fi fi-rr-envelope",
-        info: "danghoang87hl@gmail.com"
+        info: "info@ultraaura.education"
     },
 ]
 
@@ -32,7 +32,7 @@ const LocationArea = () => {
                         <i className="fa-light fa-phone"></i>
                      </div>
                      <div className="location-content">
-                        <h5 className="location-title"><a href="tell:(209)555-0104">(209) 555-0104</a></h5>
+                        <h5 className="location-title"><a href="tell:1(803) 967 7715">+1 (803) 967 7715</a></h5>
                      </div>
                   </div>
                </div>
@@ -42,7 +42,7 @@ const LocationArea = () => {
                         <i className="fa-light fa-location-dot"></i>
                      </div>
                      <div className="location-content">
-                        <h5 className="location-title">1901 Thornridge Cir. Shiloh, Hawaii 81063</h5>
+                        <h5 className="location-title">1509 Lady St, Columbia SC-29201</h5>
                      </div>
                   </div>
                </div>
@@ -52,7 +52,7 @@ const LocationArea = () => {
                         <i className="fi fi-rr-envelope"></i>
                      </div>
                      <div className="location-content">
-                        <h5 className="location-title"><a href="mailto:danghoang87hl@gmail.com">danghoang87hl@gmail.com</a></h5>
+                        <h5 className="location-title"><a href="mailto:info@ultraaura.education">info@ultraaura.education</a></h5>
                      </div>
                   </div>
                </div>
