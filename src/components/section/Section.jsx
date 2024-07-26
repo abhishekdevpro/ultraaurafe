@@ -15,19 +15,29 @@ const Section = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sections, setSections] = useState([]);
   const router = useRouter();
-  const { course_id, trainer_id } = router.query;
+
+  // Extract course_id and trainer_id from the path
+  const path = router.asPath;
+  const courseIdMatch = path.match(/course_id=(\d+)/);
+  const trainerIdMatch = path.match(/trainer_id=(\d+)/);
+
+  const course_id = courseIdMatch ? courseIdMatch[1] : null;
+  const trainer_id = trainerIdMatch ? trainerIdMatch[1] : null;
 
   useEffect(() => {
     if (trainer_id) {
       // Fetch sections based on the trainer_id
       const fetchSections = async () => {
         try {
-          const token = localStorage.getItem('token');
-          const response = await axios.get(`https://api.novajobs.us/api/trainers/${trainer_id}/sections`, {
-            headers: {
-              'Authorization': token
+          const token = localStorage.getItem("token");
+          const response = await axios.get(
+            `https://api.novajobs.us/api/trainers/${trainer_id}/sections`,
+            {
+              headers: {
+                Authorization: token,
+              },
             }
-          });
+          );
           if (response.data.code === 200) {
             setSections(response.data.data);
           } else {
@@ -45,7 +55,7 @@ const Section = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
     try {
       const response = await axios.post(
