@@ -7,7 +7,7 @@ import Dashboard from "./dashboard";
 const Dashboardprofile = () => {
   return (
     <>
-    <Breadcrumb title="Dashboard" isDbbl="dashboard" subtitle="dashboard" />
+    <Breadcrumb title="Dashboard" isDbbl="dashboard" subtitle="dashboard"  />
       <Dashboard />
       <CounterArea />
     </>

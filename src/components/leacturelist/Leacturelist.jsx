@@ -18,7 +18,7 @@ const LectureList = () => {
             'Authorization': token
           }
         });
-        setSections(response.data.data);
+        setSections(response.data.data.section_response);
       } catch (error) {
         toast.error("An error occurred while fetching lectures.");
       }
@@ -45,7 +45,8 @@ const LectureList = () => {
         sections.map((section) => (
           <div key={section.id} className="mb-4 border border-success rounded border border-3 border border-success p-2 mb-2 border-opacity-50 p-2">
             <div className="d-flex justify-content-between align-items-center">
-              <h3 className="badge rounded fs-5 px-4 py-2 text-bg-success ">{section.section_name}</h3>
+              <h3 className="badge rounded fs-5 px-4 py-2 text-bg-success ">Section Name : {section.section_name}<br/></h3>
+               <button className="btn btn-warning ">Edit</button>
               <button
                 className="btn btn-sm btn-outline-success p-2 fs-5 "
                 onClick={() => toggleSection(section.id)}

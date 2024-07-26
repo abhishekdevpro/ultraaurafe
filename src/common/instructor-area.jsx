@@ -152,7 +152,7 @@ const InstructorArea = ({ style_2 }) => {
                     </div>
                     <div className="tp-instructor__content">
                       <h4 className="tp-instructor__title mb-20">
-                        <Link href={`/instructor-profile/${trainer.id}`}>
+                        <Link href={`/instructorprofile/${trainer.id}`}>
                           {trainer.first_name} {trainer.last_name}
                         </Link>
                       </h4>

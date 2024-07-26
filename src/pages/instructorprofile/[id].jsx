@@ -1,7 +1,7 @@
-import InstructorProfile from "@/src/components/instructor-profile";
+import InstructorProfile from "@/src/components/instructor-profile/[index]";
 import React from "react";
-import SEO from "../common/seo";
-import WrapperFour from "../layout/wrapper-4";
+import SEO from "@/src/common/seo";
+import WrapperFour from "@/src/layout/wrapper-4";
 
 const index = () => {
   return (

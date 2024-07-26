@@ -6,13 +6,18 @@ import { useRouter } from "next/router";
 const Lecture = () => {
   const [lectureName, setLectureName] = useState("");
   const [files, setFiles] = useState([]);
-  const [resource, setResource] = useState("");
+  const [resource, setResource] = useState(null); // Changed to null to handle file object
   const [links, setLinks] = useState("");
   const router = useRouter();
   const { courseId, sectionId } = router.query;
 
   const handleFileChange = (e) => {
     setFiles(e.target.files);
+  };
+
+  const handleResourceChange = (e) => {
+    // Update resource state with the file object
+    setResource(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
@@ -24,7 +29,11 @@ const Lecture = () => {
     Array.from(files).forEach(file => {
       formData.append("files", file);
     });
-    formData.append("resource", resource);
+    
+    if (resource) {
+      formData.append("resource", resource); // Append the resource file
+    }
+
     formData.append("links", links);
 
     try {
@@ -39,14 +48,13 @@ const Lecture = () => {
         }
       );
 
-      
       if (response.data.message === "Lecture created successfully") {
         toast.success("Lecture added successfully!");
         router.push(`/leacturelist?courseId=${courseId}`);
         // Clear form fields
         setLectureName("");
         setFiles([]);
-        setResource("");
+        setResource(null);
         setLinks("");
       } else {
         toast.error("Failed to add lecture.");
@@ -82,12 +90,12 @@ const Lecture = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="resource" className="form-label">Resource:</label>
+          <label htmlFor="resource" className="form-label">Resource (PDF only):</label>
           <input
             id="resource"
-            type="text"
-            value={resource}
-            onChange={(e) => setResource(e.target.value)}
+            type="file"
+            accept=".pdf" // Restricts file input to PDF only
+            onChange={handleResourceChange}
             className="form-control"
           />
         </div>

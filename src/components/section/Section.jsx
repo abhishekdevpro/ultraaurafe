@@ -15,29 +15,32 @@ const Section = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sections, setSections] = useState([]);
   const router = useRouter();
+  const { course_id, trainer_id } = router.query;
 
   useEffect(() => {
-    // Fetch sections when the component mounts or after adding a section
-    const fetchSections = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const response = await axios.get("https://api.novajobs.us/api/trainers/1/sections", {
-          headers: {
-            'Authorization': token
+    if (trainer_id) {
+      // Fetch sections based on the trainer_id
+      const fetchSections = async () => {
+        try {
+          const token = localStorage.getItem('token');
+          const response = await axios.get(`https://api.novajobs.us/api/trainers/${trainer_id}/sections`, {
+            headers: {
+              'Authorization': token
+            }
+          });
+          if (response.data.code === 200) {
+            setSections(response.data.data);
+          } else {
+            toast.error("Failed to fetch sections.");
           }
-        });
-        if (response.data.code === 200) {
-          setSections(response.data.data);
-        } else {
-          toast.error("Failed to fetch sections.");
+        } catch (error) {
+          toast.error("An error occurred while fetching sections.");
         }
-      } catch (error) {
-        toast.error("An error occurred while fetching sections.");
-      }
-    };
+      };
 
-    fetchSections();
-  }, [isSuccess]);
+      fetchSections();
+    }
+  }, [trainer_id, isSuccess]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +49,7 @@ const Section = () => {
 
     try {
       const response = await axios.post(
-        "https://api.novajobs.us/api/trainers/1/section",
+        `https://api.novajobs.us/api/trainers/${trainer_id}/section`,
         {
           section_name: sectionName,
           section_objective: sectionObjective
@@ -80,8 +83,8 @@ const Section = () => {
   };
 
   const handleAddLecture = () => {
-    if (sectionId) {
-      router.push(`/leacture?sectionId=${sectionId}&courseId=1`);
+    if (sectionId && course_id) {
+      router.push(`/lecture?sectionId=${sectionId}&courseId=${course_id}`);
     }
   };
 
@@ -113,7 +116,7 @@ const Section = () => {
           </div>
           <button
             type="submit"
-            className="btn btn-warning "
+            className="btn btn-warning"
           >
             (+) Add Section
           </button>
@@ -148,13 +151,12 @@ const Section = () => {
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Section Added"
-    
         className="bg-light p-4 rounded-lg shadow-lg max-w-sm mx-auto mt-80 pt-80"
         closeTimeoutMS={200}
       >
         <div className="text-center mt-80">
-          <h1 className="h1 m-4">Section added successfully!!!  🎉</h1>
-          <div className="mt-3 m-5 ">
+          <h1 className="h1 m-4">Section added successfully!!! 🎉</h1>
+          <div className="mt-3 m-5">
             <button
               onClick={handleAddAnotherSection}
               className="btn btn-success me-2 mx-3 mt-5 p-4"
@@ -165,7 +167,7 @@ const Section = () => {
               onClick={handleAddLecture}
               className="btn btn-warning mx-3 text-white p-4"
             >
-             📖 Add Lecture to this Section
+              📖 Add Lecture to this Section
             </button>
           </div>
         </div>
