@@ -1,6 +1,6 @@
 import Link from "next/link";
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const CourseListArea = () => {
   const [courseListData, setCourseListData] = useState([]);
@@ -8,31 +8,33 @@ const CourseListArea = () => {
   useEffect(() => {
     const fetchCourseListData = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
         if (!token) {
-          throw new Error('Token not found in localStorage');
+          throw new Error("Token not found in localStorage");
         }
 
-        const response = await axios.get('https://api.novajobs.us/api/trainers/courses', {
-          headers: {
-            Authorization: token
+        const response = await axios.get(
+          "https://api.novajobs.us/api/trainers/courses",
+          {
+            headers: {
+              Authorization: token,
+            },
           }
-        });
+        );
 
-        if (response.data && response.data.status === 'success') {
+        if (response.data && response.data.status === "success") {
           setCourseListData(response.data.data || []);
         } else {
-          console.error('Invalid response from API:', response.data);
+          console.error("Invalid response from API:", response.data);
           setCourseListData([]);
         }
       } catch (error) {
-        console.error('Error fetching course list data:', error);
+        console.error("Error fetching course list data:", error);
       }
     };
 
     fetchCourseListData();
   }, []);
-
 
   return (
     <>
@@ -45,12 +47,14 @@ const CourseListArea = () => {
           <div className="row text-center">
             <div className="col-lg-12">
               <div className="section-title mb-60">
-                <h2 className="tp-section-title mt-3">Courses which you have uploaded</h2>
+                <h2 className="tp-section-title mt-3">
+                  Courses which you have uploaded
+                </h2>
               </div>
             </div>
           </div>
           <div className="row mb-20">
-          <div className="col-lg-4 col-md-12 courser-list-width mb-60">
+            <div className="col-lg-4 col-md-12 courser-list-width mb-60">
               <div className="course-sidebar">
                 <div className="country-select">
                   <h4 className="course-sidebar__title mb-35">Category </h4>
@@ -307,7 +311,12 @@ const CourseListArea = () => {
                     <div className="col-xl-4 course-thumb-width">
                       <div className="tpcourse__thumb p-relative w-img fix">
                         <Link href="/course-details">
-                          <img src={"https://static.vecteezy.com/system/resources/thumbnails/013/215/160/small_2x/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-vector.jpg"} alt="course-thumb" />
+                          <img
+                            src={
+                              "https://static.vecteezy.com/system/resources/thumbnails/013/215/160/small_2x/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-vector.jpg"
+                            }
+                            alt="course-thumb"
+                          />
                         </Link>
                       </div>
                     </div>
@@ -316,12 +325,18 @@ const CourseListArea = () => {
                         <div className="tpcourse__category mb-10">
                           <ul className="tpcourse__price-list d-flex align-items-center">
                             <li>
-                              <Link href="/course-details" className={item.ct_color}>
+                              <Link
+                                href="/course-details"
+                                className={item.ct_color}
+                              >
                                 {item.trainer_first_name}
                               </Link>
                             </li>
                             <li>
-                              <Link href="/course-details" className={item.cn_color}>
+                              <Link
+                                href="/course-details"
+                                className={item.cn_color}
+                              >
                                 {item.trainer_last_name}
                               </Link>
                             </li>
@@ -337,11 +352,17 @@ const CourseListArea = () => {
                         <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                           <ul className="d-flex align-items-center">
                             <li>
-                              <img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" />
+                              <img
+                                src="/assets/img/icon/c-meta-01.png"
+                                alt="meta-icon"
+                              />
                               <span>35 Classes</span>
                             </li>
                             <li>
-                              <img src="/assets/img/icon/c-meta-02.png" alt="meta-icon" />
+                              <img
+                                src="/assets/img/icon/c-meta-02.png"
+                                alt="meta-icon"
+                              />
                               <span>{item.id}</span>
                             </li>
                           </ul>
@@ -357,19 +378,25 @@ const CourseListArea = () => {
                             <p>(125)</p>
                           </div>
                           <div className="tpcourse__pricing">
-                            <h5 className="price-title"> {item.discount_percent}</h5>
+                            <h5 className="price-title">
+                              {" "}
+                              {item.discount_percent}
+                            </h5>
                           </div>
                           <div className="tpcourse__pricing">
-                            <h5 className="price-title"> {item.course_price}</h5>
+                            <h5 className="price-title">
+                              {" "}
+                              {item.course_price}
+                            </h5>
                           </div>
                         </div>
                         {/* Add the button here */}
                         <div className="tpcourse__button mt-20">
-                          <Link 
+                          <Link
                             href={`/sectioncourse/course_id=${item.id}&trainer_id=${item.trainer_id}`}
                             className="btn btn-primary"
                           >
-                            Add Section
+                            Add Lecture
                           </Link>
                         </div>
                       </div>

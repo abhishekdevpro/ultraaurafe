@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Link from "next/link";
@@ -7,36 +7,40 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 
 function CourseForm() {
+  const [bannerImage, setBannerImage] = useState(null);
   const router = useRouter();
+
+  const handleFileChange = (e) => {
+    setBannerImage(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = {
-      trainer_email: "trainer@mail.com", // Static value for the trainer email
-      trainer_first_name: "trainer", // Static value for the trainer first name
-      trainer_last_name: "user", // Static value for the trainer last name
-      course_title: e.target.course_title.value,
-      course_banner_image: "", // Add appropriate value or input field if needed
-      course_intro_video_url: "", // Add appropriate value or input field if needed
-      course_language: e.target.course_language.value,
-      level: e.target.level.value,
-      category: e.target.courseCategory.value,
-      time_spent_on_course: e.target.time_spent_on_course.value,
-      learning_objectives: e.target.learning_objectives.value,
-      requirements: e.target.requirements.value,
-      target_audience: e.target.target_audience.value,
-      course_description: e.target.course_description.value,
-      course_price: e.target.course_price.value,
-      coupon_code: e.target.coupon_code.value,
-    };
+    const formData = new FormData();
+    formData.append("trainer_email", "trainer@mail.com");
+    formData.append("trainer_first_name", "trainer");
+    formData.append("trainer_last_name", "user");
+    formData.append("course_title", e.target.course_title.value);
+    formData.append("course_banner_image", bannerImage); // Add the image file
+    formData.append("course_intro_video_url", ""); // Add appropriate value or input field if needed
+    formData.append("course_language", e.target.course_language.value);
+    formData.append("level", e.target.level.value);
+    formData.append("category", e.target.courseCategory.value);
+    formData.append("time_spent_on_course", e.target.time_spent_on_course.value);
+    formData.append("learning_objectives", e.target.learning_objectives.value);
+    formData.append("requirements", e.target.requirements.value);
+    formData.append("target_audience", e.target.target_audience.value);
+    formData.append("course_description", e.target.course_description.value);
+    formData.append("course_price", e.target.course_price.value);
+    formData.append("coupon_code", e.target.coupon_code.value);
 
     const token = localStorage.getItem("token"); // Fetch token from local storage
 
     const config = {
       headers: {
         Authorization: token,
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
       },
     };
 
@@ -52,9 +56,10 @@ function CourseForm() {
       console.log("response:", response); // Debugging response
       if (response.status === 200 && response.data.status === "success") {
         toast.success(response.data.message);
-        router.push("/sectioncourse");
+        router.push("/course-list");
         // Optionally reset form fields after successful submission
         e.target.reset();
+        setBannerImage(null);
       } else {
         toast.error("Failed to create course.");
       }
@@ -241,6 +246,19 @@ function CourseForm() {
             className="form-control"
             id="coupon_code"
             name="coupon_code"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="course_banner_image" className="form-label">
+            Upload Course Banner Image
+          </label>
+          <input
+            type="file"
+            className="form-control"
+            id="course_banner_image"
+            name="course_banner_image"
+            onChange={handleFileChange}
             required
           />
         </div>

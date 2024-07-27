@@ -1,6 +1,6 @@
 import Dashboardprofile from "@/src/components/dashboard/";
 import Sectionprofile from "@/src//components/section";
-import Leacture from "@/src/components/Leacture";
+import Leacture from "@/src/components/lecture";
 import React from "react";
 import SEO from "../common/seo";
 import WrapperFour from "../layout/wrapper-4";
