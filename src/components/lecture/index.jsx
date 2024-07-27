@@ -3,7 +3,7 @@ import React from "react";
 import Breadcrumb from "../bredcrumb/breadcrumb";
 import CounterArea from "../homes/home-3/counter-area";
 
-import Leacture from "./Leacture";
+import Leacture from "./lecture";
 
 const Leactureprofile = () => {
   return (

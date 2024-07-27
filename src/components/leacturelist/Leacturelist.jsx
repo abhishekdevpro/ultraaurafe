@@ -36,9 +36,13 @@ const LectureList = () => {
     }));
   };
 
+  const handleEditClick = (lectureId) => {
+    router.push(`/edit-lecture/${lectureId}`);
+  };
+
   return (
     <div className="container my-5">
-      <h2 className="my-5 ">📜 Lectures List </h2>
+      <h2 className="my-5">📜 Lectures List</h2>
       {sections.length === 0 ? (
         <p>No sections available.</p>
       ) : (
@@ -46,7 +50,7 @@ const LectureList = () => {
           <div key={section.id} className="mb-4 border border-success rounded border border-3 border border-success p-2 mb-2 border-opacity-50 p-2">
             <div className="d-flex justify-content-between align-items-center">
               <h3 className="badge rounded fs-5 px-4 py-2 text-bg-success ">Section Name : {section.section_name}<br/></h3>
-               <button className="btn btn-warning ">Edit</button>
+               <button className="btn btn-warning" onClick={() => handleEditClick(section.id)}>Edit</button>
               <button
                 className="btn btn-sm btn-outline-success p-2 fs-5 "
                 onClick={() => toggleSection(section.id)}
@@ -66,6 +70,7 @@ const LectureList = () => {
                       <th>Lecture Resources PDF</th>
                       <th>Lecture Resources Link</th>
                       <th>Created At</th>
+                      <th>Edit</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -91,6 +96,9 @@ const LectureList = () => {
                           )}
                         </td>
                         <td>{new Date(lecture.created_at).toLocaleDateString()}</td>
+                        <td>
+                          <button className="btn btn-warning btn-sm" onClick={() => handleEditClick(lecture.id)}>Edit</button>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
