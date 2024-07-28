@@ -1,11 +1,10 @@
 import useSticky from "@/hooks/use-sticky";
 import Link from "next/link";
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import NavMenu from "./nav-menu";
 import Sidebar from "./sidebar";
+import axios from "axios";
 
-
-// category_data
 const category_data = [
   {title: "IT courses -Basic and Advanced"},
   {title: "Home services - Housekeeping"},
@@ -19,14 +18,47 @@ const category_data = [
 
 ]
 const Header = () => {
-const {sticky} = useSticky()
+  const { sticky } = useSticky();
   const [isActive, setIsActive] = useState(false);
+  const [profileData, setProfileData] = useState(null);
+
+  const fetchProfileData = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        "https://api.novajobs.us/api/trainers/profile",
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      setProfileData(response.data.data);
+    } catch (error) {
+      console.error("Error fetching the profile data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfileData();
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/sign-in";
+  };  
+
 
   return (
     <>
-      <header className="header__transparent ">
+      <header className="header__transparent">
         <div className="header__area">
-          <div className={`main-header header-xy-spacing ${sticky ? "header-sticky" : ""}`} id="header-sticky">
+          <div
+            className={`main-header header-xy-spacing ${
+              sticky ? "header-sticky" : ""
+            }`}
+            id="header-sticky"
+          >
             <div className="container-fluid">
               <div className="row align-items-center">
                 <div className="col-xxl-3 col-xl-3 col-lg-5 col-md-6 col-6">
@@ -47,11 +79,16 @@ const {sticky} = useSticky()
                               </span> */}
                             </a>
                             <ul className="sub-menu border">
-                              {category_data.map((item, i) => 
-                               <li key={i}>
-                               <Link href="/course-grid" className="border-bottom p-2">{item.title}</Link>
-                             </li>
-                              )}
+                              {category_data.map((item, i) => (
+                                <li key={i}>
+                                  <Link
+                                    href="/course-grid"
+                                    className="border-bottom p-2"
+                                  >
+                                    {item.title}
+                                  </Link>
+                                </li>
+                              ))}
                             </ul>
                           </li>
                         </ul>
@@ -67,7 +104,7 @@ const {sticky} = useSticky()
                   </div>
                   <div className="header-right d-md-flex align-items-center">
                     <div className="header__search d-none d-lg-block">
-                      <form onSubmit={e => e.preventDefault()}>
+                      <form onSubmit={(e) => e.preventDefault()}>
                         <div className="header__search-input">
                           <button className="header__search-btn">
                             <i className="fa-regular fa-magnifying-glass"></i>
@@ -89,11 +126,29 @@ const {sticky} = useSticky()
                           </Link>
                         </li>
                         <li>
-                          <a onClick={() => setIsActive(true)}  href="#" className="tp-menu-toggle d-xl-none">
+                          <a
+                            onClick={() => setIsActive(true)}
+                            href="#"
+                            className="tp-menu-toggle d-xl-none"
+                          >
                             <i className="icon_ul"></i>
                           </a>
                         </li>
                       </ul>
+                      {profileData && (
+                        <div className="user-info flex items-center ml-4">
+                          <div className="user-name mr-2">
+                            {profileData.first_name} {profileData.last_name}
+                          </div>
+                          <button
+                            className="logout-btn flex items-center text-gray-700 hover:text-gray-900"
+                            onClick={handleLogout}
+                          >
+                            <i className="fi fi-rr-sign-out mr-1"></i>
+                            Logout
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

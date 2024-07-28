@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
+import SidebarLayout from "@/src/common/sidebar-layout";
 
 function CourseForm() {
   const [bannerImage, setBannerImage] = useState(null);
@@ -18,7 +19,7 @@ function CourseForm() {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("trainer_email", "trainer@mail.com");
+    formData.append("trainer_email", "mailto:trainer@mail.com");
     formData.append("trainer_first_name", "trainer");
     formData.append("trainer_last_name", "user");
     formData.append("course_title", e.target.course_title.value);
@@ -70,7 +71,10 @@ function CourseForm() {
   };
 
   return (
-    <div className="container mt-5 mb-3">
+    
+      <SidebarLayout>
+     
+      <main className="col-sm-10 p-0 ">
       <div className="d-flex gap-5 content-center pt-5">
         <section
           className="instructor-portfolio pt-5 wow fadeInUp border-2"
@@ -267,7 +271,9 @@ function CourseForm() {
           Submit
         </button>
       </form>
-    </div>
+      </main>
+      </SidebarLayout>
+      
   );
 }
 
