@@ -289,7 +289,7 @@
 //                     {country.name}
 //                   </option>
 //                 ))}
-//               </select> 
+//               </select>
 //                {errors.country_id && <p className="text-danger text-xs">{errors.country_id}</p>}
 //             </div>
 //             <div className='mb-3'>
@@ -712,6 +712,13 @@ function Signup() {
               Sign Up
             </button>
           </form>
+          <button
+            type="submit"
+            className="w-100 py-2 px-3 bgchange text-white h4 font-weight-bold rounded"
+            onClick={(e) => router.push("/sign-in")}
+          >
+            allready having account? Login
+          </button>
         </div>
       </div>
     </div>
