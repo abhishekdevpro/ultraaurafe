@@ -12,12 +12,15 @@ const LectureList = () => {
   useEffect(() => {
     const fetchLectures = async () => {
       try {
-        const token = localStorage.getItem('token');
-        const response = await axios.get(`https://api.novajobs.us/api/trainers/lectures/${courseId}`, {
-          headers: {
-            'Authorization': token
+        const token = localStorage.getItem("token");
+        const response = await axios.get(
+          `https://api.novajobs.us/api/trainers/lectures/${courseId}`,
+          {
+            headers: {
+              Authorization: token,
+            },
           }
-        });
+        );
         setSections(response.data.data.section_response);
       } catch (error) {
         toast.error("An error occurred while fetching lectures.");
@@ -37,6 +40,7 @@ const LectureList = () => {
   };
 
   const handleEditClick = (lectureId) => {
+    console.log(lectureId, "lectureId");
     router.push(`/edit-lecture/${lectureId}`);
   };
 
@@ -47,20 +51,35 @@ const LectureList = () => {
         <p>No sections available.</p>
       ) : (
         sections.map((section) => (
-          <div key={section.id} className="mb-4 border border-success rounded border border-3 border border-success p-2 mb-2 border-opacity-50 p-2">
+          <div
+            key={section.id}
+            className="mb-4 border border-success rounded border border-3 border border-success p-2 mb-2 border-opacity-50 p-2"
+          >
             <div className="d-flex justify-content-between align-items-center">
-              <h3 className="badge rounded fs-5 px-4 py-2 text-bg-success ">Section Name : {section.section_name}<br/></h3>
-               <button className="btn btn-warning" onClick={() => handleEditClick(section.id)}>Edit</button>
+              <h3 className="badge rounded fs-5 px-4 py-2 text-bg-success ">
+                Section Name : {section.section_name}
+                <br />
+              </h3>
+              <button
+                className="btn btn-warning"
+                onClick={() => handleEditClick(section.id)}
+              >
+                Edit
+              </button>
               <button
                 className="btn btn-sm btn-outline-success p-2 fs-5 "
                 onClick={() => toggleSection(section.id)}
               >
-                {expandedSections[section.id]  ? 'Hide Lectures 🔼' : 'Show Lectures 🔽'}
+                {expandedSections[section.id]
+                  ? "Hide Lectures 🔼"
+                  : "Show Lectures 🔽"}
               </button>
             </div>
-            <p><strong>Objective:</strong> {section.section_objective}</p>
-            {expandedSections[section.id] && (
-              section.lectures ? (
+            <p>
+              <strong>Objective:</strong> {section.section_objective}
+            </p>
+            {expandedSections[section.id] &&
+              (section.lectures ? (
                 <table className="table table-striped">
                   <thead>
                     <tr>
@@ -79,25 +98,41 @@ const LectureList = () => {
                         <td>{lecture.lecture_name}</td>
                         <td>{lecture.lecture_content}</td>
                         <td>
-                          <a href={lecture.lecture_location} target="_blank" rel="noopener noreferrer">
-                            {lecture.lecture_location.split('/').pop()}
+                          <a
+                            href={lecture.lecture_location}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {lecture.lecture_location.split("/").pop()}
                           </a>
                         </td>
-                        <td>{lecture.lecture_resources_pdf || 'N/A'}</td>
+                        <td>{lecture.lecture_resources_pdf || "N/A"}</td>
                         <td>
-                          {lecture.lecture_resources_link.length > 0 ? (
-                            lecture.lecture_resources_link.map((link, index) => (
-                              <a key={index} href={link} target="_blank" rel="noopener noreferrer">
-                                {link}
-                              </a>
-                            ))
-                          ) : (
-                            'N/A'
-                          )}
+                          {lecture.lecture_resources_link.length > 0
+                            ? lecture.lecture_resources_link.map(
+                                (link, index) => (
+                                  <a
+                                    key={index}
+                                    href={link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    {link}
+                                  </a>
+                                )
+                              )
+                            : "N/A"}
                         </td>
-                        <td>{new Date(lecture.created_at).toLocaleDateString()}</td>
                         <td>
-                          <button className="btn btn-warning btn-sm" onClick={() => handleEditClick(lecture.id)}>Edit</button>
+                          {new Date(lecture.created_at).toLocaleDateString()}
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-warning btn-sm"
+                            onClick={() => handleEditClick(lecture.id)}
+                          >
+                            Edit
+                          </button>
                         </td>
                       </tr>
                     ))}
@@ -105,8 +140,7 @@ const LectureList = () => {
                 </table>
               ) : (
                 <p>No lectures available for this section.</p>
-              )
-            )}
+              ))}
           </div>
         ))
       )}
