@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import Modal from "react-modal";
+import ModalPop from "react-modal";
 import { useRouter } from "next/router";
+import { Modal, Form, Button } from "react-bootstrap";
+import SidebarLayout from "@/src/common/sidebar-layout";
 
-// Set the app element for react-modal
-Modal.setAppElement("#__next");
+ModalPop.setAppElement("#__next");
 
 const Section = () => {
   const [sectionName, setSectionName] = useState("");
@@ -25,7 +26,6 @@ const Section = () => {
   const router = useRouter();
   const tableRef = useRef(null);
 
-  // Extract course_id and trainer_id from the path
   const path = router.asPath;
   const courseIdMatch = path.match(/course_id=(\d+)/);
   const trainerIdMatch = path.match(/trainer_id=(\d+)/);
@@ -35,7 +35,6 @@ const Section = () => {
 
   useEffect(() => {
     if (trainer_id) {
-      // Fetch sections based on the trainer_id
       const fetchSections = async () => {
         try {
           const token = localStorage.getItem("token");
@@ -73,7 +72,6 @@ const Section = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const token = localStorage.getItem("token");
 
     try {
@@ -124,6 +122,11 @@ const Section = () => {
     setIsEditModalOpen(true);
   };
 
+  const handleAdd = () => {
+    // need to confirm where we should redirect onclick of add
+    // router.push("/")
+  };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
@@ -147,7 +150,6 @@ const Section = () => {
         setIsEditModalOpen(false);
         setIsSuccess(true);
         toast.success("Section updated successfully!");
-        // Optionally refetch sections or update state directly
         setSections(
           sections.map((section) =>
             section.id === sectionId
@@ -166,168 +168,154 @@ const Section = () => {
       toast.error("An error occurred while updating the section.");
     }
   };
-
   return (
-    <div className="container my-5">
-      {/* Form for adding section */}
-      {!isSuccess && (
-        <form onSubmit={handleSubmit} className="mb-4">
-          <div className="mb-3">
-            <label htmlFor="sectionName" className="form-label">
-              Section Name:
-            </label>
-            <input
-              id="sectionName"
-              type="text"
-              value={sectionName}
-              onChange={(e) => setSectionName(e.target.value)}
-              required
-              className="form-control"
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="sectionObjective" className="form-label">
-              Section Objective:
-            </label>
-            <textarea
-              id="sectionObjective"
-              value={sectionObjective}
-              onChange={(e) => setSectionObjective(e.target.value)}
-              required
-              className="form-control"
-            />
-          </div>
-          <button type="submit" className="btn btn-warning">
-            (+) Add Section
-          </button>
-        </form>
-      )}
+    <SidebarLayout>
+      <main className="col-sm-10 p-4">
+        {!isSuccess && (
+          <form onSubmit={handleSubmit} className="mb-4">
+            <div className="mb-3">
+              <label htmlFor="sectionName" className="form-label">
+                Section Name:
+              </label>
+              <input
+                id="sectionName"
+                type="text"
+                value={sectionName}
+                onChange={(e) => setSectionName(e.target.value)}
+                required
+                className="form-control"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="sectionObjective" className="form-label">
+                Section Objective:
+              </label>
+              <textarea
+                id="sectionObjective"
+                value={sectionObjective}
+                onChange={(e) => setSectionObjective(e.target.value)}
+                required
+                className="form-control"
+              />
+            </div>
+            <button type="submit" className="btn btn-warning">
+              (+) Add Section
+            </button>
+          </form>
+        )}
 
-      {/* Table to display sections */}
-      <div className="mt-6">
-        <h2 className="mb-4">Sections List</h2>
-        <div className="table-container" ref={tableRef}>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>Section Name</th>
-                <th>Objective</th>
-                <th>Created At</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sections.map((section) => (
-                <tr key={section.id}>
-                  <td>{section.section_name}</td>
-                  <td>{section.section_objective}</td>
-                  <td>{new Date(section.created_at).toLocaleDateString()}</td>
-                  <td>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => handleEdit(section)}
-                    >
-                      Edit
-                    </button>
-                  </td>
+        <div className="mt-6">
+          <h2 className="mb-4">Sections List</h2>
+          <div className="table-container" ref={tableRef}>
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>Section Name</th>
+                  <th>Objective</th>
+                  <th>Created At</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Modal for success message */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        contentLabel="Section Added"
-        className="bg-light p-4 rounded-lg shadow-lg max-w-md mx-auto my-10"
-        closeTimeoutMS={200}
-      >
-        <div className="text-center">
-          <h1 className="text-xl font-bold mb-4">
-            Section added successfully!!! 🎉
-          </h1>
-          <div className="mt-4">
-            <button
-              onClick={handleAddAnotherSection}
-              className="btn btn-success mx-2"
-            >
-              📌 Add Another Section
-            </button>
-            <button
-              onClick={handleAddLecture}
-              className="btn btn-warning mx-2 text-white"
-            >
-              📖 Add Lecture to this Section
-            </button>
+              </thead>
+              <tbody>
+                {sections.map((section) => (
+                  <tr key={section.id}>
+                    <td>{section.section_name}</td>
+                    <td>{section.section_objective}</td>
+                    <td>{new Date(section.created_at).toLocaleDateString()}</td>
+                    <td>
+                      <button
+                        className="btn btn-primary me-2"
+                        onClick={() => handleEdit(section)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => handleAdd()}
+                      >
+                        Add
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-      </Modal>
 
-      {/* Modal for editing section */}
-      <Modal
-        isOpen={isEditModalOpen}
-        onRequestClose={() => setIsEditModalOpen(false)}
-        contentLabel="Edit Section"
-        style={{
-          content: {
-            width: modalDimensions.width,
-            height: modalDimensions.height,
-            maxWidth: "none",
-            maxHeight: "none",
-            margin: "auto",
-            padding: "20px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          },
-        }}
-      >
-        <h2 className="text-xl font-bold mb-4">Edit Section</h2>
-        <form onSubmit={handleUpdate} className="w-full max-w-md">
-          <div className="mb-3">
-            <label htmlFor="editSectionName" className="form-label">
-              Section Name:
-            </label>
-            <input
-              id="editSectionName"
-              type="text"
-              value={editSectionName}
-              onChange={(e) => setEditSectionName(e.target.value)}
-              required
-              className="form-control"
-            />
+        <ModalPop
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          contentLabel="Section Added"
+          className="bg-light p-4 rounded-lg shadow-lg max-w-md mx-auto my-10"
+          closeTimeoutMS={200}
+        >
+          <div className="text-center">
+            <h1 className="text-xl font-bold mb-4">
+              Section added successfully!!! 🎉
+            </h1>
+            <div className="mt-4">
+              <button
+                onClick={handleAddAnotherSection}
+                className="btn btn-success mx-2"
+              >
+                📌 Add Another Section
+              </button>
+              <button
+                onClick={handleAddLecture}
+                className="btn btn-warning mx-2 text-white"
+              >
+                📖 Add Lecture to this Section
+              </button>
+            </div>
           </div>
-          <div className="mb-3">
-            <label htmlFor="editSectionObjective" className="form-label">
-              Section Objective:
-            </label>
-            <textarea
-              id="editSectionObjective"
-              value={editSectionObjective}
-              onChange={(e) => setEditSectionObjective(e.target.value)}
-              required
-              className="form-control"
-            />
-          </div>
-          <div className="flex justify-between">
-            <button type="submit" className="btn btn-success">
-              Update Section
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={() => setIsEditModalOpen(false)}
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      </Modal>
-    </div>
+        </ModalPop>
+
+        <Modal
+          show={isEditModalOpen}
+          onHide={() => setIsEditModalOpen(false)}
+          size="lg"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Edit Section</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form onSubmit={handleUpdate} className="w-100">
+              <Form.Group className="mb-3" controlId="editSectionName">
+                <Form.Label>Section Name:</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={editSectionName}
+                  onChange={(e) => setEditSectionName(e.target.value)}
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="editSectionObjective">
+                <Form.Label>Section Objective:</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  value={editSectionObjective}
+                  onChange={(e) => setEditSectionObjective(e.target.value)}
+                  required
+                />
+              </Form.Group>
+              <div className="d-flex gap-4">
+                <Button variant="success" type="submit">
+                  Update Section
+                </Button>
+                <Button
+                  variant="secondary"
+                  onClick={() => setIsEditModalOpen(false)}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </Form>
+          </Modal.Body>
+        </Modal>
+      </main>
+    </SidebarLayout>
   );
 };
 
