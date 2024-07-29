@@ -150,7 +150,7 @@ const CourseListArea = () => {
                               Add Lecture
                             </Link>{" "}
                             <Link
-                              href={`/course-update`}
+                              href={`/edit-lecture/${item.id}`}
                               className="btn btn-primary"
                             >
                               Edit Lecture
