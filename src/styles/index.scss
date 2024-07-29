@@ -10,5 +10,52 @@
 @import "node_modules/react-modal-video/scss/modal-video.scss";
 @import "slick-carousel/slick/slick.css";
 @import "~bootstrap/scss/bootstrap";
-@import "/public/assets/scss/main.scss"
+@import "/public/assets/scss/main.scss";
+
+.image-container {
+    height: 100%;
+  }
+  
+  .image-container img {
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without stretching */
+  }
+  
+  #bgimage {
+    background-color: #f8f9fa;
+  }
+  
+  .bgchange {
+    background-color: #007bff;
+  }
+  
+  .bg-light {
+    background-color: #f8f9fa;
+  }
+  
+  .text-black {
+    color: #000;
+  }
+  
+  .text-danger {
+    color: #dc3545;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control,
+  .form-select {
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  button:focus {
+    outline: none;
+  }
 

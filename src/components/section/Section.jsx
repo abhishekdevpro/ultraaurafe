@@ -122,9 +122,9 @@ const Section = () => {
     setIsEditModalOpen(true);
   };
 
-  const handleAdd = () => {
+  const handleAdd = (section_id) => {
     // need to confirm where we should redirect onclick of add
-    // router.push("/")
+    router.push(`/lecture?sectionId=${section_id}&courseId=${course_id}`);
   };
 
   const handleUpdate = async (e) => {
@@ -231,9 +231,9 @@ const Section = () => {
                       </button>
                       <button
                         className="btn btn-primary"
-                        onClick={() => handleAdd()}
+                        onClick={() => handleAdd(section.id)}
                       >
-                        Add
+                        Add Lecture
                       </button>
                     </td>
                   </tr>
