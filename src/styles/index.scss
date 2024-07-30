@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 /* styles/globals.css */
 @tailwind base;
 @tailwind components;
@@ -20,42 +17,85 @@
     height: 100%;
     object-fit: cover; /* Ensures the image covers the container without stretching */
   }
-  
-  #bgimage {
-    background-color: #f8f9fa;
+
+  .sidebar {
+    height: 100vh;
+    position: sticky;
+    top: 0;
   }
   
-  .bgchange {
-    background-color: #007bff;
+  .profile-section {
+    margin-bottom: 20px;
   }
   
-  .bg-light {
-    background-color: #f8f9fa;
+  .main-content {
+    padding: 20px;
   }
   
-  .text-black {
-    color: #000;
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+  .header-custom {
+    background-color: #245d51 !important;
+    color: white !important;
+  }
+  
+  .header-custom .navbar-brand {
+    color: white !important;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .sidebar {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    border-right: 2px solid #ff6652;
   }
   
   .text-danger {
-    color: #dc3545;
+    color: #ff6652 !important;
   }
   
-  .form-label {
-    font-weight: bold;
-  }
   
-  .form-control,
-  .form-select {
-    border-radius: 0.25rem;
-    border: 1px solid #ced4da;
-  }
+//   #bgimage {
+//     background-color: #f8f9fa;
+//   }
   
-  button {
-    cursor: pointer;
-  }
+//   .bgchange {
+//     background-color: #007bff;
+//   }
   
-  button:focus {
-    outline: none;
-  }
+//   .bg-light {
+//     background-color: #f8f9fa;
+//   }
+  
+//   .text-black {
+//     color: #000;
+//   }
+  
+//   .text-danger {
+//     color: #dc3545;
+//   }
+  
+//   .form-label {
+//     font-weight: bold;
+//   }
+  
+//   .form-control,
+//   .form-select {
+//     border-radius: 0.25rem;
+//     border: 1px solid #ced4da;
+//   }
+  
+//   button {
+//     cursor: pointer;
+//   }
+  
+//   button:focus {
+//     outline: none;
+//   }
 
