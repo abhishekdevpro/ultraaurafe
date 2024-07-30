@@ -60,12 +60,15 @@ const LectureList = () => {
                 Section Name : {section.section_name}
                 <br />
               </h3>
-              <button
-                className="btn btn-warning"
-                onClick={() => handleEditClick(section.id)}
-              >
-                Edit
-              </button>
+              {section.lectures.map((lecture) => (
+                <button
+                  key={lecture.id}
+                  className="btn btn-warning"
+                  onClick={() => handleEditClick(lecture.id)}
+                >
+                  Edit
+                </button>
+              ))}
               <button
                 className="btn btn-sm btn-outline-success p-2 fs-5 "
                 onClick={() => toggleSection(section.id)}
