@@ -249,6 +249,12 @@ const Section = () => {
           contentLabel="Section Added"
           className="bg-light p-4 rounded-lg shadow-lg max-w-md mx-auto my-10"
           closeTimeoutMS={200}
+          style={{
+            overlay: {
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              zIndex: 1000,
+            },
+          }}
         >
           <div className="text-center">
             <h1 className="text-xl font-bold mb-4">
