@@ -24,7 +24,7 @@ const Home = () => {
       <CounterArea />
       <InstructorArea />
       <SuitableArea />
-      <TestimonialArea />
+      {/* <TestimonialArea /> */}
       <BlogArea />
       <BrandArea style_1={true} />
     </>
