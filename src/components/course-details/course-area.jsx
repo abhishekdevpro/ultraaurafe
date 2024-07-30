@@ -1,18 +1,27 @@
+import React, { useEffect, useState } from "react";
 import our_course_data from "@/src/data/our-course-data";
 import Link from "next/link";
-import React, { useEffect } from "react";
-import axios from "axios"
-
-useEffect(()=>{
-   try {
-     axios.get(`https://api.novajobs.us/api/trainers/course-details/:courseid`)
-     .then((response)=>console.log(response));
-   } catch (error) {
-      console.log(error)
-   } 
-})
+import axios from "axios";
 
 const CourseArea = () => {
+  const [courseDetails, setCourseDetails] = useState(null);
+
+  useEffect(() => {
+    const fetchCourseDetails = async () => {
+      try {
+        const courseId = "exampleCourseId"; // Replace with actual course ID logic
+        const response = await axios.get(
+          `https://api.novajobs.us/api/trainers/course-details/${courseId}`
+        );
+        setCourseDetails(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchCourseDetails();
+  }, []); // Empty dependency array to run only on mount
+
   return (
     <>
       <section className="course-area mb-80">
