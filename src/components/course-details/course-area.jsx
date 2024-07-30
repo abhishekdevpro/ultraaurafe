@@ -1,6 +1,16 @@
 import our_course_data from "@/src/data/our-course-data";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios"
+
+useEffect(()=>{
+   try {
+     axios.get(`https://api.novajobs.us/api/trainers/course-details/:courseid`)
+     .then((response)=>console.log(response));
+   } catch (error) {
+      console.log(error)
+   } 
+})
 
 const CourseArea = () => {
   return (
