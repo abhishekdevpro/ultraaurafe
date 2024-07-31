@@ -1,29 +1,32 @@
-import React, { useState } from "react";
 import SidebarLayout from "@/src/common/sidebar-layout";
-import WrapperFour from "../layout/wrapper-4";
-import Breadcrumb from "../components/bredcrumb/breadcrumb";
+import Breadcrumb from "@/src/components/bredcrumb/breadcrumb";
+import WrapperFour from "@/src/layout/wrapper-4";
+import axios from "axios";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
-// Dummy data for sections and lectures
-const sections = [
-  {
-    name: "Section 1",
-    lectures: ["Lecture 1.1", "Lecture 1.2", "Lecture 1.3"],
-  },
-  {
-    name: "Section 2",
-    lectures: ["Lecture 2.1", "Lecture 2.2"],
-  },
-  // Add more sections as needed
-];
+// const sections = [
+//   {
+//     name: "Section 1",
+//     lectures: ["Lecture 1.1", "Lecture 1.2", "Lecture 1.3"],
+//   },
+//   {
+//     name: "Section 2",
+//     lectures: ["Lecture 2.1", "Lecture 2.2"],
+//   },
+//   // Add more sections as needed
+// ];
 
 const EditCourse = () => {
-  // State to manage collapse for each section
+  const [sections, setSections] = useState([]);
   const [collapsedSections, setCollapsedSections] = useState(
     sections.reduce((acc, _, index) => {
       acc[index] = true; // Start with all sections collapsed
       return acc;
     }, {})
   );
+  const router = useRouter();
+  const { id } = router.query;
 
   // Toggle collapse state for a section
   const toggleCollapse = (sectionIndex) => {
@@ -31,6 +34,43 @@ const EditCourse = () => {
       ...prev,
       [sectionIndex]: !prev[sectionIndex],
     }));
+  };
+
+  useEffect(() => {
+    if (id !== undefined) {
+      const fetchCourseListData = async () => {
+        try {
+          const token = localStorage.getItem("token");
+          if (!token) {
+            throw new Error("Token not found in localStorage");
+          }
+
+          const response = await axios.get(
+            ` https://api.novajobs.us/api/trainers/course-details/${id}`,
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+          console.log(response);
+
+          if (response.data && response.data.status === "success") {
+            setSections(response?.data?.data || []);
+          } else {
+            console.error("Invalid response from API:", response.data);
+            setSections([]);
+          }
+        } catch (error) {
+          console.error("Error fetching course list data:", error);
+        }
+      };
+      fetchCourseListData();
+    }
+  }, [id]);
+
+  const handleAddSection = () => {
+    router.push(`/trainer/add-section/${id}`);
   };
 
   return (
@@ -51,7 +91,12 @@ const EditCourse = () => {
                   <div className="d-flex justify-content-between align-items-center mb-4">
                     <h3 className="tp-section-title">Course Name</h3>
                     <button className="btn btn-primary">Edit Course</button>
-                    <button className="btn btn-primary">+ Add Section</button>
+                    <button
+                      className="btn btn-primary"
+                      onClick={handleAddSection}
+                    >
+                      + Add Section
+                    </button>
                   </div>
                 </div>
                 <div className="col-lg-12">

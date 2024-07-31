@@ -1,7 +1,7 @@
+import SEO from "@/src/common/seo";
+import CourseList from "@/src/components/course-list";
+import WrapperFour from "@/src/layout/wrapper-4";
 import React from "react";
-import SEO from "../common/seo";
-import CourseList from "../components/course-list";
-import WrapperFour from "../layout/wrapper-4";
 
 const index = () => {
   return (
