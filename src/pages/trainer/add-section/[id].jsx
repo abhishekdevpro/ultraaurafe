@@ -43,7 +43,7 @@ const AddSection = () => {
 
       if (response.status === 200 && response.data.status === "success") {
         toast.success(response.data.message);
-        router.push("/trainer");
+        router.push(`/trainer/edit-course/${id}`);
         setFormData({
           section_name: "",
           section_objective: "",

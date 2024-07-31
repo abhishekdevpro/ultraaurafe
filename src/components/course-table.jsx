@@ -7,7 +7,9 @@ import { FaCalendarAlt } from "react-icons/fa";
 const CourseTable = ({ courses }) => {
   const router = useRouter();
   const handleEdit = (item) => {
-    router.push(` /trainer/edit-course/${item.id}`);
+    sessionStorage.setItem("courseData", JSON.stringify(item));
+    router.push(`/trainer/edit-course/${item.id}`);
+    // router.push(` /trainer/edit-course/${item.id}`);
     // router.push(` /trainer/edit-course`);
   };
   const handleDelete = (item) => {

@@ -41,7 +41,7 @@ function Login() {
           localStorage.setItem("token", response.data.data.token);
 
           toast.success("Logged-in successfully!");
-          router.push(role === "student" ? "/" : "/trainer");
+          router.push(role === "student" ? "/dashboard" : "/trainer");
         } else {
           toast.error("Failed to log in.");
         }

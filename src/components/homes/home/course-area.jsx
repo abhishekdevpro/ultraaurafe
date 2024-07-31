@@ -5,7 +5,7 @@ import { toast, Toaster } from "react-hot-toast";
 
 const CourseArea = () => {
   const [courses, setCourses] = useState([]);
-
+  console.log(courses, "courses");
   useEffect(() => {
     publicCourseList();
   }, []);
@@ -243,11 +243,15 @@ const CourseArea = () => {
               alt="course-thumb"
             /> */}
 
-                      <img
+                      {/* <img
                         src={
-                          item.course_banner_image
+                          item.course_banner_image !== undefined
                             ? `https://api.novajobs.us/${item.course_banner_image}`
                             : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRASwwqtlRflCsglbBsY5Nb0oo_w8PDq9EgIg&s"
+                        } */}
+                      <img
+                        src={
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOwRConBYl2t6L8QMOAQqa5FDmPB_bg7EnGA&s"
                         }
                         alt="course-thumb"
                       />
