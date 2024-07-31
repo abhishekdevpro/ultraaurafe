@@ -24,7 +24,7 @@ const CourseArea = () => {
       toast.error("Error fetching course data.");
     }
   };
-  console.log("Course at home ",courses)
+
   return (
     <>
       <Toaster />
@@ -143,7 +143,7 @@ const CourseArea = () => {
               <p>No courses available.</p>
             )}
           </div> */}
-           {/* <div className="row mb-20">
+          {/* <div className="row mb-20">
             {courses.slice(0, 6).map((item, i) => (
               <div key={i} className="col-xl-4 col-lg-6 col-md-6">
                 <div
@@ -229,89 +229,99 @@ const CourseArea = () => {
             ))}
           </div> */}
           <div className="row mb-20">
-  {courses.slice(0, 6).map((item, i) => (
-    console.log(item.course_banner_image),
-    <div key={i} className="col-xl-4 col-lg-6 col-md-6">
-      <div
-        className="tpcourse mb-40 wow fadeInUp"
-        data-wow-duration=".8s"
-        data-wow-delay=".2s"
-      >
-        <div className="tpcourse__thumb p-relative w-img fix">
-          <Link href={`/course-details`}>
-            {/* <img
+            {courses.slice(0, 6).map((item, i) => (
+              <div key={i} className="col-xl-4 col-lg-6 col-md-6">
+                <div
+                  className="tpcourse mb-40 wow fadeInUp"
+                  data-wow-duration=".8s"
+                  data-wow-delay=".2s"
+                >
+                  <div className="tpcourse__thumb p-relative w-img fix">
+                    <Link href={`/course-details`}>
+                      {/* <img
               src={item.course_banner_image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRASwwqtlRflCsglbBsY5Nb0oo_w8PDq9EgIg&s"}
               alt="course-thumb"
             /> */}
-            {console.log(`https://api.novajobs.us${item.course_banner_image}`)}
-             <img
-              src={item.course_banner_image ? `https://api.novajobs.us/${item.course_banner_image}` : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRASwwqtlRflCsglbBsY5Nb0oo_w8PDq9EgIg&s"}
-              alt="course-thumb"
-            />
-          </Link>
-          <div className="tpcourse__tag">
-            <Link href={`/course-details`}>
-              <i className="fi fi-rr-heart"></i>
-            </Link>
-          </div>
-        </div>
-        <div className="tpcourse__content-2">
-          <div className="tpcourse__category mb-10">
-            <ul className="tpcourse__price-list d-flex align-items-center">
-              {/* <li>
+
+                      <img
+                        src={
+                          item.course_banner_image
+                            ? `https://api.novajobs.us/${item.course_banner_image}`
+                            : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRASwwqtlRflCsglbBsY5Nb0oo_w8PDq9EgIg&s"
+                        }
+                        alt="course-thumb"
+                      />
+                    </Link>
+                    <div className="tpcourse__tag">
+                      <Link href={`/course-details`}>
+                        <i className="fi fi-rr-heart"></i>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="tpcourse__content-2">
+                    <div className="tpcourse__category mb-10">
+                      <ul className="tpcourse__price-list d-flex align-items-center">
+                        {/* <li>
                 <Link className={item.ct_color || "default-color"} href={`/course-details/${item.id}`}>
                   {item.course_title || "Course Title"}
                 </Link>
               </li> */}
-              <li>
-                <Link className={item.cn_color || "default-color"} href={`/course-details/${item.id}`}>
-                  {item.category || "Category"}
-                </Link>
-              </li>
-            </ul>
+                        <li>
+                          <Link
+                            className={item.cn_color || "default-color"}
+                            href={`/course-details/${item.id}`}
+                          >
+                            {item.category || "Category"}
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="tpcourse__ava-title mb-15">
+                      <h4 className="tpcourse__title tp-cours-title-color">
+                        <Link href={`/course-details/${item.id}`}>
+                          {item.course_title || "Course Title"}
+                        </Link>
+                      </h4>
+                    </div>
+                    <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
+                      <ul className="d-flex align-items-center">
+                        <li>
+                          <img
+                            src="/assets/img/icon/c-meta-01.png"
+                            alt="meta-icon"
+                          />{" "}
+                          <span>{item.enrolled_student_count} students</span>
+                        </li>
+                        <li>
+                          <img
+                            src="/assets/img/icon/c-meta-02.png"
+                            alt="meta-icon"
+                          />{" "}
+                          <span>{item.time_spent_on_course || "N/A"}</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="tpcourse__rating d-flex align-items-center justify-content-between">
+                      <div className="tpcourse__rating-icon">
+                        <span>4.7</span>
+                        <i className="fi fi-ss-star"></i>
+                        <i className="fi fi-ss-star"></i>
+                        <i className="fi fi-ss-star"></i>
+                        <i className="fi fi-ss-star"></i>
+                        <i className="fi fi-rs-star"></i>
+                        <p>(125)</p>
+                      </div>
+                      <div className="tpcourse__pricing">
+                        <h5 className="price-title">
+                          ${item.course_price || "0.00"}
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="tpcourse__ava-title mb-15">
-            <h4 className="tpcourse__title tp-cours-title-color">
-              <Link href={`/course-details/${item.id}`}>{item.course_title || "Course Title"}</Link>
-            </h4>
-          </div>
-          <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
-            <ul className="d-flex align-items-center">
-              <li>
-                <img
-                  src="/assets/img/icon/c-meta-01.png"
-                  alt="meta-icon"
-                />{" "}
-                <span>{item.enrolled_student_count} students</span>
-              </li>
-              <li>
-                <img
-                  src="/assets/img/icon/c-meta-02.png"
-                  alt="meta-icon"
-                />{" "}
-                <span>{item.time_spent_on_course || "N/A"}</span>
-              </li>
-            </ul>
-          </div>
-          <div className="tpcourse__rating d-flex align-items-center justify-content-between">
-            <div className="tpcourse__rating-icon">
-              <span>4.7</span>
-              <i className="fi fi-ss-star"></i>
-              <i className="fi fi-ss-star"></i>
-              <i className="fi fi-ss-star"></i>
-              <i className="fi fi-ss-star"></i>
-              <i className="fi fi-rs-star"></i>
-              <p>(125)</p>
-            </div>
-            <div className="tpcourse__pricing">
-              <h5 className="price-title">${item.course_price || "0.00"}</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
 
           <div className="row text-center">
             <div className="col-lg-12">

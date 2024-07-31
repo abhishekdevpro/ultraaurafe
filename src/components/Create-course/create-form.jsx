@@ -71,9 +71,9 @@
 //   };
 
 //   return (
-    
+
 //       <SidebarLayout>
-     
+
 //       <main className="col-sm-10 p-0 ">
 //       <div className="d-flex gap-5 content-center pt-5">
 //         <section
@@ -273,13 +273,11 @@
 //       </form>
 //       </main>
 //       </SidebarLayout>
-      
+
 //   );
 // }
 
 // export default CourseForm;
-
-
 
 import React, { useState } from "react";
 import axios from "axios";
@@ -293,22 +291,20 @@ import SidebarLayout from "@/src/common/sidebar-layout";
 function CourseForm() {
   const [bannerImage, setBannerImage] = useState(null);
   const [formData, setFormData] = useState({
-    after_discount_price: 0,
-    category: "",
-    coupon_code: "",
-    course_description: "",
-    course_intro_video_url: "",
-    course_language: "",
-    course_price: 0,
-    course_title: "",
-    discount_percent: 0,
-    learning_objectives: "",
-    level: "",
-    requirements: "",
-    target_audience: "",
-    time_spent_on_course: "",
-    trainer_email: "",
-   
+    AfterDiscountPrice: 0,
+    Category: "",
+    CouponCode: "",
+    CourseDescription: "",
+    CourseIntroVideoUrl: "",
+    CourseLanguage: "",
+    CoursePrice: 0,
+    CourseTitle: "",
+    DiscountPercent: 0,
+    learningObjectives: "",
+    Level: "",
+    Requirements: "",
+    TargetAudience: "",
+    timeSpentOnCourse: "",
   });
   const router = useRouter();
 
@@ -331,8 +327,8 @@ function CourseForm() {
     Object.keys(formData).forEach((key) => {
       submissionData.append(key, formData[key]);
     });
-    submissionData.append("course_banner_image", bannerImage);
-    console.log("Create course data",submissionData)
+    submissionData.append("CourseBannerImage", bannerImage);
+
     const token = localStorage.getItem("token");
 
     const config = {
@@ -350,25 +346,22 @@ function CourseForm() {
       );
       if (response.status === 200 && response.data.status === "success") {
         toast.success(response.data.message);
-        router.push("/course-list");
+        router.push("/trainer");
         setFormData({
-          after_discount_price: 0,
-          category: "",
-          coupon_code: "",
-          course_description: "",
-          course_intro_video_url: "",
-          course_language: "",
-          course_price: 0,
-          course_title: "",
-          discount_percent: 0,
-          learning_objectives: "",
-          level: "",
-          requirements: "",
-          target_audience: "",
-          time_spent_on_course: "",
-          trainer_email: "",
-          trainer_first_name: "",
-          trainer_last_name: "",
+          AfterDiscountPrice: 0,
+          Category: "",
+          CouponCode: "",
+          CourseDescription: "",
+          CourseIntroVideoUrl: "",
+          CourseLanguage: "",
+          CoursePrice: 0,
+          CourseTitle: "",
+          DiscountPercent: 0,
+          learningObjectives: "",
+          Level: "",
+          Requirements: "",
+          TargetAudience: "",
+          timeSpentOnCourse: "",
         });
         setBannerImage(null);
       } else {
@@ -431,60 +424,194 @@ function CourseForm() {
           onSubmit={handleSubmit}
         >
           <div className="mb-3">
-            <label htmlFor="course_title" className="form-label">Course Title</label>
-            <input type="text" className="form-control" id="course_title" name="course_title" value={formData.course_title} onChange={handleInputChange} required />
+            <label htmlFor="CourseTitle" className="form-label">
+              Course Title
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="CourseTitle"
+              name="CourseTitle"
+              value={formData.CourseTitle}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="course_language" className="form-label">Course Language</label>
-            <input type="text" className="form-control" id="course_language" name="course_language" value={formData.course_language} onChange={handleInputChange} required />
+            <label htmlFor="CourseLanguage" className="form-label">
+              Course Language
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="CourseLanguage"
+              name="CourseLanguage"
+              value={formData.CourseLanguage}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="level" className="form-label">Level</label>
-            <input type="text" className="form-control" id="level" name="level" value={formData.level} onChange={handleInputChange} required />
+            <label htmlFor="Level" className="form-label">
+              Level
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="Level"
+              name="Level"
+              value={formData.Level}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="category" className="form-label">Course Category</label>
-            <input type="text" className="form-control" id="category" name="category" value={formData.category} onChange={handleInputChange} required />
+            <label htmlFor="Category" className="form-label">
+              Course Category
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="Category"
+              name="Category"
+              value={formData.Category}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="time_spent_on_course" className="form-label">Time Spent on Course</label>
-            <input type="text" className="form-control" id="time_spent_on_course" name="time_spent_on_course" value={formData.time_spent_on_course} onChange={handleInputChange} required />
+            <label htmlFor="timeSpentOnCourse" className="form-label">
+              Time Spent on Course
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="timeSpentOnCourse"
+              name="timeSpentOnCourse"
+              value={formData.timeSpentOnCourse}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="learning_objectives" className="form-label">Learning Objectives</label>
-            <textarea className="form-control" id="learning_objectives" name="learning_objectives" value={formData.learning_objectives} onChange={handleInputChange} required />
+            <label htmlFor="learningObjectives" className="form-label">
+              Learning Objectives
+            </label>
+            <textarea
+              className="form-control"
+              id="learningObjectives"
+              name="learningObjectives"
+              value={formData.learningObjectives}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="requirements" className="form-label">Requirements</label>
-            <textarea className="form-control" id="requirements" name="requirements" value={formData.requirements} onChange={handleInputChange} required />
+            <label htmlFor="Requirements" className="form-label">
+              Requirements
+            </label>
+            <textarea
+              className="form-control"
+              id="Requirements"
+              name="Requirements"
+              value={formData.Requirements}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="target_audience" className="form-label">Target Audience</label>
-            <textarea className="form-control" id="target_audience" name="target_audience" value={formData.target_audience} onChange={handleInputChange} required />
+            <label htmlFor="TargetAudience" className="form-label">
+              Target Audience
+            </label>
+            <textarea
+              className="form-control"
+              id="TargetAudience"
+              name="TargetAudience"
+              value={formData.TargetAudience}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="course_description" className="form-label">Course Description</label>
-            <textarea className="form-control" id="course_description" name="course_description" value={formData.course_description} onChange={handleInputChange} required />
+            <label htmlFor="CourseDescription" className="form-label">
+              Course Description
+            </label>
+            <textarea
+              className="form-control"
+              id="CourseDescription"
+              name="CourseDescription"
+              value={formData.CourseDescription}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="course_price" className="form-label">Course Price</label>
-            <input type="number" className="form-control" id="course_price" name="course_price" value={formData.course_price} onChange={handleInputChange} required />
+            <label htmlFor="CoursePrice" className="form-label">
+              Course Price
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              id="CoursePrice"
+              name="CoursePrice"
+              value={formData.CoursePrice}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="after_discount_price" className="form-label">After Discount Price</label>
-            <input type="number" className="form-control" id="after_discount_price" name="after_discount_price" value={formData.after_discount_price} onChange={handleInputChange} required />
+            <label htmlFor="AfterDiscountPrice" className="form-label">
+              After Discount Price
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              id="AfterDiscountPrice"
+              name="AfterDiscountPrice"
+              value={formData.AfterDiscountPrice}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="discount_percent" className="form-label">Discount Percent</label>
-            <input type="number" className="form-control" id="discount_percent" name="discount_percent" value={formData.discount_percent} onChange={handleInputChange} required />
+            <label htmlFor="DiscountPercent" className="form-label">
+              Discount Percent
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              id="DiscountPercent"
+              name="DiscountPercent"
+              value={formData.DiscountPercent}
+              onChange={handleInputChange}
+              required
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="coupon_code" className="form-label">Coupon Code</label>
-            <input type="text" className="form-control" id="coupon_code" name="coupon_code" value={formData.coupon_code} onChange={handleInputChange} />
+            <label htmlFor="CouponCode" className="form-label">
+              Coupon Code
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="CouponCode"
+              name="CouponCode"
+              value={formData.CouponCode}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="mb-3">
-            <label htmlFor="course_intro_video_url" className="form-label">Course Intro Video URL</label>
-            <input type="text" className="form-control" id="course_intro_video_url" name="course_intro_video_url" value={formData.course_intro_video_url} onChange={handleInputChange} />
+            <label htmlFor="CourseIntroVideoUrl" className="form-label">
+              Course Intro Video URL
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="CourseIntroVideoUrl"
+              name="CourseIntroVideoUrl"
+              value={formData.CourseIntroVideoUrl}
+              onChange={handleInputChange}
+            />
           </div>
           {/* <div className="mb-3">
             <label htmlFor="trainer_first_name" className="form-label">Trainer First Name</label>
@@ -495,11 +622,22 @@ function CourseForm() {
             <input type="text" className="form-control" id="trainer_last_name" name="trainer_last_name" value={formData.trainer_last_name} onChange={handleInputChange} required />
           </div> */}
           <div className="mb-3">
-            <label htmlFor="course_banner_image" className="form-label">Upload Course Banner Image</label>
-            <input type="file" className="form-control" id="course_banner_image" name="course_banner_image" onChange={handleFileChange} required />
+            <label htmlFor="CourseBannerImage" className="form-label">
+              Upload Course Banner Image
+            </label>
+            <input
+              type="file"
+              className="form-control"
+              id="CourseBannerImage"
+              name="CourseBannerImage"
+              onChange={handleFileChange}
+              // required
+            />
           </div>
 
-          <button type="submit" className="btn btn-success">Submit</button>
+          <button type="submit" className="btn btn-success">
+            Submit
+          </button>
         </form>
       </main>
     </SidebarLayout>

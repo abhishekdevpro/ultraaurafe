@@ -458,7 +458,6 @@ function Signup() {
     };
 
     try {
-      console.log("Request Body:", body);
       const response = await axios.post(
         role === "student"
           ? "https://api.novajobs.us/api/students/register"
@@ -470,8 +469,6 @@ function Signup() {
           },
         }
       );
-
-      console.log("Response:", response);
 
       if (response.status === 200) {
         toast.success("Signed up successfully!");
@@ -504,7 +501,7 @@ function Signup() {
             ? "https://api.novajobs.us/api/students/countries"
             : "https://api.novajobs.us/api/trainers/countries"
         );
-        console.log("Countries Response:", response.data.data);
+
         setCountries(response.data.data);
       } catch (error) {
         console.error("Error fetching countries:", error);
@@ -522,7 +519,7 @@ function Signup() {
               ? `https://api.novajobs.us/api/students/stats/${registerValues.country_id}`
               : `https://api.novajobs.us/api/trainers/stats/${registerValues.country_id}`
           );
-          console.log("States Response:", response.data.data);
+
           setStates(response.data.data);
         } catch (error) {
           console.error("Error fetching states:", error);
@@ -541,7 +538,7 @@ function Signup() {
               ? `https://api.novajobs.us/api/students/cities/${registerValues.state_id}`
               : `https://api.novajobs.us/api/trainers/cities/${registerValues.state_id}`
           );
-          console.log("Cities Response:", response.data.data);
+
           setCities(response.data.data);
         } catch (error) {
           console.error("Error fetching cities:", error);

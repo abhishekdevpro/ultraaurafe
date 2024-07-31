@@ -40,7 +40,6 @@ const LectureList = () => {
   };
 
   const handleEditClick = (lectureId) => {
-    console.log(lectureId, "lectureId");
     router.push(`/edit-lecture/${lectureId}`);
   };
 

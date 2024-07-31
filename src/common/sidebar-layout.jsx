@@ -11,9 +11,9 @@ const SidebarLayout = ({ children }) => {
           <div className="bg">
             <ul className="fs-6 mt-3">
               {[
-                { path: "/", label: "Home", icon: "home" },
+                { path: "/trainer", label: "Home", icon: "home" },
                 {
-                  path: "/create-course",
+                  path: "/trainer/create-course",
                   label: "Create Course",
                   icon: "briefcase",
                 },

@@ -191,7 +191,6 @@
 
 // // export default InstructorArea;
 
-
 // import Link from "next/link";
 // import React, { useRef, useState, useEffect } from "react";
 // import Slider from "react-slick";
@@ -434,7 +433,6 @@
 
 // export default InstructorArea;
 
-
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
@@ -522,7 +520,9 @@ const InstructorArea = ({ style_2 }) => {
   useEffect(() => {
     const fetchInstructors = async () => {
       try {
-        const response = await axios.get("https://api.novajobs.us/api/trainers/getalltrainer");
+        const response = await axios.get(
+          "https://api.novajobs.us/api/trainers/getalltrainer"
+        );
         setInstructorInfo(response.data.data); // Adjust according to the response structure
       } catch (error) {
         console.error("Error fetching instructors:", error);
@@ -531,10 +531,10 @@ const InstructorArea = ({ style_2 }) => {
 
     fetchInstructors();
   }, []);
-  console.log("instructor at home", instructorInfo);
+
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) return text;
-    return text.slice(0, maxLength) + '...';
+    return text.slice(0, maxLength) + "...";
   };
 
   return (
@@ -590,10 +590,19 @@ const InstructorArea = ({ style_2 }) => {
                 <div key={trainer.id} className="tp-instruc-item">
                   <div className="tp-instructor text-center p-relative mb-30 instructor-card">
                     <div className="tp-instructor__thumb mb-25 d-flex justify-content-center position-relative">
-                      <img src={`https://api.novajobs.us${trainer.photo}`} alt="instructor-profile" className="instructor-photo" />
+                      <img
+                        src={`https://api.novajobs.us${trainer.photo}`}
+                        alt="instructor-profile"
+                        className="instructor-photo"
+                      />
                       <div className="social-icons">
                         {social_links.map((link, i) => (
-                          <a key={i} target={link.target} href={link.link} className="social-icon">
+                          <a
+                            key={i}
+                            target={link.target}
+                            href={link.link}
+                            className="social-icon"
+                          >
                             <i className={link.icon}></i>
                           </a>
                         ))}
@@ -606,7 +615,9 @@ const InstructorArea = ({ style_2 }) => {
                         </Link>
                       </h4>
                       <span>{trainer.jobtitle}</span>
-                      <p className="instructor-biography">{truncateText(trainer.biography,100)}</p>
+                      <p className="instructor-biography">
+                        {truncateText(trainer.biography, 100)}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -640,7 +651,7 @@ const InstructorArea = ({ style_2 }) => {
           height: 300px;
           border-radius: 10px;
           object-fit: cover;
-          overflow:hidden;
+          overflow: hidden;
         }
         .social-icons {
           position: absolute;

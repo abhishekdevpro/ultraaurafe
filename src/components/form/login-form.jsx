@@ -26,7 +26,7 @@ function Login() {
       role === "student"
         ? "https://api.novajobs.us/api/students/login"
         : "https://api.novajobs.us/api/trainers/login";
-    console.log(url);
+
     if (!formData.email || !formData.password) {
       toast.error("Email and Password are required");
     } else {
@@ -39,13 +39,12 @@ function Login() {
         if (response.status === 200) {
           // Ensure this matches your API response structure
           localStorage.setItem("token", response.data.data.token);
-          console.log("token", response.data.data.token);
+
           toast.success("Logged-in successfully!");
-          router.push(role === "student" ? "/" : "/course-list");
+          router.push(role === "student" ? "/" : "/trainer");
         } else {
           toast.error("Failed to log in.");
         }
-        console.log("login Response", response);
       } catch (err) {
         console.log(err);
         toast.error("An error occurred. Please try again.");

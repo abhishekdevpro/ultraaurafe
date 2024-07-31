@@ -7,8 +7,8 @@ import { FaCalendarAlt } from "react-icons/fa";
 const CourseTable = ({ courses }) => {
   const router = useRouter();
   const handleEdit = (item) => {
-    // router.push(` /edit-course/${item.id}`);
-    router.push(` /edit-course`);
+    router.push(` /trainer/edit-course/${item.id}`);
+    // router.push(` /trainer/edit-course`);
   };
   const handleDelete = (item) => {
     //make api call
@@ -27,10 +27,10 @@ const CourseTable = ({ courses }) => {
           <tr>
             <th style={cellStyle}>Id</th>
             <th style={cellStyle}>Course Title</th>
-            <th style={cellStyle}>Author</th>
+            <th style={cellStyle}>Course Price</th>
             <th style={cellStyle}>Created at</th>
             <th style={cellStyle}>Updated at</th>
-            <th style={cellStyle}>Status</th>
+            <th style={cellStyle}>Course Language</th>
             <th style={cellStyle}>Edit</th>
             <th style={cellStyle}>Duplicate</th>
             <th style={cellStyle}>Delete</th>
@@ -40,15 +40,15 @@ const CourseTable = ({ courses }) => {
           {courses?.map((course) => (
             <tr key={course.id}>
               <td style={cellStyle}>{course.id}</td>
-              <td style={cellStyle}>{course.title}</td>
-              <td style={cellStyle}>{course.author}</td>
+              <td style={cellStyle}>{course.course_title}</td>
+              <td style={cellStyle}>{course.course_price}</td>
               <td style={cellStyle}>
                 <FaCalendarAlt /> {getformatedDateTime(course.created_at)}
               </td>
               <td style={cellStyle}>
                 <FaCalendarAlt /> {getformatedDateTime(course.updated_at)}
               </td>
-              <td style={cellStyle}>{course.status}</td>
+              <td style={cellStyle}>{course.course_language}</td>
               <td style={cellStyle}>
                 <Button onClick={() => handleEdit(course)} variant="primary">
                   Edit

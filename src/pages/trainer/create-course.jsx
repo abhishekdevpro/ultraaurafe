@@ -1,7 +1,9 @@
 import React from 'react';
-import SEO from '../common/seo';
-import Create from '../components/Create-course';
-import WrapperFour from '../layout/wrapper-4';
+
+import Create from '../../components/Create-course';
+import WrapperFour from '@/src/layout/wrapper-4';
+import SEO from '@/src/common/seo';
+
 
 const index = () => {
     return (
