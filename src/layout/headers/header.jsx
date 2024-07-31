@@ -6,17 +6,16 @@ import Sidebar from "./sidebar";
 import axios from "axios";
 
 const category_data = [
-  {title: "IT courses -Basic and Advanced"},
-  {title: "Home services - Housekeeping"},
-  {title: "Plumbing"},
-  {title: "Electrical"},
-  {title: "Home care- Child care, Aging care and Nursing"},
-  {title: "Soft skills"},
-  {title: "Corporate training"},
-  {title: "Hospitality"},
-  {title: "Agriculture"},
-
-]
+  { title: "IT courses -Basic and Advanced" },
+  { title: "Home services - Housekeeping" },
+  { title: "Plumbing" },
+  { title: "Electrical" },
+  { title: "Home care- Child care, Aging care and Nursing" },
+  { title: "Soft skills" },
+  { title: "Corporate training" },
+  { title: "Hospitality" },
+  { title: "Agriculture" },
+];
 const Header = () => {
   const { sticky } = useSticky();
   const [isActive, setIsActive] = useState(false);
@@ -46,8 +45,7 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "/sign-in";
-  };  
-
+  };
 
   return (
     <>
@@ -65,7 +63,11 @@ const Header = () => {
                   <div className="logo-area d-flex align-items-center">
                     <div className="logo">
                       <Link href="/">
-                        <img src="/assets/img/logo/logo1.png" alt="logo" style={{width:"350px"}}/>
+                        <img
+                          src="/assets/img/logo/logo1.png"
+                          alt="logo"
+                          style={{ width: "350px" }}
+                        />
                       </Link>
                     </div>
                     <div className="header-cat-menu ml-40 d-none d-md-block">
@@ -73,7 +75,7 @@ const Header = () => {
                         <ul>
                           <li>
                             <a href="#" className="">
-                            ☰ 
+                              ☰
                               {/* <span>
                                 <i className="arrow_carrot-down"></i>
                               </span> */}
@@ -141,7 +143,7 @@ const Header = () => {
                             {profileData.first_name} {profileData.last_name}
                           </div>
                           <button
-                            className="logout-btn flex items-center text-gray-700 hover:text-gray-900"
+                            className="logout-btn flex items-center text-gray-700 hover:text-gray-900 d-none d-md-block"
                             onClick={handleLogout}
                           >
                             <i className="fi fi-rr-sign-out mr-1"></i>

@@ -49,14 +49,14 @@
 //                             {item.course_title}
 //                           </Link>
 //                         </li>
-                        // <li>
-                        //   <Link
-                        //     className={item.cn_color}
-                        //     href="/course-details"
-                        //   >
-                        //     {item.course_name}
-                        //   </Link>
-                        // </li>
+// <li>
+//   <Link
+//     className={item.cn_color}
+//     href="/course-details"
+//   >
+//     {item.course_name}
+//   </Link>
+// </li>
 //                       </ul>
 //                     </div>
 //                     <div className="tpcourse__ava-title mb-15">
@@ -97,7 +97,7 @@
 //                       </div>
 //                     </div>
 //                   </div>
-                  
+
 //                 </div>
 //               </div>
 //             ))}
@@ -134,7 +134,6 @@
 // };
 
 // export default CourseArea;
-
 
 // import our_course_data from "@/src/data/our-course-data";
 // import Link from "next/link";
@@ -231,7 +230,7 @@
 import our_course_data from "@/src/data/our-course-data";
 import Link from "next/link";
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const CourseCard = styled.div`
   transition: box-shadow 0.3s ease-in-out;
@@ -275,23 +274,42 @@ const CourseArea = () => {
           <CourseCard key={i} className="card mb-4">
             <div className="row g-0">
               <div className="col-md-4 position-relative">
-                <img src={item.img} alt="course-thumb" className="img-fluid rounded-start h-100 object-fit-cover" />
+                <img
+                  src={item.img}
+                  alt="course-thumb"
+                  className="img-fluid rounded-start h-100 object-fit-cover"
+                />
                 <div className="position-absolute top-0 end-0 m-2">
-                  <Link href="/course-details" className="btn btn-light rounded-circle">
+                  <Link
+                    href="/course-details"
+                    className="btn btn-light rounded-circle"
+                  >
                     <i className="fi fi-rr-heart"></i>
                   </Link>
                 </div>
                 <div className="position-absolute bottom-0 start-0 m-2">
-                  <img src={item.icon} alt="course-avatar" className="rounded-circle" width="50" height="50" />
+                  <img
+                    src={item.icon}
+                    alt="course-avatar"
+                    className="rounded-circle"
+                    width="50"
+                    height="50"
+                  />
                 </div>
               </div>
               <div className="col-md-8 position-relative">
                 <div className="card-body">
                   <div className="mb-2">
-                    <Link href="/course-details" className="badge bg-primary me-2 text-decoration-none py-2 px-4 text-2xl font-semibold">
+                    <Link
+                      href="/course-details"
+                      className="badge bg-primary me-2 text-decoration-none py-2 px-4 text-2xl font-semibold"
+                    >
                       {item.course_title}
                     </Link>
-                    <Link href="/course-details" className="badge bg-secondary text-decoration-none py-2 px-4 text-2xl font-semibold ">
+                    <Link
+                      href="/course-details"
+                      className="badge bg-secondary text-decoration-none py-2 px-4 text-2xl font-semibold "
+                    >
                       {item.course_name}
                     </Link>
                   </div>
@@ -300,11 +318,21 @@ const CourseArea = () => {
                   </CourseTitle>
                   <div className="d-flex mb-3">
                     <div className="me-4">
-                      <img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" className="me-1" width="20" />
+                      <img
+                        src="/assets/img/icon/c-meta-01.png"
+                        alt="meta-icon"
+                        className="me-1"
+                        width="20"
+                      />
                       <small>{item.cls_text}</small>
                     </div>
                     <div>
-                      <img src="/assets/img/icon/c-meta-02.png" alt="meta-icon" className="me-1" width="20" />
+                      <img
+                        src="/assets/img/icon/c-meta-02.png"
+                        alt="meta-icon"
+                        className="me-1"
+                        width="20"
+                      />
                       <small>{item.st_text}</small>
                     </div>
                   </div>

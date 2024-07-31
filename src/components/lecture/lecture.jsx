@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
 const Lecture = () => {
-  const [lectureName, setLectureName] = useState("");
+  const [LectureName, setLectureName] = useState("");
   const [files, setFiles] = useState([]);
   const [resource, setResource] = useState(null); // Changed to null to handle file object
   const [links, setLinks] = useState("");
@@ -37,7 +37,7 @@ const Lecture = () => {
     const token = localStorage.getItem("token");
     const formData = new FormData();
 
-    formData.append("lecture_name", lectureName);
+    formData.append("LectureName", LectureName);
     Array.from(files).forEach((file) => {
       formData.append("files", file);
     });
@@ -81,13 +81,13 @@ const Lecture = () => {
       <h2>Add Lecture</h2>
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="mb-3">
-          <label htmlFor="lectureName" className="form-label">
+          <label htmlFor="LectureName" className="form-label">
             Lecture Name:
           </label>
           <input
-            id="lectureName"
+            id="LectureName"
             type="text"
-            value={lectureName}
+            value={LectureName}
             onChange={(e) => setLectureName(e.target.value)}
             required
             className="form-control"

@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 
 const EditCourse = () => {
   const [sections, setSections] = useState([]);
-  console.log(sections, "sections");
   const [collapsedSections, setCollapsedSections] = useState(
     sections.reduce((acc, _, index) => {
       acc[index] = true; // Start with all sections collapsed
@@ -15,7 +14,7 @@ const EditCourse = () => {
     }, {})
   );
   const router = useRouter();
-  const { id } = router.query;
+  const { id, data } = router.query;
 
   const toggleCollapse = (sectionIndex) => {
     setCollapsedSections((prev) => ({
@@ -23,6 +22,15 @@ const EditCourse = () => {
       [sectionIndex]: !prev[sectionIndex],
     }));
   };
+
+  const [courseData, setCourseData] = useState(null);
+  console.log(courseData);
+  useEffect(() => {
+    if (data) {
+      const decodedData = JSON.parse(decodeURIComponent(data));
+      setCourseData(decodedData);
+    }
+  }, [data]);
 
   useEffect(() => {
     if (id !== undefined) {
