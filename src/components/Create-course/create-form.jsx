@@ -307,7 +307,7 @@ function CourseForm() {
     timeSpentOnCourse: "",
   });
   const router = useRouter();
-  console.log(formData, "formData");
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -328,7 +328,7 @@ function CourseForm() {
       submissionData.append(key, formData[key]);
     });
     submissionData.append("CourseBannerImage", bannerImage);
-    console.log("Create course data", submissionData);
+
     const token = localStorage.getItem("token");
 
     const config = {

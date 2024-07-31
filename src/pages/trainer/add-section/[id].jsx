@@ -40,7 +40,7 @@ const AddSection = () => {
         formData,
         config
       );
-      console.log(response);
+
       if (response.status === 200 && response.data.status === "success") {
         toast.success(response.data.message);
         router.push("/trainer");

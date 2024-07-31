@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
@@ -9,7 +9,19 @@ const Lecture = () => {
   const [resource, setResource] = useState(null); // Changed to null to handle file object
   const [links, setLinks] = useState("");
   const router = useRouter();
-  const { courseId, sectionId } = router.query;
+  // const { courseId, sectionId } = router.query;
+  const { id } = router.query;
+
+  const [courseId, setCourseId] = useState(null);
+  const [sectionId, setSectionId] = useState(null);
+
+  useEffect(() => {
+    if (id) {
+      const [cId, sId] = id.split("-");
+      setCourseId(cId);
+      setSectionId(sId);
+    }
+  }, [id]);
 
   const handleFileChange = (e) => {
     setFiles(e.target.files);
@@ -22,14 +34,14 @@ const Lecture = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const formData = new FormData();
 
     formData.append("lecture_name", lectureName);
-    Array.from(files).forEach(file => {
+    Array.from(files).forEach((file) => {
       formData.append("files", file);
     });
-    
+
     if (resource) {
       formData.append("resource", resource); // Append the resource file
     }
@@ -42,15 +54,15 @@ const Lecture = () => {
         formData,
         {
           headers: {
-            'Authorization': token,
-            'Content-Type': 'multipart/form-data'
-          }
+            Authorization: token,
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
 
       if (response.data.message === "Lecture created successfully") {
         toast.success("Lecture added successfully!");
-        router.push(`/leacturelist?courseId=${courseId}`);
+        router.push(`/trainer/edit-course/${courseId}`);
         // Clear form fields
         setLectureName("");
         setFiles([]);
@@ -69,7 +81,9 @@ const Lecture = () => {
       <h2>Add Lecture</h2>
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="mb-3">
-          <label htmlFor="lectureName" className="form-label">Lecture Name:</label>
+          <label htmlFor="lectureName" className="form-label">
+            Lecture Name:
+          </label>
           <input
             id="lectureName"
             type="text"
@@ -80,7 +94,9 @@ const Lecture = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="files" className="form-label">Files:</label>
+          <label htmlFor="files" className="form-label">
+            Files:
+          </label>
           <input
             id="files"
             type="file"
@@ -90,7 +106,9 @@ const Lecture = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="resource" className="form-label">Resource (PDF only):</label>
+          <label htmlFor="resource" className="form-label">
+            Resource (PDF only):
+          </label>
           <input
             id="resource"
             type="file"
@@ -100,7 +118,9 @@ const Lecture = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="links" className="form-label">Links:</label>
+          <label htmlFor="links" className="form-label">
+            Links:
+          </label>
           <input
             id="links"
             type="text"
@@ -109,10 +129,7 @@ const Lecture = () => {
             className="form-control"
           />
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-        >
+        <button type="submit" className="btn btn-primary">
           Add Lecture
         </button>
       </form>

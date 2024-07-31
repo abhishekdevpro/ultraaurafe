@@ -11,7 +11,7 @@ const EditLecture = () => {
 
   const router = useRouter();
   const { id } = router.query;
-  console.log("iddd", id);
+
   const handleFileChange = (e) => {
     setFiles(Array.from(e.target.files));
   };
