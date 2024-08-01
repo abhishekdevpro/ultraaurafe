@@ -4,10 +4,10 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
 const Lecture = () => {
-  const [LectureName, setLectureName] = useState("");
+  const [lecture_name, setlecture_name] = useState("");
   const [files, setFiles] = useState([]);
-  const [resource, setResource] = useState(null); // Changed to null to handle file object
-  const [links, setLinks] = useState("");
+  const [lecture_resources, setlecture_resources] = useState(null); // Changed to null to handle file object
+  const [lecture_resources_links, setlecture_resources_links] = useState("");
   const router = useRouter();
   // const { courseId, sectionId } = router.query;
   const { id } = router.query;
@@ -27,9 +27,9 @@ const Lecture = () => {
     setFiles(e.target.files);
   };
 
-  const handleResourceChange = (e) => {
-    // Update resource state with the file object
-    setResource(e.target.files[0]);
+  const handlelecture_resourcesChange = (e) => {
+    // Update lecture_resources state with the file object
+    setlecture_resources(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
@@ -37,16 +37,16 @@ const Lecture = () => {
     const token = localStorage.getItem("token");
     const formData = new FormData();
 
-    formData.append("LectureName", LectureName);
+    formData.append("lecture_name", lecture_name);
     Array.from(files).forEach((file) => {
-      formData.append("files", file);
+      formData.append("lecture_location", file);
     });
 
-    if (resource) {
-      formData.append("resource", resource); // Append the resource file
+    if (lecture_resources) {
+      formData.append("lecture_resources_pdf", lecture_resources); // Append the lecture_resources file
     }
 
-    formData.append("links", links);
+    formData.append("lecture_resources_links", lecture_resources_links);
 
     try {
       const response = await axios.post(
@@ -56,6 +56,7 @@ const Lecture = () => {
           headers: {
             Authorization: token,
             "Content-Type": "multipart/form-data",
+            Accept: "application/json",
           },
         }
       );
@@ -64,10 +65,10 @@ const Lecture = () => {
         toast.success("Lecture added successfully!");
         router.push(`/trainer/edit-course/${courseId}`);
         // Clear form fields
-        setLectureName("");
+        setlecture_name("");
         setFiles([]);
-        setResource(null);
-        setLinks("");
+        setlecture_resources(null);
+        setlecture_resources_links("");
       } else {
         toast.error("Failed to add lecture.");
       }
@@ -81,14 +82,14 @@ const Lecture = () => {
       <h2>Add Lecture</h2>
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="mb-3">
-          <label htmlFor="LectureName" className="form-label">
+          <label htmlFor="lecture_name" className="form-label">
             Lecture Name:
           </label>
           <input
-            id="LectureName"
+            id="lecture_name"
             type="text"
-            value={LectureName}
-            onChange={(e) => setLectureName(e.target.value)}
+            value={lecture_name}
+            onChange={(e) => setlecture_name(e.target.value)}
             required
             className="form-control"
           />
@@ -106,26 +107,26 @@ const Lecture = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="resource" className="form-label">
-            Resource (PDF only):
+          <label htmlFor="lecture_resources" className="form-label">
+            lecture resources (PDF only):
           </label>
           <input
-            id="resource"
+            id="lecture_resources"
             type="file"
             accept=".pdf" // Restricts file input to PDF only
-            onChange={handleResourceChange}
+            onChange={handlelecture_resourcesChange}
             className="form-control"
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="links" className="form-label">
-            Links:
+          <label htmlFor="lecture_resources_links" className="form-label">
+            lecture resources links:
           </label>
           <input
-            id="links"
+            id="lecture_resources_links"
             type="text"
-            value={links}
-            onChange={(e) => setLinks(e.target.value)}
+            value={lecture_resources_links}
+            onChange={(e) => setlecture_resources_links(e.target.value)}
             className="form-control"
           />
         </div>

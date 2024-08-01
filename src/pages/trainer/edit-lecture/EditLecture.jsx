@@ -12,6 +12,17 @@ const EditLecture = () => {
   const router = useRouter();
   const { id } = router.query;
 
+  const [courseId, setCourseId] = useState(null);
+  const [sectionId, setSectionId] = useState(null);
+
+  useEffect(() => {
+    if (id) {
+      const [cId, sId] = id.split("-");
+      setCourseId(cId);
+      setSectionId(sId);
+    }
+  }, [id]);
+
   const handleFileChange = (e) => {
     setFiles(Array.from(e.target.files));
   };
@@ -22,10 +33,10 @@ const EditLecture = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const fetchLectureById = async (lectureId) => {
+    const fetchLectureById = async (sectionId) => {
       try {
         const response = await axios.get(
-          `https://api.novajobs.us/api/trainers/get-lecture/${lectureId}`,
+          `https://api.novajobs.us/api/trainers/get-lecture/${sectionId}`,
           {
             headers: {
               Authorization: token,
@@ -47,10 +58,10 @@ const EditLecture = () => {
         toast.error("An error occurred while fetching the lecture.");
       }
     };
-    if (id) {
-      fetchLectureById(id);
+    if (sectionId) {
+      fetchLectureById(sectionId);
     }
-  }, [id]);
+  }, [sectionId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

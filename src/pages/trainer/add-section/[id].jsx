@@ -34,7 +34,6 @@ const AddSection = () => {
     };
 
     try {
-      debugger;
       const response = await axios.post(
         `https://api.novajobs.us/api/trainers/${id}/section`,
         formData,
