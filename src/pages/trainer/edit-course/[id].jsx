@@ -24,7 +24,7 @@ const EditCourse = () => {
   };
 
   const [courseData, setCourseData] = useState(null);
-  console.log(courseData);
+
   useEffect(() => {
     if (data) {
       const decodedData = JSON.parse(decodeURIComponent(data));
@@ -50,8 +50,6 @@ const EditCourse = () => {
             }
           );
 
-          console.log(response, "response");
-
           if (response.data.code == 200 && response.data.status === "success") {
             setSections(response?.data?.data || []);
           } else {
@@ -69,8 +67,19 @@ const EditCourse = () => {
   const handleAddSection = () => {
     router.push(`/trainer/add-section/${id}`);
   };
+  const handleEditCourse = () => {
+    router.push(`/trainer/course-update/${id}`);
+  };
   const handleAddLecture = (section) => {
     router.push(`/trainer/add-lecture/${id}-${section.id}`);
+  };
+  const handleEditSection = (section) => {
+    sessionStorage.setItem("sectionData", JSON.stringify(section));
+    router.push(`/trainer/edit-section/${id}-${section.id}`);
+  };
+  const handleEditLecture = (item) => {
+    sessionStorage.setItem("lectureData", JSON.stringify(item));
+    router.push(`/trainer/edit-lecture/${id}-${item.id}`);
   };
 
   return (
@@ -89,7 +98,12 @@ const EditCourse = () => {
                 <div className="col-lg-12">
                   <div className="d-flex justify-content-between align-items-center mb-4">
                     <h3 className="tp-section-title">Course Name</h3>
-                    <button className="btn btn-primary">Edit Course</button>
+                    <button
+                      className="btn btn-primary"
+                      onClick={handleEditCourse}
+                    >
+                      Edit Course
+                    </button>
                     <button
                       className="btn btn-primary"
                       onClick={handleAddSection}
@@ -108,7 +122,10 @@ const EditCourse = () => {
                               Section: <span>{section.section_name}</span>
                             </h4>
                             <div className="flex gap-4 mb-2">
-                              <button className="btn btn-success">
+                              <button
+                                className="btn btn-success"
+                                onClick={() => handleEditSection(section)}
+                              >
                                 📝 Edit Section
                               </button>{" "}
                               <button
@@ -141,7 +158,12 @@ const EditCourse = () => {
                                           <span>{lecture.lecture_name}</span>
                                         </h5>
                                         <div className="flex gap-4">
-                                          <button className="btn btn-success">
+                                          <button
+                                            className="btn btn-success"
+                                            onClick={() =>
+                                              handleEditLecture(lecture)
+                                            }
+                                          >
                                             Edit Lecture
                                           </button>{" "}
                                           <button className="btn btn-warning">

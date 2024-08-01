@@ -230,36 +230,36 @@
 import our_course_data from "@/src/data/our-course-data";
 import Link from "next/link";
 import React from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 
-const CourseCard = styled.div`
-  transition: box-shadow 0.3s ease-in-out;
-  &:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-`;
+// const CourseCard = styled.div`
+//   transition: box-shadow 0.3s ease-in-out;
+//   &:hover {
+//     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+//   }
+// `;
 
-const CourseTitle = styled.h4`
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  a {
-    color: inherit;
-    text-decoration: none;
-    &:hover {
-      color: #0056b3;
-    }
-  }
-`;
+// const CourseTitle = styled.h4`
+//   font-size: 1.25rem;
+//   font-weight: bold;
+//   margin-bottom: 1rem;
+//   a {
+//     color: inherit;
+//     text-decoration: none;
+//     &:hover {
+//       color: #0056b3;
+//     }
+//   }
+// `;
 
-const Price = styled.h5`
-  font-size: 1.5rem;
-  color: #007bff;
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  margin: 0;
-`;
+// const Price = styled.h5`
+//   font-size: 1.5rem;
+//   color: #007bff;
+//   position: absolute;
+//   bottom: 1rem;
+//   right: 1rem;
+//   margin: 0;
+// `;
 
 const CourseArea = () => {
   return (
