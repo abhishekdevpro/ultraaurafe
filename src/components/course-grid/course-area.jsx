@@ -227,16 +227,162 @@
 
 // export default CourseArea;
 
+// import our_course_data from "@/src/data/our_course_data";
+// import Link from "next/link";
+// import React from "react";
+// import styled from "styled-components";
+
+// const CourseCard = styled.div`
+//   transition: box-shadow 0.3s ease-in-out;
+//   &:hover {
+//     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+//   }
+// `;
+
+// const CourseTitle = styled.h4`
+//   font-size: 1.25rem;
+//   font-weight: bold;
+//   margin-bottom: 1rem;
+//   a {
+//     color: inherit;
+//     text-decoration: none;
+//     &:hover {
+//       color: #0056b3;
+//     }
+//   }
+// `;
+
+// const Price = styled.h5`
+//   font-size: 1.5rem;
+//   color: #007bff;
+//   position: absolute;
+//   bottom: 1rem;
+//   right: 1rem;
+//   margin: 0;
+// `;
+
+// const CourseArea = () => {
+//   return (
+//     <section className="course-area py-5">
+//       <div className="container">
+//         <div className="row mb-5">
+//           <div className="col-12">
+//             <h2 className="text-center">Explore Courses</h2>
+//           </div>
+//         </div>
+//         {our_course_data.slice(0, 9).map((item, i) => (
+//           <CourseCard key={i} className="card mb-4">
+//             <div className="row g-0">
+//               <div className="col-md-4 position-relative">
+//                 <img
+//                   src={item.img}
+//                   alt="course-thumb"
+//                   className="img-fluid rounded-start h-100 object-fit-cover"
+//                 />
+//                 <div className="position-absolute top-0 end-0 m-2">
+//                   <Link
+//                     href="/course-details"
+//                     className="btn btn-light rounded-circle"
+//                   >
+//                     <i className="fi fi-rr-heart"></i>
+//                   </Link>
+//                 </div>
+//                 <div className="position-absolute bottom-0 start-0 m-2">
+//                   <img
+//                     src={item.icon}
+//                     alt="course-avatar"
+//                     className="rounded-circle"
+//                     width="50"
+//                     height="50"
+//                   />
+//                 </div>
+//               </div>
+//               <div className="col-md-8 position-relative">
+//                 <div className="card-body">
+//                   <div className="mb-2">
+//                     <Link
+//                       href="/course-details"
+//                       className="badge bg-primary me-2 text-decoration-none py-2 px-4 text-2xl font-semibold"
+//                     >
+//                       {item.course_title}
+//                     </Link>
+//                     <Link
+//                       href="/course-details"
+//                       className="badge bg-secondary text-decoration-none py-2 px-4 text-2xl font-semibold "
+//                     >
+//                       {item.course_name}
+//                     </Link>
+//                   </div>
+//                   <CourseTitle className="card-title mb-3">
+//                     <Link href="/course-details">{item.title}</Link>
+//                   </CourseTitle>
+//                   <div className="d-flex mb-3">
+//                     <div className="me-4">
+//                       <img
+//                         src="/assets/img/icon/c-meta-01.png"
+//                         alt="meta-icon"
+//                         className="me-1"
+//                         width="20"
+//                       />
+//                       <small>{item.cls_text}</small>
+//                     </div>
+//                     <div>
+//                       <img
+//                         src="/assets/img/icon/c-meta-02.png"
+//                         alt="meta-icon"
+//                         className="me-1"
+//                         width="20"
+//                       />
+//                       <small>{item.st_text}</small>
+//                     </div>
+//                   </div>
+//                   <div className="d-flex justify-content-between align-items-center">
+//                     <div>
+//                       <span className="me-1">4.7</span>
+//                       <i className="fi fi-ss-star text-warning"></i>
+//                       <i className="fi fi-ss-star text-warning"></i>
+//                       <i className="fi fi-ss-star text-warning"></i>
+//                       <i className="fi fi-ss-star text-warning"></i>
+//                       <i className="fi fi-rs-star text-warning"></i>
+//                       <small className="text-muted">(125)</small>
+//                     </div>
+//                   </div>
+//                   <Price>$0.00</Price>
+//                 </div>
+//               </div>
+//             </div>
+//           </CourseCard>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default CourseArea;
+  
+
 import our_course_data from "@/src/data/our-course-data";
 import Link from "next/link";
 import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const CourseCard = styled.div`
-  transition: box-shadow 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
   &:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   }
+`;
+
+const CourseImage = styled.img`
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
 `;
 
 const CourseTitle = styled.h4`
@@ -244,110 +390,100 @@ const CourseTitle = styled.h4`
   font-weight: bold;
   margin-bottom: 1rem;
   a {
-    color: inherit;
+    color: #333;
     text-decoration: none;
+    transition: color 0.2s ease;
     &:hover {
-      color: #0056b3;
+      color: #007bff;
     }
   }
 `;
 
 const Price = styled.h5`
   font-size: 1.5rem;
-  color: #007bff;
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  color: #28a745;
+  font-weight: bold;
   margin: 0;
+`;
+
+const Badge = styled(Link)`
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  margin-right: 0.5rem;
+  transition: all 0.2s ease;
+  &:hover {
+    transform: translateY(-2px);
+  }
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  img {
+    margin-right: 0.5rem;
+  }
+`;
+
+const StarRating = styled.div`
+  color: #ffc107;
+  font-size: 0.9rem;
 `;
 
 const CourseArea = () => {
   return (
-    <section className="course-area py-5">
+    <section className="course-area py-5 bg-light">
       <div className="container">
         <div className="row mb-5">
           <div className="col-12">
-            <h2 className="text-center">Explore Courses</h2>
+            <h2 className="text-center font-weight-bold mb-4">Explore Our Courses</h2>
+            <p className="text-center text-muted">Discover a wide range of courses to enhance your skills</p>
           </div>
         </div>
         {our_course_data.slice(0, 9).map((item, i) => (
-          <CourseCard key={i} className="card mb-4">
+          <CourseCard key={i} className="card">
             <div className="row g-0">
               <div className="col-md-4 position-relative">
-                <img
-                  src={item.img}
-                  alt="course-thumb"
-                  className="img-fluid rounded-start h-100 object-fit-cover"
-                />
+                <CourseImage src={item.img} alt="course-thumb" className="img-fluid rounded-start" />
                 <div className="position-absolute top-0 end-0 m-2">
-                  <Link
-                    href="/course-details"
-                    className="btn btn-light rounded-circle"
-                  >
+                  <Link href="/course-details" className="btn btn-light rounded-circle">
                     <i className="fi fi-rr-heart"></i>
                   </Link>
                 </div>
                 <div className="position-absolute bottom-0 start-0 m-2">
-                  <img
-                    src={item.icon}
-                    alt="course-avatar"
-                    className="rounded-circle"
-                    width="50"
-                    height="50"
-                  />
+                  <img src={item.icon} alt="course-avatar" className="rounded-circle" width="50" height="50" />
                 </div>
               </div>
-              <div className="col-md-8 position-relative">
+              <div className="col-md-8">
                 <div className="card-body">
-                  <div className="mb-2">
-                    <Link
-                      href="/course-details"
-                      className="badge bg-primary me-2 text-decoration-none py-2 px-4 text-2xl font-semibold"
-                    >
-                      {item.course_title}
-                    </Link>
-                    <Link
-                      href="/course-details"
-                      className="badge bg-secondary text-decoration-none py-2 px-4 text-2xl font-semibold "
-                    >
-                      {item.course_name}
-                    </Link>
+                  <div className="mb-3">
+                    <Badge href="/course-details" className="badge bg-primary">{item.course_title}</Badge>
+                    <Badge href="/course-details" className="badge bg-secondary">{item.course_name}</Badge>
                   </div>
-                  <CourseTitle className="card-title mb-3">
+                  <CourseTitle className="card-title">
                     <Link href="/course-details">{item.title}</Link>
                   </CourseTitle>
                   <div className="d-flex mb-3">
-                    <div className="me-4">
-                      <img
-                        src="/assets/img/icon/c-meta-01.png"
-                        alt="meta-icon"
-                        className="me-1"
-                        width="20"
-                      />
+                    <IconWrapper>
+                      <img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" height="20" width="20" />
                       <small>{item.cls_text}</small>
-                    </div>
-                    <div>
-                      <img
-                        src="/assets/img/icon/c-meta-02.png"
-                        alt="meta-icon"
-                        className="me-1"
-                        width="20"
-                      />
+                    </IconWrapper>
+                    <IconWrapper>
+                      <img src="/assets/img/icon/c-meta-02.png" alt="meta-icon" height="20" width="20" />
                       <small>{item.st_text}</small>
-                    </div>
+                    </IconWrapper>
                   </div>
                   <div className="d-flex justify-content-between align-items-center">
-                    <div>
+                    <StarRating>
                       <span className="me-1">4.7</span>
-                      <i className="fi fi-ss-star text-warning"></i>
-                      <i className="fi fi-ss-star text-warning"></i>
-                      <i className="fi fi-ss-star text-warning"></i>
-                      <i className="fi fi-ss-star text-warning"></i>
-                      <i className="fi fi-rs-star text-warning"></i>
+                      {"★".repeat(4)}{"☆".repeat(1)}
                       <small className="text-muted">(125)</small>
-                    </div>
+                    </StarRating>
+                    <Price>$0.00</Price>
                   </div>
-                  <Price>$0.00</Price>
                 </div>
               </div>
             </div>
