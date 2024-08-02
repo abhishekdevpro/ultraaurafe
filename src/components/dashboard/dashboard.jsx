@@ -156,7 +156,7 @@ const Dashboard = () => {
                   Edit Profile
                 </Button>
               </div>
-              <table className=" table border border-2 " >
+              <table className=" table border " >
               <tbody className="p-2" >
                 {[{ label: "Job Title", value: profileData.jobtitle },
                    { label: "First Name", value: profileData.first_name },

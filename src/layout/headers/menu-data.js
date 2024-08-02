@@ -1,6 +1,6 @@
 const menu_data = [
   {
-    id: 1,
+    id: 2,
     title: "SuperMinds",
     link: "/",
     has_dropdown: false,
@@ -10,7 +10,7 @@ const menu_data = [
     ],
   },
   {
-    id: 2,
+    id: 1,
     title: "FutureMinds",
     link: "/",
     has_dropdown: false,
@@ -29,18 +29,18 @@ const menu_data = [
       
     ],
   },
+  // {
+  //   id: 4,
+  //   title: "CreativeMinds",
+  //   link: "/course-grid",
+  //   has_dropdown: false,
+  //   sub_menus: [
+  //      { title: "Home Services : Master your trade with UltraAura’s specialized courses for home services professionals. Whether you're an electrician, plumber, or other skilled tradesperson, our practical training and certification programs are crafted to enhance your expertise, ensure compliance with industry standards, and boost your career growth in the home services sector." },
+      
+  //   ],
+  // },
   {
     id: 4,
-    title: "CreativeMinds",
-    link: "/course-grid",
-    has_dropdown: false,
-    sub_menus: [
-       { title: "Home Services : Master your trade with UltraAura’s specialized courses for home services professionals. Whether you're an electrician, plumber, or other skilled tradesperson, our practical training and certification programs are crafted to enhance your expertise, ensure compliance with industry standards, and boost your career growth in the home services sector." },
-      
-    ],
-  },
-  {
-    id: 5,
     title: "UniqueMinds",
     link: "/",
     has_dropdown: false,
