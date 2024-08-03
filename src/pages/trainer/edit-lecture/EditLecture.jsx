@@ -11,15 +11,17 @@
 
 //   const router = useRouter();
 //   const { id } = router.query;
+//   console.log(id,"mainoid")
 
 //   const [courseId, setCourseId] = useState(null);
 //   const [sectionId, setSectionId] = useState(null);
+//   const [lectureId, setLectureId] = useState(null);
 
 //   useEffect(() => {
 //     if (id) {
 //       const [cId, sId] = id.split("-");
 //       setCourseId(cId);
-//       setSectionId(sId);
+//       setLectureId(sId);
 //     }
 //   }, [id]);
 
@@ -33,10 +35,10 @@
 
 //   useEffect(() => {
 //     const token = localStorage.getItem("token");
-//     const fetchLectureById = async (sectionId) => {
+//     const fetchLectureById = async (lectureId) => {
 //       try {
 //         const response = await axios.get(
-//           `https://api.novajobs.us/api/trainers/get-lecture/${sectionId}`,
+//           `https://api.novajobs.us/api/trainers/get-lecture/${lectureId}`,
 //           {
 //             headers: {
 //               Authorization: token,
@@ -44,24 +46,30 @@
 //             },
 //           }
 //         );
-
+//         console.log(response,"EdidtLecture se")
 //         if (response.data) {
 //           const data = response.data.data;
+//           console.log(data)
 //           setLectureName(data.lecture_name);
 //           setFiles([data.lecture_location]);
 //           setLinks(data.lecture_resources_link?.[0]);
 //           setResource(data.lecture_resources_pdf?.[0]);
+//           setSectionId(data.section_id)
+//           setCourseId(data.course_id)
+//           setLectureId(data.id)
 //         } else {
+
 //           toast.error("Failed to fetch lecture.");
 //         }
 //       } catch (error) {
 //         toast.error("An error occurred while fetching the lecture.");
 //       }
 //     };
-//     if (sectionId) {
-//       fetchLectureById(sectionId);
+//     if (lectureId) {
+//       fetchLectureById(lectureId);
 //     }
-//   }, [sectionId]);
+//   }, [lectureId]);
+//   console.log("sectionid",sectionId, "courseid",courseId,"lectureid",lectureId)
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
@@ -81,7 +89,7 @@
 
 //     try {
 //       const response = await axios.patch(
-//         `https://api.novajobs.us/api/trainers/update-course/${id}`,
+//         `https://api.novajobs.us/api/trainers/lectureupdate/${courseId}/${sectionId}/${lectureId}`,
 //         formData,
 //         {
 //           headers: {
@@ -90,10 +98,11 @@
 //           },
 //         }
 //       );
-
-//       if (response.data.message === "Lecture created successfully") {
-//         toast.success("Lecture added successfully!");
+//      console.log(response,"patch se")
+//       if (response.status === 200) {
+//         toast.success("Lecture updated successfully!");
 //         // router.push(/leacturelist?courseId=${courseId});
+//         router.push(`/trainer/edit-course/${courseId}`);
 //         // Clear form fields
 //         setLectureName("");
 //         setFiles([]);
@@ -171,6 +180,197 @@
 // export default EditLecture;
 
 
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import { toast } from "react-toastify";
+// import { useRouter } from "next/router";
+
+// const EditLecture = () => {
+//   const [lectureName, setLectureName] = useState("");
+//   const [files, setFiles] = useState([]);
+//   const [resource, setResource] = useState(null);
+//   const [links, setLinks] = useState("");
+//   const router = useRouter();
+//   const { id } = router.query;
+
+//   const [courseId, setCourseId] = useState(null);
+//   const [sectionId, setSectionId] = useState(null);
+//   const [lectureId, setLectureId] = useState(null);
+
+//   useEffect(() => {
+//     if (id) {
+//       const [cId, sId] = id.split("-");
+//       setCourseId(cId);
+//       setLectureId(sId);
+//     }
+//   }, [id]);
+
+//   const handleFileChange = (e) => {
+//     setFiles(Array.from(e.target.files));
+//   };
+
+//   const handleResourceChange = (e) => {
+//     setResource(e.target.files[0]);
+//   };
+
+//   useEffect(() => {
+//     const token = localStorage.getItem("token");
+//     const fetchLectureById = async (lectureId) => {
+//       try {
+//         const response = await axios.get(
+//           `https://api.novajobs.us/api/trainers/get-lecture/${lectureId}`,
+//           {
+//             headers: {
+//               Authorization: token,
+//               "Content-Type": "application/json",
+//             },
+//           }
+//         );
+//         if (response.data) {
+//           const data = response.data.data;
+//           setLectureName(data.lecture_name);
+//           setFiles([data.lecture_location]);
+//           setLinks(data.lecture_resources_link?.[0]);
+//           setResource(data.lecture_resources_pdf?.[0]);
+//           setSectionId(data.section_id);
+//           setCourseId(data.course_id);
+//           setLectureId(data.id);
+//           // Store initial data in session storage
+//           sessionStorage.setItem("lectureData", JSON.stringify(data));
+//         } else {
+//           toast.error("Failed to fetch lecture.");
+//         }
+//       } catch (error) {
+//         toast.error("An error occurred while fetching the lecture.");
+//       }
+//     };
+//     if (lectureId) {
+//       fetchLectureById(lectureId);
+//     }
+//   }, [lectureId]);
+
+//   // Update session storage whenever any state changes
+//   useEffect(() => {
+//     const lectureData = {
+//       lecture_name: lectureName,
+//       lecture_location: files,
+//       lecture_resources_pdf: resource,
+//       lecture_resources_link: links,
+//       section_id: sectionId,
+//       course_id: courseId,
+//       id: lectureId,
+//     };
+//     sessionStorage.setItem("lectureData", JSON.stringify(lectureData));
+//   }, [lectureName, files, resource, links, sectionId, courseId, lectureId]);
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     const token = localStorage.getItem("token");
+//     const formData = new FormData();
+
+//     formData.append("lecture_name", lectureName);
+//     files.forEach((file) => {
+//       formData.append("files", file);
+//     });
+
+//     if (resource) {
+//       formData.append("resources", resource);
+//     }
+
+//     formData.append("links", links);
+
+//     try {
+//       const response = await axios.patch(
+//         `https://api.novajobs.us/api/trainers/lectureupdate/${courseId}/${sectionId}/${lectureId}`,
+//         formData,
+//         {
+//           headers: {
+//             Authorization: token,
+//             "Content-Type": "multipart/form-data",
+//           },
+//         }
+//       );
+//       if (response.status === 200) {
+//         toast.success("Lecture updated successfully!");
+//         router.push(`/trainer/edit-course/${courseId}`);
+//         // Clear form fields
+//         setLectureName("");
+//         setFiles([]);
+//         setResource(null);
+//         setLinks("");
+//         // Clear session storage
+//       } else {
+//         toast.error("Failed to update lecture.");
+//       }
+//     } catch (error) {
+//       toast.error("An error occurred while updating the lecture.");
+//     }
+//   };
+
+//   return (
+//     <div className="container my-5">
+//       <h2>Edit Lecture</h2>
+//       <form onSubmit={handleSubmit} className="mb-4">
+//         <div className="mb-3">
+//           <label htmlFor="lectureName" className="form-label">
+//             Lecture Name:
+//           </label>
+//           <input
+//             id="lectureName"
+//             type="text"
+//             value={lectureName}
+//             onChange={(e) => setLectureName(e.target.value)}
+//             required
+//             className="form-control"
+//           />
+//         </div>
+//         <div className="mb-3">
+//           <label htmlFor="files" className="form-label">
+//             Files:
+//           </label>
+//           <input
+//             id="files"
+//             type="file"
+//             multiple
+//             onChange={handleFileChange}
+//             className="form-control"
+//           />
+//         </div>
+//         <div className="mb-3">
+//           <label htmlFor="resource" className="form-label">
+//             Resource (PDF only):
+//           </label>
+//           <input
+//             id="resource"
+//             type="file"
+//             accept=".pdf"
+//             onChange={handleResourceChange}
+//             className="form-control"
+//           />
+//         </div>
+//         <div className="mb-3">
+//           <label htmlFor="links" className="form-label">
+//             Links:
+//           </label>
+//           <input
+//             id="links"
+//             type="text"
+//             value={links}
+//             onChange={(e) => setLinks(e.target.value)}
+//             className="form-control"
+//           />
+//         </div>
+//         <button type="submit" className="btn btn-primary">
+//           Update Lecture
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default EditLecture;
+
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -181,69 +381,78 @@ const EditLecture = () => {
   const [files, setFiles] = useState([]);
   const [resource, setResource] = useState(null);
   const [links, setLinks] = useState("");
-  const [loading, setLoading] = useState(false);
-
   const router = useRouter();
   const { id } = router.query;
 
   const [courseId, setCourseId] = useState(null);
   const [sectionId, setSectionId] = useState(null);
+  const [lectureId, setLectureId] = useState(null);
 
   useEffect(() => {
     if (id) {
       const [cId, sId] = id.split("-");
       setCourseId(cId);
-      setSectionId(sId);
+      setLectureId(sId);
     }
   }, [id]);
 
   const handleFileChange = (e) => {
-    const selectedFiles = Array.from(e.target.files);
-    // Add file validation logic here if needed
-    setFiles(selectedFiles);
+    setFiles(Array.from(e.target.files));
   };
 
   const handleResourceChange = (e) => {
-    const selectedFile = e.target.files[0];
-    // Add file validation logic here if needed
-    setResource(selectedFile);
+    setResource(e.target.files[0]);
   };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const fetchLectureById = async (sectionId) => {
-      setLoading(true);
+    const fetchLectureById = async (lectureId) => {
       try {
         const response = await axios.get(
-          `https://api.novajobs.us/api/trainers/get-lecture/${sectionId}`,
+          `https://api.novajobs.us/api/trainers/get-lecture/${lectureId}`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: token,
               "Content-Type": "application/json",
             },
           }
         );
-
         if (response.data) {
           const data = response.data.data;
           setLectureName(data.lecture_name);
-          setFiles(data.files ? [data.files] : []);
-          setLinks(data.resources?.[0] || "");
-          setResource(data.links?.[0] || null);
+          setFiles([data.lecture_location]);
+          setLinks(data.lecture_resources_link?.[0]);
+          setResource(data.lecture_resources_pdf?.[0]);
+          setSectionId(data.section_id);
+          setCourseId(data.course_id);
+          setLectureId(data.id);
+          // Store initial data in session storage
+          sessionStorage.setItem("lectureData", JSON.stringify(data));
         } else {
           toast.error("Failed to fetch lecture.");
         }
       } catch (error) {
         toast.error("An error occurred while fetching the lecture.");
-      } finally {
-        setLoading(false);
       }
     };
-
-    if (sectionId) {
-      fetchLectureById(sectionId);
+    if (lectureId) {
+      fetchLectureById(lectureId);
     }
-  }, [sectionId]);
+  }, [lectureId]);
+
+  // Update session storage whenever any state changes
+  useEffect(() => {
+    const lectureData = {
+      lecture_name: lectureName,
+      lecture_location: files,
+      lecture_resources_pdf: resource,
+      lecture_resources_link: links,
+      section_id: sectionId,
+      course_id: courseId,
+      id: lectureId,
+    };
+    sessionStorage.setItem("lectureData", JSON.stringify(lectureData));
+  }, [lectureName, files, resource, links, sectionId, courseId, lectureId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -251,8 +460,8 @@ const EditLecture = () => {
     const formData = new FormData();
 
     formData.append("lecture_name", lectureName);
-    files.forEach((file, index) => {
-      formData.append(`files[${index}]`, file);
+    files.forEach((file) => {
+      formData.append("files", file);
     });
 
     if (resource) {
@@ -263,18 +472,30 @@ const EditLecture = () => {
 
     try {
       const response = await axios.patch(
-        `https://api.novajobs.us/api/trainers/update-course/${id}`,
+        `https://api.novajobs.us/api/trainers/lectureupdate/${courseId}/${sectionId}/${lectureId}`,
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: token,
             "Content-Type": "multipart/form-data",
           },
         }
       );
-
-      if (response.data.message === "Lecture updated successfully") {
+      if (response.status === 200) {
         toast.success("Lecture updated successfully!");
+        // Update session storage with new data
+        const updatedLectureData = {
+          lecture_name: lectureName,
+          lecture_location: files,
+          lecture_resources_pdf: resource,
+          lecture_resources_link: links,
+          section_id: sectionId,
+          course_id: courseId,
+          id: lectureId,
+        };
+        sessionStorage.setItem("lectureData", JSON.stringify(updatedLectureData));
+        // Navigate to the edit course page
+        router.push(`/trainer/edit-course/${courseId}`);
         // Clear form fields
         setLectureName("");
         setFiles([]);
@@ -287,10 +508,6 @@ const EditLecture = () => {
       toast.error("An error occurred while updating the lecture.");
     }
   };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="container my-5">

@@ -566,7 +566,7 @@ const CoursePrice = styled.h5`
 const BrowseButton = styled(Link)`
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: black;
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -623,10 +623,10 @@ const CourseArea = () => {
                         {item.category || "Category"}
                       </CourseCategory>
                       <CourseTitle>
-                        <Link href={`/course-details/${item.id}`}>
-                          {item.course_title || "Course Title"}
-                        </Link>
-                      </CourseTitle>
+                  <Link href={`/course-details/${item.id}`}>
+                    {item.course_title || "Course Title"}
+                  </Link>
+                </CourseTitle>
                       <ul className="d-flex align-items-center">
                         <CourseMetaItem>
                           <img

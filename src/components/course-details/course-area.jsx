@@ -2,16 +2,22 @@ import React, { useEffect, useState } from "react";
 import our_course_data from "@/src/data/our-course-data";
 import Link from "next/link";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const CourseArea = () => {
+  const router = useRouter();
+  const { courseId } = router.query;V
+  console.log(id,"from courseDetails")
   const [courseDetails, setCourseDetails] = useState(null);
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        const courseId = "exampleCourseId"; // Replace with actual course ID logic
+        // const courseId = "exampleCourseId"; // Replace with actual course ID logic
         const response = await axios.get(
-          `https://api.novajobs.us/api/trainers/course-details/${courseId}`
+          `https://api.novajobs.us/api/trainers/course-details/${courseId}`,
+          
         );
         setCourseDetails(response.data);
       } catch (error) {
