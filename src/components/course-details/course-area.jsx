@@ -1,131 +1,707 @@
+// // // import React, { useEffect, useState } from "react";
+// // // import our_course_data from "@/src/data/our-course-data";
+// // // import Link from "next/link";
+// // // import axios from "axios";
+// // // import { useRouter } from "next/router";
+
+// // // const CourseArea = () => {
+// // //   const router = useRouter();
+// // //   const { courseId } = router.query;
+// // //   console.log(id,"from courseDetails")
+// // //   const [courseDetails, setCourseDetails] = useState(null);
+// // //   const token = localStorage.getItem("token")
+
+// // //   useEffect(() => {
+// // //     const fetchCourseDetails = async () => {
+// // //       try {
+// // //         // const courseId = "exampleCourseId"; // Replace with actual course ID logic
+// // //         const response = await axios.get(
+// // //           `https://api.novajobs.us/api/trainers/all-courses`,
+          
+// // //         );
+// // //         setCourseDetails(response.data);
+// // //       } catch (error) {
+// // //         console.log(error);
+// // //       }
+// // //     };
+
+// // //     fetchCourseDetails();
+// // //   }, []); // Empty dependency array to run only on mount
+
+// // //   return (
+// // //     <>
+// // //       <section className="course-area mb-80">
+// // //         <div className="container">
+// // //           <div className="row">
+// // //             <div className="col-md-12">
+// // //               <div className="section-title mb-65">
+// // //                 <h2 className="tp-section-title mb-20">Related Courses</h2>
+// // //               </div>
+// // //             </div>
+// // //           </div>
+// // //           <div className="row">
+// // //             {courseDetails.slice(0, 3).map((item, i) => (
+// // //               <div key={i} className="col-xl-4 col-lg-6 col-md-6">
+// // //                 <div
+// // //                   className="tpcourse mb-40 wow fadeInUp"
+// // //                   data-wow-duration=".8s"
+// // //                   data-wow-delay=".3s"
+// // //                 >
+// // //                   <div className="tpcourse__thumb p-relative w-img fix">
+// // //                     <Link href={item.course_link}>
+// // //                       <img src={item.img} alt="course-thumb" />
+// // //                     </Link>
+// // //                     <div className="tpcourse__tag">
+// // //                       <Link href={item.course_link}>
+// // //                         <i className="fi fi-rr-heart"></i>
+// // //                       </Link>
+// // //                     </div>
+// // //                     <div className="tpcourse__img-icon">
+// // //                       <img src={item.icon} alt="course-avata" />
+// // //                     </div>
+// // //                   </div>
+// // //                   <div className="tpcourse__content-2">
+// // //                     <div className="tpcourse__category mb-10">
+// // //                       <ul className="tpcourse__price-list d-flex align-items-center">
+// // //                         <li>
+// // //                           <Link
+// // //                             className={item.ct_color}
+// // //                             href={item.course_link}
+// // //                           >
+// // //                             {item.course_title}
+// // //                           </Link>
+// // //                         </li>
+// // //                         <li>
+// // //                           <Link
+// // //                             className={item.cn_color}
+// // //                             href={item.course_link}
+// // //                           >
+// // //                             {item.course_name}
+// // //                           </Link>
+// // //                         </li>
+// // //                       </ul>
+// // //                     </div>
+// // //                     <div className="tpcourse__ava-title mb-15">
+// // //                       <h4 className="tpcourse__title tp-cours-title-color">
+// // //                         <Link href={item.course_link}>{item.title}</Link>
+// // //                       </h4>
+// // //                     </div>
+// // //                     <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
+// // //                       <ul className="d-flex align-items-center">
+// // //                         <li>
+// // //                           <img
+// // //                             src="/assets/img/icon/c-meta-01.png"
+// // //                             alt="meta-icon"
+// // //                           />{" "}
+// // //                           <span>{item.cls_text}</span>
+// // //                         </li>
+// // //                         <li>
+// // //                           <img
+// // //                             src="/assets/img/icon/c-meta-02.png"
+// // //                             alt="meta-icon"
+// // //                           />{" "}
+// // //                           <span>{item.st_text}</span>
+// // //                         </li>
+// // //                       </ul>
+// // //                     </div>
+// // //                     <div className="tpcourse__rating d-flex align-items-center justify-content-between">
+// // //                       <div className="tpcourse__rating-icon">
+// // //                         <span>{item.start_text}</span>
+// // //                         <i className="fi fi-ss-star"></i>
+// // //                         <i className="fi fi-ss-star"></i>
+// // //                         <i className="fi fi-ss-star"></i>
+// // //                         <i className="fi fi-ss-star"></i>
+// // //                         <i className="fi fi-rs-star"></i>
+// // //                         <p>({item.total_start})</p>
+// // //                       </div>
+// // //                       <div className="tpcourse__pricing">
+// // //                         <h5 className="price-title">${item.course_price}</h5>
+// // //                       </div>
+// // //                     </div>
+// // //                   </div>
+// // //                 </div>
+// // //               </div>
+// // //             ))}
+// // //           </div>
+// // //         </div>
+// // //       </section>
+// // //     </>
+// // //   );
+// // // };
+
+// // // export default CourseArea;
+
+
+// // import React, { useEffect, useState } from "react";
+// // import axios from "axios";
+// // import Link from "next/link";
+
+// // const CourseArea = () => {
+// //   const [courseDetails, setCourseDetails] = useState(null);
+
+// //   useEffect(() => {
+// //     const fetchCourseDetails = async () => {
+// //       try {
+// //         // Adjust the API request URL if needed
+// //         const response = await axios.get(
+// //           `https://api.novajobs.us/api/trainers/all-courses`
+// //         );
+// //         console.log(response)
+// //         setCourseDetails(response.data.data);
+// //       } catch (error) {
+// //         console.log(error);
+// //       }
+// //     };
+
+// //     fetchCourseDetails();
+// //   }, []); // Empty dependency array to run only on mount
+// //   console.log(courseDetails)
+// //   // Fallback if courseDetails is null or loading
+// //   if (!courseDetails) {
+// //     return <div>Loading...</div>;
+// //   }
+
+// //   return (
+// //     <section className="course-area mb-80">
+// //       <div className="container">
+// //         <div className="row">
+// //           <div className="col-md-12">
+// //             <div className="section-title mb-65">
+// //               <h2 className="tp-section-title mb-20">Related Courses</h2>
+// //             </div>
+// //           </div>
+// //         </div>
+// //         <div className="row">
+// //           {courseDetails.map((item, i) => (
+// //             <div key={i} className="col-xl-4 col-lg-6 col-md-6">
+// //               <div
+// //                 className="tpcourse mb-40 wow fadeInUp"
+// //                 data-wow-duration=".8s"
+// //                 data-wow-delay=".3s"
+// //               >
+// //                 <div className="tpcourse__thumb p-relative w-img fix">
+// //                   <Link href={item.course_link || "#"}>
+// //                     <img src={`https://api.novajobs.us${item.course_banner_image}`} alt="course-thumb" />
+// //                   </Link>
+// //                   <div className="tpcourse__tag">
+// //                     <Link href={item.course_link || "#" }>
+// //                       <i className="fi fi-rr-heart"></i>
+// //                     </Link>
+// //                   </div>
+// //                   <div className="tpcourse__img-icon">
+// //                     <img src={item.icon} alt="course-avata" />
+// //                   </div>
+// //                 </div>
+// //                 <div className="tpcourse__content-2">
+// //                   <div className="tpcourse__category mb-10">
+// //                     <ul className="tpcourse__price-list d-flex align-items-center">
+// //                       <li>
+// //                         <Link className={item.ct_color} href={item.course_link || "#"}>
+// //                           {item.course_title}
+// //                         </Link>
+// //                       </li>
+// //                       <li>
+// //                         <Link className={item.cn_color} href={item.course_link ||"#"}>
+// //                           {item.category}
+// //                         </Link>
+// //                       </li>
+// //                     </ul>
+// //                   </div>
+// //                   <div className="tpcourse__ava-title mb-15">
+// //                     <h4 className="tpcourse__title tp-cours-title-color">
+// //                       <Link href={item.course_link || "#"}>{item.title}</Link>
+// //                     </h4>
+// //                   </div>
+// //                   <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
+// //                     <ul className="d-flex align-items-center">
+// //                       <li>
+// //                         <img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" />{" "}
+// //                         <span>{item.enrolled_student_count}</span>
+// //                       </li>
+// //                       <li>
+// //                         <img src="/assets/img/icon/c-meta-02.png" alt="meta-icon" />{" "}
+// //                         <span>{item.time_spent_on_course}</span>
+// //                       </li>
+// //                     </ul>
+// //                   </div>
+// //                   <div className="tpcourse__rating d-flex align-items-center justify-content-between">
+// //                     <div className="tpcourse__rating-icon">
+// //                       <span>{item.start_text}</span>
+// //                       <i className="fi fi-ss-star"></i>
+// //                       <i className="fi fi-ss-star"></i>
+// //                       <i className="fi fi-ss-star"></i>
+// //                       <i className="fi fi-ss-star"></i>
+// //                       <i className="fi fi-rs-star"></i>
+// //                       <p>(120)</p>
+// //                     </div>
+// //                     <div className="tpcourse__pricing">
+// //                       <h5 className="price-title">${item.course_price}</h5>
+// //                     </div>
+// //                   </div>
+// //                 </div>
+// //               </div>
+// //             </div>
+// //           ))}
+// //         </div>
+// //       </div>
+// //     </section>
+// //   );
+// // };
+
+// // export default CourseArea;
+
+
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import Link from "next/link";
+// import styled from "styled-components";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
+// // Styled Components
+// const CourseAreaWrapper = styled.section`
+//   margin-bottom: 80px;
+// `;
+
+// const CourseCard = styled.div`
+//   background-color: white;
+//   border-radius: 10px;
+//   overflow: hidden;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   transition: transform 0.3s;
+
+//   &:hover {
+//     transform: translateY(-5px);
+//   }
+// `;
+
+// const CourseThumb = styled.div`
+//   position: relative;
+//   width: 100%;
+//   height: 250px;
+//   overflow: hidden;
+
+//   img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
+// `;
+
+// const CourseTag = styled.div`
+//   position: absolute;
+//   top: 10px;
+//   right: 10px;
+
+//   i {
+//     font-size: 1.5rem;
+//     color: white;
+//     background-color: rgba(0, 0, 0, 0.7);
+//     border-radius: 50%;
+//     padding: 8px;
+//   }
+// `;
+
+// const CourseIcon = styled.div`
+//   position: absolute;
+//   bottom: 10px;
+//   left: 10px;
+
+//   img {
+//     width: 40px;
+//     height: 40px;
+//     border-radius: 50%;
+//   }
+// `;
+
+// const CourseContent = styled.div`
+//   padding: 20px;
+
+//   .category {
+//     margin-bottom: 10px;
+//   }
+
+//   .title {
+//     margin-bottom: 15px;
+//     font-size: 1.25rem;
+//     font-weight: bold;
+//     color: #333;
+
+//     a {
+//       text-decoration: none;
+//       color: inherit;
+
+//       &:hover {
+//         color: #007bff;
+//       }
+//     }
+//   }
+
+//   .meta {
+//     display: flex;
+//     justify-content: space-between;
+//     margin-bottom: 15px;
+//     color: #666;
+//   }
+
+//   .rating {
+//     display: flex;
+//     align-items: center;
+
+//     i {
+//       color: #ffc107;
+//     }
+
+//     p {
+//       margin-left: 5px;
+//       color: #666;
+//     }
+//   }
+
+//   .pricing {
+//     font-size: 1.25rem;
+//     font-weight: bold;
+//     color: #333;
+//   }
+    
+// `;
+
+// const Loading = styled.div`
+//   text-align: center;
+//   padding: 40px;
+//   font-size: 1.5rem;
+// `;
+
+// const CourseArea = () => {
+//   const [courseDetails, setCourseDetails] = useState(null);
+
+//   useEffect(() => {
+//     const fetchCourseDetails = async () => {
+//       try {
+//         const response = await axios.get(
+//           `https://api.novajobs.us/api/trainers/all-courses`
+//         );
+//         console.log(response)
+//         setCourseDetails(response.data.data);
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     };
+
+//     fetchCourseDetails();
+//   }, []);
+
+//   if (!courseDetails) {
+//     return <Loading>Loading...</Loading>;
+//   }
+
+//   return (
+//     <CourseAreaWrapper>
+//       <div className="container">
+//         <div className="row">
+//           <div className="col-md-12">
+//             <div className="section-title mb-65 text-center">
+//               <h2 className="tp-section-title mb-20">Related Courses</h2>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="row">
+//           {courseDetails.map((item, i) => (
+//             <div key={i} className="col-xl-4 col-lg-6 col-md-6 mb-4">
+//               <CourseCard>
+//                 <CourseThumb>
+//                   <Link href={item.course_link || "#"}>
+//                     <img src={`https://api.novajobs.us${item.course_banner_image}`} alt="course-thumb" />
+//                   </Link>
+//                   <CourseTag>
+//                     <Link href={item.course_link || "#"}>
+//                       <i className="fi fi-rr-heart"></i>
+//                     </Link>
+//                   </CourseTag>
+//                   <CourseIcon>
+//                     <img src={item.icon} alt="course-avatar" />
+//                   </CourseIcon>
+//                 </CourseThumb>
+//                 <CourseContent>
+//                   <div className="category">
+//                     <ul className="list-inline">
+//                       <li className="list-inline-item">
+//                         <Link className={item.ct_color} href={item.course_link || "#"}>
+//                           {item.course_title}
+//                         </Link>
+//                       </li>
+//                       <li className="list-inline-item">
+//                         <Link className={item.cn_color} href={item.course_link || "#"}>
+//                           {item.category}
+//                         </Link>
+//                       </li>
+//                     </ul>
+//                   </div>
+//                   <div className="title">
+//                     <Link href={item.course_link || "#"}>{item.title}</Link>
+//                   </div>
+//                   <div className="meta">
+//                     <div>
+//                       <img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" />{" "}
+//                       <span>{item.enrolled_student_count}</span>
+//                     </div>
+//                     <div>
+//                       <img src="/assets/img/icon/c-meta-02.png" alt="meta-icon" />{" "}
+//                       <span>{item.time_spent_on_course}</span>
+//                     </div>
+//                   </div>
+//                   <div className="d-flex justify-content-between align-items-center">
+//                     <div className="rating">
+//                       <span>{item.start_text}</span>
+//                       <i className="fi fi-ss-star"></i>
+//                       <i className="fi fi-ss-star"></i>
+//                       <i className="fi fi-ss-star"></i>
+//                       <i className="fi fi-ss-star"></i>
+//                       <i className="fi fi-rs-star"></i>
+//                       <p>(120)</p>
+//                     </div>
+//                     <div className="pricing">
+//                       ${item.course_price}
+//                     </div>
+//                   </div>
+//                 </CourseContent>
+//               </CourseCard>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </CourseAreaWrapper>
+//   );
+// };
+
+// export default CourseArea;
+
 import React, { useEffect, useState } from "react";
-import our_course_data from "@/src/data/our-course-data";
-import Link from "next/link";
 import axios from "axios";
-import { useRouter } from "next/router";
+import Link from "next/link";
+import styled from "styled-components";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Styled Components
+const CourseAreaWrapper = styled.section`
+  margin-bottom: 80px;
+`;
+
+const CourseCard = styled.div`
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+const CourseThumb = styled.div`
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const CourseTag = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  i {
+    font-size: 1.5rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    padding: 8px;
+  }
+`;
+
+const CourseIcon = styled.div`
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+`;
+
+const CourseContent = styled.div`
+  padding: 20px;
+
+  .category {
+    margin-bottom: 10px;
+  }
+
+  .category a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+
+    &:hover {
+      color: #007bff;
+    }
+  }
+
+  .title {
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        color: #007bff;
+      }
+    }
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #666;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+
+    i {
+      color: #ffc107;
+    }
+
+    p {
+      margin-left: 5px;
+      color: #666;
+    }
+  }
+
+  .pricing {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+  }
+`;
+
+const Loading = styled.div`
+  text-align: center;
+  padding: 40px;
+  font-size: 1.5rem;
+`;
 
 const CourseArea = () => {
-  const router = useRouter();
-  const { courseId } = router.query;V
-  console.log(id,"from courseDetails")
   const [courseDetails, setCourseDetails] = useState(null);
-  const token = localStorage.getItem("token")
 
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        // const courseId = "exampleCourseId"; // Replace with actual course ID logic
         const response = await axios.get(
-          `https://api.novajobs.us/api/trainers/course-details/${courseId}`,
-          
+          `https://api.novajobs.us/api/trainers/all-courses`
         );
-        setCourseDetails(response.data);
+        console.log(response)
+        setCourseDetails(response.data.data);
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchCourseDetails();
-  }, []); // Empty dependency array to run only on mount
+  }, []);
+
+  if (!courseDetails) {
+    return <Loading>Loading...</Loading>;
+  }
 
   return (
-    <>
-      <section className="course-area mb-80">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="section-title mb-65">
-                <h2 className="tp-section-title mb-20">Related Courses</h2>
-              </div>
+    <CourseAreaWrapper>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="section-title mb-65 text-center">
+              <h2 className="tp-section-title mb-20">Related Courses</h2>
             </div>
           </div>
-          <div className="row">
-            {our_course_data.slice(0, 3).map((item, i) => (
-              <div key={i} className="col-xl-4 col-lg-6 col-md-6">
-                <div
-                  className="tpcourse mb-40 wow fadeInUp"
-                  data-wow-duration=".8s"
-                  data-wow-delay=".3s"
-                >
-                  <div className="tpcourse__thumb p-relative w-img fix">
-                    <Link href={item.course_link}>
-                      <img src={item.img} alt="course-thumb" />
-                    </Link>
-                    <div className="tpcourse__tag">
-                      <Link href={item.course_link}>
-                        <i className="fi fi-rr-heart"></i>
-                      </Link>
-                    </div>
-                    <div className="tpcourse__img-icon">
-                      <img src={item.icon} alt="course-avata" />
-                    </div>
-                  </div>
-                  <div className="tpcourse__content-2">
-                    <div className="tpcourse__category mb-10">
-                      <ul className="tpcourse__price-list d-flex align-items-center">
-                        <li>
-                          <Link
-                            className={item.ct_color}
-                            href={item.course_link}
-                          >
-                            {item.course_title}
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            className={item.cn_color}
-                            href={item.course_link}
-                          >
-                            {item.course_name}
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="tpcourse__ava-title mb-15">
-                      <h4 className="tpcourse__title tp-cours-title-color">
-                        <Link href={item.course_link}>{item.title}</Link>
-                      </h4>
-                    </div>
-                    <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
-                      <ul className="d-flex align-items-center">
-                        <li>
-                          <img
-                            src="/assets/img/icon/c-meta-01.png"
-                            alt="meta-icon"
-                          />{" "}
-                          <span>{item.cls_text}</span>
-                        </li>
-                        <li>
-                          <img
-                            src="/assets/img/icon/c-meta-02.png"
-                            alt="meta-icon"
-                          />{" "}
-                          <span>{item.st_text}</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="tpcourse__rating d-flex align-items-center justify-content-between">
-                      <div className="tpcourse__rating-icon">
-                        <span>{item.start_text}</span>
-                        <i className="fi fi-ss-star"></i>
-                        <i className="fi fi-ss-star"></i>
-                        <i className="fi fi-ss-star"></i>
-                        <i className="fi fi-ss-star"></i>
-                        <i className="fi fi-rs-star"></i>
-                        <p>({item.total_start})</p>
-                      </div>
-                      <div className="tpcourse__pricing">
-                        <h5 className="price-title">${item.course_price}</h5>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
-    </>
+        <div className="row">
+          {courseDetails.map((item, i) => (
+            <div key={i} className="col-xl-4 col-lg-6 col-md-6 mb-4">
+              <CourseCard>
+                <CourseThumb>
+                  <Link href={item.course_link || "#"}>
+                    <img src={`https://api.novajobs.us${item.course_banner_image}`} alt="course-thumb" />
+                  </Link>
+                  <CourseTag>
+                    <Link href={item.course_link || "#"}>
+                      <i className="fi fi-rr-heart"></i>
+                    </Link>
+                  </CourseTag>
+                  {/* <CourseIcon>
+                    <img src={item.icon} alt="course-avatar" />
+                  </CourseIcon> */}
+                </CourseThumb>
+                <CourseContent>
+                  <div className="category">
+                    <ul className="list-inline">
+                      <li className="list-inline-item">
+                        <Link className={item.ct_color} href={item.course_link || "#"}>
+                          {item.course_title}
+                        </Link>
+                      </li>
+                      <li className="list-inline-item">
+                        <Link className={item.cn_color} href={item.course_link || "#"}>
+                          {item.category}
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="title">
+                    <Link href={item.course_link || "#"}>{item.title}</Link>
+                  </div>
+                  <div className="meta">
+                    <div>
+                      <img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" />{" "}
+                      <span>{item.enrolled_student_count}</span>
+                    </div>
+                    <div>
+                      <img src="/assets/img/icon/c-meta-02.png" alt="meta-icon" />{" "}
+                      <span>{item.time_spent_on_course}</span>
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div className="rating">
+                      <span>{item.start_text}</span>
+                      <i className="fi fi-ss-star"></i>
+                      <i className="fi fi-ss-star"></i>
+                      <i className="fi fi-ss-star"></i>
+                      <i className="fi fi-ss-star"></i>
+                      <i className="fi fi-rs-star"></i>
+                    </div>
+                    <div className="pricing">
+                      ${item.course_price}
+                    </div>
+                  </div>
+                </CourseContent>
+              </CourseCard>
+            </div>
+          ))}
+        </div>
+      </div>
+    </CourseAreaWrapper>
   );
 };
 
