@@ -230,7 +230,7 @@
 // //                       </div>
 // //                     </div>
 // //                   </div>
-                  
+
 // //                 </div>
 // //               </div>
 // //             ))}
@@ -351,7 +351,6 @@
 
 // // export default CourseArea;
 
-
 // import React, { useEffect, useState } from "react";
 // import axios from "axios";
 // import Link from "next/link";
@@ -437,7 +436,7 @@
 //     try {
 //       const response = await axios.get(
 //         "https://api.novajobs.us/api/trainers/all-courses",
-       
+
 //       );
 //       if (response.data && response.data.data) {
 //         setCourses(response.data.data);
@@ -458,9 +457,9 @@
 //           {courses.slice(0, 6).map((item, i) => (
 //             <Col key={i} lg={4} md={6} className="mb-4">
 //               <CourseCard>
-//                 <CourseImage 
-//                   variant="top" 
-//                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOwRConBYl2t6L8QMOAQqa5FDmPB_bg7EnGA&s" 
+//                 <CourseImage
+//                   variant="top"
+//                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOwRConBYl2t6L8QMOAQqa5FDmPB_bg7EnGA&s"
 //                   alt="course-thumb"
 //                 />
 //                 <Card.Body>
@@ -676,13 +675,13 @@
 
 // export default CourseArea;
 
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { toast, Toaster } from "react-hot-toast";
 import styled from "styled-components";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { dummyBannerImage } from "public/dummyBannerImage.png";
 
 const StyledSection = styled.section`
   padding: 80px 0;
@@ -786,7 +785,7 @@ const CourseArea = () => {
       <Toaster />
       <StyledSection>
         <Container>
-          <SectionTitle>Explore Popular Courses</SectionTitle>
+          <SectionTitle>Explore Popular Coursesssss</SectionTitle>
           <Row>
             {courses.length > 0 ? (
               courses.slice(0, 6).map((item, i) => (
@@ -795,7 +794,11 @@ const CourseArea = () => {
                     <Link href={`/course-details/${item.id}`}>
                       <ImageWrapper>
                         <CourseImage
-                          src={`https://api.novajobs.us${item.course_banner_image}`}
+                          src={
+                            item.course_banner_image
+                              ? `https://api.novajobs.us${item.course_banner_image}`
+                              : "/dummyBannerImage.png"
+                          }
                           alt="course-thumb"
                         />
                       </ImageWrapper>
@@ -849,7 +852,9 @@ const CourseArea = () => {
           </Row>
           <Row className="text-center mt-5">
             <Col lg={12}>
-              <BrowseButton href="/course-grid">Browse All Courses</BrowseButton>
+              <BrowseButton href="/course-grid">
+                Browse All Courses
+              </BrowseButton>
             </Col>
           </Row>
         </Container>

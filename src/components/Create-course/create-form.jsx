@@ -24,7 +24,7 @@
 //     formData.append("trainer_last_name", "user");
 //     formData.append("course_title", e.target.course_title.value);
 //     formData.append("course_banner_image", bannerImage); // Add the image file
-//     formData.append("course_intro_video_url", ""); // Add appropriate value or input field if needed
+//     formData.append("course_intro_video", ""); // Add appropriate value or input field if needed
 //     formData.append("course_language", e.target.course_language.value);
 //     formData.append("level", e.target.level.value);
 //     formData.append("category", e.target.coursecategory.value);
@@ -281,12 +281,11 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
-import Link from "next/link";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/router";
+import { toast, ToastContainer } from "react-toastify";
 import SidebarLayout from "@/src/common/sidebar-layout";
+import { useRouter } from "next/router";
+import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 
 function CourseForm() {
   const [bannerImage, setBannerImage] = useState(null);
@@ -295,7 +294,7 @@ function CourseForm() {
     category: "",
     coupon_code: "",
     course_description: "",
-    course_intro_video_url: "",
+    course_intro_video: "",
     course_language: "",
     course_price: 0,
     course_title: "",
@@ -317,7 +316,23 @@ function CourseForm() {
   };
 
   const handleFileChange = (e) => {
-    setBannerImage(e.target.files[0]);
+    const file = e.target.files[0];
+    const { name } = e.target;
+    const maxSize = 150 * 1024 * 1024; // 150 MB in bytes
+
+    if (file.size > maxSize) {
+      toast.error("File size exceeds 150 MB. Please select a smaller file.");
+      return;
+    }
+
+    if (name === "course_intro_video") {
+      setFormData((prevData) => ({
+        ...prevData,
+        course_intro_video: file,
+      }));
+    } else if (name === "course_banner_image") {
+      setBannerImage(file);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -352,7 +367,7 @@ function CourseForm() {
           category: "",
           coupon_code: "",
           course_description: "",
-          course_intro_video_url: "",
+          course_intro_video: "",
           course_language: "",
           course_price: 0,
           course_title: "",
@@ -453,7 +468,7 @@ function CourseForm() {
           </div>
           <div className="mb-3">
             <label htmlFor="level" className="form-label">
-              level
+              Level
             </label>
             <input
               type="text"
@@ -467,7 +482,7 @@ function CourseForm() {
           </div>
           <div className="mb-3">
             <label htmlFor="category" className="form-label">
-              Course category
+              Course Category
             </label>
             <input
               type="text"
@@ -508,7 +523,7 @@ function CourseForm() {
           </div>
           <div className="mb-3">
             <label htmlFor="requirements" className="form-label">
-              requirements
+              Requirements
             </label>
             <textarea
               className="form-control"
@@ -601,26 +616,17 @@ function CourseForm() {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="course_intro_video_url" className="form-label">
+            <label htmlFor="course_intro_video" className="form-label">
               Course Intro Video URL
             </label>
             <input
-              type="text"
+              type="file"
               className="form-control"
-              id="course_intro_video_url"
-              name="course_intro_video_url"
-              value={formData.course_intro_video_url}
-              onChange={handleInputChange}
+              id="course_intro_video"
+              name="course_intro_video"
+              onChange={handleFileChange}
             />
           </div>
-          {/* <div className="mb-3">
-            <label htmlFor="trainer_first_name" className="form-label">Trainer First Name</label>
-            <input type="text" className="form-control" id="trainer_first_name" name="trainer_first_name" value={formData.trainer_first_name} onChange={handleInputChange} required />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="trainer_last_name" className="form-label">Trainer Last Name</label>
-            <input type="text" className="form-control" id="trainer_last_name" name="trainer_last_name" value={formData.trainer_last_name} onChange={handleInputChange} required />
-          </div> */}
           <div className="mb-3">
             <label htmlFor="course_banner_image" className="form-label">
               Upload Course Banner Image
@@ -631,10 +637,8 @@ function CourseForm() {
               id="course_banner_image"
               name="course_banner_image"
               onChange={handleFileChange}
-              // required
             />
           </div>
-
           <button type="submit" className="btn btn-success">
             Submit
           </button>
