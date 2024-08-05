@@ -252,30 +252,25 @@ const CollapsibleContent = styled.div`
 
 const EditCourse = () => {
   const [sections, setSections] = useState([]);
-  const [collapsedSections, setCollapsedSections] = useState(
-    sections.reduce((acc, _, index) => {
-      acc[index] = true; // Start with all sections collapsed
-      return acc;
-    }, {})
-  );
+  const [collapsedSections, setCollapsedSections] = useState({});
+  const [courseTitle, setCourseTitle] = useState("");
   const router = useRouter();
   const { id, data } = router.query;
-
-  const toggleCollapse = (sectionIndex) => {
-    setCollapsedSections((prev) => ({
-      ...prev,
-      [sectionIndex]: !prev[sectionIndex],
-    }));
-  };
-
-  const [courseData, setCourseData] = useState(null);
 
   useEffect(() => {
     if (data) {
       const decodedData = JSON.parse(decodeURIComponent(data));
-      setCourseData(decodedData);
+      sessionStorage.setItem("courseData", JSON.stringify(decodedData));
     }
   }, [data]);
+
+  useEffect(() => {
+    const storedCourseData = sessionStorage.getItem("courseData");
+    if (storedCourseData) {
+      const courseData = JSON.parse(storedCourseData);
+      setCourseTitle(courseData.course_title);
+    }
+  }, []);
 
   useEffect(() => {
     if (id !== undefined) {
@@ -309,6 +304,13 @@ const EditCourse = () => {
     }
   }, [id]);
 
+  const toggleCollapse = (sectionIndex) => {
+    setCollapsedSections((prev) => ({
+      ...prev,
+      [sectionIndex]: !prev[sectionIndex],
+    }));
+  };
+
   const handleAddSection = () => {
     router.push(`/trainer/add-section/${id}`);
   };
@@ -335,7 +337,7 @@ const EditCourse = () => {
         <main className="col-sm-10 p-0">
           <Container>
             <Header>
-              <CourseName>Course Name</CourseName>
+              <CourseName>{courseTitle}</CourseName>
               <div>
                 <StyledButton variant="primary" onClick={handleEditCourse}>
                   Edit Course
