@@ -4,8 +4,8 @@ import { Nav, Button } from "react-bootstrap";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
-const SidebarWrapper = styled.div`
-  background-color: #343a40;
+const SidebarWrapper = styled.div
+  `background-color: #343a40;
   height: 100vh;
   width: 250px;
   position: fixed;
@@ -15,8 +15,8 @@ const SidebarWrapper = styled.div`
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 `;
 
-const ProfileSection = styled.div`
-  text-align: center;
+const ProfileSection = styled.div
+  `text-align: center;
   margin-bottom: 30px;
 
   h4 {
@@ -30,8 +30,8 @@ const ProfileSection = styled.div`
   }
 `;
 
-const StyledNav = styled(Nav)`
-  .nav-link {
+const StyledNav = styled(Nav)
+  `.nav-link {
     color: #ced4da;
     padding: 10px 0;
     transition: all 0.3s ease;
@@ -44,8 +44,8 @@ const StyledNav = styled(Nav)`
   }
 `;
 
-const LogoutButton = styled(Button)`
-  width: 100%;
+const LogoutButton = styled(Button)
+  `width: 100%;
   margin-top: 20px;
   background-color: #dc3545;
   border: none;
@@ -71,13 +71,13 @@ const Sidebar = () => {
         <p>Finish Your Profile</p>
       </ProfileSection>
       <StyledNav defaultActiveKey="/" className="flex-column">
-        <Nav.Link href="#HomePage">Dashboard</Nav.Link>
-        <Nav.Link href="#Testing">Career Ready Plan</Nav.Link>
-        <Nav.Link href="#resume">Your Resumé/CV</Nav.Link>
-        <Nav.Link href="#report">Learner Report</Nav.Link>
+        <Nav.Link href="#HomePage">Courses</Nav.Link>
+        <Nav.Link href="#Testing">Upload Resume</Nav.Link>
+        <Nav.Link href="#resume">Skill test</Nav.Link>
+        {/* <Nav.Link href="#report">Learner Report</Nav.Link>
         <Nav.Link href="#premium">Upgrade To Premium</Nav.Link>
         <Nav.Link href="#skills">Test Your Skills</Nav.Link>
-        <Nav.Link href="#certificates">Claim Your Certificates</Nav.Link>
+        <Nav.Link href="#certificates">Claim Your Certificates</Nav.Link> */}
       </StyledNav>
       <LogoutButton onClick={handleLogout}>
         Logout
