@@ -5,7 +5,6 @@ import React from 'react'
 function Skills() {
   return (
     <Layout >
-        {/* <div>Skills</div> */}
         <SkillTestGrid />
     </Layout>
   )

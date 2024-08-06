@@ -70,8 +70,8 @@ const Sidebar = () => {
         <h4>Balkrishna Dadhich</h4>
         <p>Finish Your Profile</p>
       </ProfileSection>
-      <StyledNav defaultActiveKey="/dashboard/courses" className="flex-column">
-        <Nav.Link href="/dashboard/courses">Courses</Nav.Link>
+      <StyledNav defaultActiveKey="/dashboard" className="flex-column">
+        <Nav.Link href="/dashboard">Courses</Nav.Link>
         <Nav.Link href="/dashboard/uploadresume">Upload Resume</Nav.Link>
         <Nav.Link href="/dashboard/Skills">Skill test</Nav.Link>
       </StyledNav>
