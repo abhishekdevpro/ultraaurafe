@@ -1,6 +1,6 @@
 const menu_data = [
   {
-    id: 2,
+    id: 1,
     title: "SuperMinds",
     link: "/",
     has_dropdown: false,
@@ -10,7 +10,7 @@ const menu_data = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     title: "FutureMinds",
     link: "/",
     has_dropdown: false,
