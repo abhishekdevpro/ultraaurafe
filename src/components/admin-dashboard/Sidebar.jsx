@@ -70,14 +70,10 @@ const Sidebar = () => {
         <h4>Balkrishna Dadhich</h4>
         <p>Finish Your Profile</p>
       </ProfileSection>
-      <StyledNav defaultActiveKey="/" className="flex-column">
-        <Nav.Link href="#HomePage">Courses</Nav.Link>
-        <Nav.Link href="#Testing">Upload Resume</Nav.Link>
-        <Nav.Link href="#resume">Skill test</Nav.Link>
-        {/* <Nav.Link href="#report">Learner Report</Nav.Link>
-        <Nav.Link href="#premium">Upgrade To Premium</Nav.Link>
-        <Nav.Link href="#skills">Test Your Skills</Nav.Link>
-        <Nav.Link href="#certificates">Claim Your Certificates</Nav.Link> */}
+      <StyledNav defaultActiveKey="/dashboard/courses" className="flex-column">
+        <Nav.Link href="/dashboard/courses">Courses</Nav.Link>
+        <Nav.Link href="/dashboard/uploadresume">Upload Resume</Nav.Link>
+        <Nav.Link href="/dashboard/Skills">Skill test</Nav.Link>
       </StyledNav>
       <LogoutButton onClick={handleLogout}>
         Logout

@@ -61,7 +61,7 @@ const Header = () => {
               <div className="row align-items-center">
                 <div className="col-xxl-3 col-xl-3 col-lg-5 col-md-6 col-6">
                   <div className="logo-area d-flex align-items-center">
-                    <div className="logo">
+                    <div className="logo ">
                       <Link href="/">
                         <img
                           src="/assets/img/logo/logo1.png"
