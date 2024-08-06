@@ -132,6 +132,7 @@ const InstructorCard = styled(Card)`
   text-align: center;
   margin-bottom: 40px;
   transition: all 0.3s ease;
+  border:2px;
 
   &:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -155,6 +156,7 @@ const InstructorTitle = styled.span`
 const InstructorName = styled.h4`
   margin: 10px 0 20px;
   font-weight: 600;
+  
 `;
 
 const InstructorStats = styled.ul`

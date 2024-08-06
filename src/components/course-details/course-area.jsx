@@ -480,6 +480,7 @@ import axios from "axios";
 import Link from "next/link";
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import dummyBannerImage from 'public/dummyBannerImage.png'
 
 // Styled Components
 const CourseAreaWrapper = styled.section`
@@ -643,7 +644,9 @@ const CourseArea = () => {
               <CourseCard>
                 <CourseThumb>
                   <Link href={item.course_link || "#"}>
-                    <img src={`https://api.novajobs.us${item.course_banner_image}`} alt="course-thumb" />
+                    <img src={item.course_banner_image
+                              ? `https://api.novajobs.us${item.course_banner_image}`
+                              : "/dummyBannerImage.png"} alt="course-thumb" />
                   </Link>
                   <CourseTag>
                     <Link href={item.course_link || "#"}>

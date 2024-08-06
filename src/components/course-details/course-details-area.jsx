@@ -542,7 +542,6 @@ const CourseDetailsArea = () => {
           <h4 className="alert-heading">Course Not Found</h4>
           <p>{error || "We couldn't find the course you're looking for."}</p>
           <hr />
-          <p className="mb-0">Please check the course ID and try again, or return to the course listing.</p>
           <Link href="/" className="btn btn-primary mt-3">
             Back to Courses
           </Link>
@@ -622,9 +621,10 @@ const CourseDetailsArea = () => {
                       <Link className="tp-vp-btn-green btn btn-primary" href={'/sign-in'}>Enroll Now</Link>
                     </div>
                   </div>
-                  <div className="cd-information mb-35">
+                  {/* <div className="cd-information mb-35">
                     <ul className="list-unstyled">
-                      <li className="d-flex justify-content-between"><i className="fa-light fa-calendars"></i> <label>Lesson</label> <span>{lessons}</span></li>
+                      <li className="d-flex justify-content-between"><i className="fa-light fa-calendars"></i> 
+                      <label>Lectures</label> <span>{lessons}</span></li>
                       <li className="d-flex justify-content-between"><i className="fi fi-rr-chart-pie-alt"></i> <label>Quizzes</label> <span>6</span></li>
                       <li className="d-flex justify-content-between"><i className="fi fi-rr-user"></i> <label>Students</label> <span>105</span></li>
                       <li className="d-flex justify-content-between"><i className="fa-light fa-clock-desk"></i> <label>Duration</label> <span>16 Hours</span></li>
@@ -632,7 +632,61 @@ const CourseDetailsArea = () => {
                       <li className="d-flex justify-content-between"><i className="fi fi-rr-comments"></i> <label>Language</label> <span>English</span></li>
                       <li className="d-flex justify-content-between"><i className="fi fi-rs-diploma"></i> <label>Certificate</label> <span>Yes</span></li>
                     </ul>
-                  </div>
+                  </div> */}
+                  <div className="cd-information mb-4 p-4 bg-white shadow rounded">
+  <ul className="list-unstyled">
+    <li className="d-flex justify-content-between align-items-center py-2 border-bottom">
+      <div className="d-flex align-items-center">
+        <i className="fa-light fa-calendars text-primary mr-2"></i>
+        <label className="mb-0 font-weight-bold">Lectures</label>
+      </div>
+      <span className="text-muted">{lessons}</span>
+    </li>
+    <li className="d-flex justify-content-between align-items-center py-2 border-bottom">
+      <div className="d-flex align-items-center">
+        <i className="fi fi-rr-chart-pie-alt text-primary mr-2"></i>
+        <label className="mb-0 font-weight-bold">Quizzes</label>
+      </div>
+      <span className="text-muted">6</span>
+    </li>
+    <li className="d-flex justify-content-between align-items-center py-2 border-bottom">
+      <div className="d-flex align-items-center">
+        <i className="fi fi-rr-user text-primary mr-2"></i>
+        <label className="mb-0 font-weight-bold">Students</label>
+      </div>
+      <span className="text-muted">105</span>
+    </li>
+    <li className="d-flex justify-content-between align-items-center py-2 border-bottom">
+      <div className="d-flex align-items-center">
+        <i className="fa-light fa-clock-desk text-primary mr-2"></i>
+        <label className="mb-0 font-weight-bold">Duration</label>
+      </div>
+      <span className="text-muted">16 Hours</span>
+    </li>
+    <li className="d-flex justify-content-between align-items-center py-2 border-bottom">
+      <div className="d-flex align-items-center">
+        <i className="fi fi-sr-stats text-primary mr-2"></i>
+        <label className="mb-0 font-weight-bold">Skill Level</label>
+      </div>
+      <span className="text-muted">Beginner</span>
+    </li>
+    <li className="d-flex justify-content-between align-items-center py-2 border-bottom">
+      <div className="d-flex align-items-center">
+        <i className="fi fi-rr-comments text-primary mr-2"></i>
+        <label className="mb-0 font-weight-bold">Language</label>
+      </div>
+      <span className="text-muted">English</span>
+    </li>
+    <li className="d-flex justify-content-between align-items-center py-2">
+      <div className="d-flex align-items-center">
+        <i className="fi fi-rs-diploma text-primary mr-2"></i>
+        <label className="mb-0 font-weight-bold">Certificate</label>
+      </div>
+      <span className="text-muted">Yes</span>
+    </li>
+  </ul>
+</div>
+
                   <div className="c-details-social">
                     <h5 className="cd-social-title mb-25">Share Now:</h5>
                     <a href="#"><i className="fa-brands fa-facebook-f"></i></a>
