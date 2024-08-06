@@ -9,7 +9,7 @@ const SidebarLayout = ({ children }) => {
       <div className="row">
         <aside className="col px-4" style={{ backgroundColor: "#FF7D4D" }}>
           <div className="bg">
-            <ul className="fs-6 mt-3">
+            <ul className="fs-6 mt-3 listItems">
               {[
                 { path: "/trainer", label: "Home", icon: "home" },
                 {
@@ -30,7 +30,7 @@ const SidebarLayout = ({ children }) => {
                 >
                   <Link
                     href={path}
-                    className={`d-flex align-items-center text-decoration-none ${
+                    className={`d-flex align-items-center text-decoration-none  ${
                       activeTab === path ? "text-white" : "text-primary"
                     }`}
                   >
