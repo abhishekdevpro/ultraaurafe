@@ -8,7 +8,9 @@
 @import "slick-carousel/slick/slick.css";
 @import "~bootstrap/scss/bootstrap";
 @import "/public/assets/scss/main.scss";
-
+*{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 .image-container {
     height: 100%;
   }
@@ -59,8 +61,18 @@
   .text-danger {
     color: #ff6652 !important;
   }
-  
-  
+  .buttonalign{
+    float:right;
+    // margin-right:10 px !important;
+  }
+  .listItems{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+  }
+
+  label{
+    font-weight: bold;
+  }
 //   #bgimage {
 //     background-color: #f8f9fa;
 //   }
