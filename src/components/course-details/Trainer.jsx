@@ -58,13 +58,13 @@ const ContactLink = styled.a`
   }
 `;
 
-function Trainer() {
+function Trainer({trainerID}) {
     const [trainerDetails, setTrainerDetails] = useState(null);
-
+    console.log(trainerID,"trainer id")
     useEffect(() => {
         const fetchTrainerDetails = async () => {
             try {
-                const response = await axios.get('https://api.novajobs.us/api/trainers/trainer-profile/3');
+                const response = await axios.get(`https://api.novajobs.us/api/trainers/trainer-profile/${trainerID}`);
                 console.log(response);
                 if (response && response.data) {
                     setTrainerDetails(response.data.data.trainer);

@@ -79,7 +79,7 @@ const CategoryArea = () => {
                     <img src={item.img} alt="category-img" />
                   </div>
                   <h4 className="tp-category-title">
-                    <Link href={item.link}>{item.title}</Link>
+                    <Link href={'#'}>{item.title}</Link>
                   </h4>
                 </div>
               </div>

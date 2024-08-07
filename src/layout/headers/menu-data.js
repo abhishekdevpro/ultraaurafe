@@ -23,6 +23,7 @@ const menu_data = [
       },
     ],
   },
+  
   {
     id: 3,
     title: "MasterMinds",

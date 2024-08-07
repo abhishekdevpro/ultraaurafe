@@ -86,7 +86,7 @@ const TrainerHompage = () => {
                     <Button variant="success">Duplicate</Button>
                   </td>
                   <td>
-                    <Button variant="danger">Delete</Button>
+                    <Button variant="primary">Delete</Button>
                   </td>
                 </tr>
               ))}
