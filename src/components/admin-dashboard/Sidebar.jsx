@@ -147,9 +147,15 @@ const Sidebar = () => {
         <p>Finish Your Profile</p>
       </ProfileSection>
       <StyledNav defaultActiveKey="/dashboard" className="flex-column">
-        <Nav.Link href="#">My Courses</Nav.Link>
-        <Nav.Link href="#uploadresume">Upload Resume</Nav.Link>
-        <Nav.Link href="#Skills">Skill test</Nav.Link>
+        <Link href="/dashboard" passHref>
+          <StyledLink>Courses</StyledLink>
+        </Link>
+        <Link href="/dashboard/uploadresume" passHref>
+          <StyledLink>Upload Resume</StyledLink>
+        </Link>
+        <Link href="/dashboard/Skills" passHref>
+          <StyledLink>Skill test</StyledLink>
+        </Link>
       </StyledNav>
       <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
     </SidebarWrapper>
