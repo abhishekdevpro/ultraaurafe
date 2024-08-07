@@ -14,7 +14,7 @@ const HeroBanner = () => {
                         <h2 className="hero-title mb-35">For Every Student, Every <i>Classroom</i>.</h2>
                         <p>Learn new skill comes below For every student Learn new skills,<br/> by industry experts from your comfortable location</p>
                         <div className="tp-banner-btn">
-                           <Link href="/course-grid" className="tp-btn">Explore Courses</Link>
+                           <Link href="/" className="tp-btn">Explore Courses</Link>
                         </div>
                      </div>
                   </div>

@@ -193,7 +193,7 @@ const CourseArea = () => {
           </Row>
           <Row className="text-center mt-5">
             <Col lg={12}>
-              <BrowseButton href="/course-grid">
+              <BrowseButton href="/">
                 Browse All Courses
               </BrowseButton>
             </Col>

@@ -852,9 +852,13 @@ const CourseDetailsArea = ({ courseId, trainerId, courseBannerImage }) => {
 
     // Check if the user is logged in (for demonstration purposes, this can be replaced with actual authentication logic)
     const loggedInStatus = localStorage.getItem("token");
-    console.log(loggedInStatus)
-    setIsLoggedIn(true);
-  }, [courseId, trainerId, courseBannerImage]);
+    if (loggedInStatus) {
+        setIsLoggedIn(true);
+    } else {
+        setIsLoggedIn(false);
+    }
+    console.log(isLoggedIn, "log");
+  }, [courseId]);
 
   const handleEditOpen = () => setIsEditOpen(true);
   const handleEditClose = () => setIsEditOpen(false);
@@ -899,6 +903,7 @@ const CourseDetailsArea = ({ courseId, trainerId, courseBannerImage }) => {
       setIsPaymentPopupOpen(true);
     } else {
       window.location.href = "/sign-in";
+
     }
   };
 

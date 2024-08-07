@@ -74,12 +74,10 @@ const Header = () => {
                       <nav>
                         <ul>
                           <li>
-                            <a href="#" className="">
+                           {/* <a href="#" className="">
                               ☰
-                              {/* <span>
-                                <i className="arrow_carrot-down"></i>
-                              </span> */}
-                            </a>
+                            
+                          </a> */}
                             <ul className="sub-menu border">
                               {category_data.map((item, i) => (
                                 <li key={i}>
