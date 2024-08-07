@@ -1,16 +1,6 @@
 const menu_data = [
   {
     id: 1,
-    title: "SuperMinds",
-    link: "/",
-    has_dropdown: false,
-    sub_menus: [
-      { title: "Graduates : Embark on your academic journey with UltraAura, where we provide a diverse range of undergraduate programs tailored to equip you with the knowledge and skills necessary for success. Our interactive courses and experienced faculty ensure you gain a solid foundation and practical insights to excel in your chosen field." },
-      
-    ],
-  },
-  {
-    id: 2,
     title: "FutureMinds",
     link: "/",
     has_dropdown: false,
@@ -19,6 +9,17 @@ const menu_data = [
       
     ],
   },
+  {
+    id: 2,
+    title: "SuperMinds",
+    link: "/",
+    has_dropdown: false,
+    sub_menus: [
+      { title: "Graduates : Embark on your academic journey with UltraAura, where we provide a diverse range of undergraduate programs tailored to equip you with the knowledge and skills necessary for success. Our interactive courses and experienced faculty ensure you gain a solid foundation and practical insights to excel in your chosen field." },
+      
+    ],
+  },
+  
   {
     id: 3,
     title: "MasterMinds",
