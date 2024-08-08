@@ -158,7 +158,7 @@ const MainContent = styled.main`
   grid-area: main;
   padding: 20px;
   overflow-y: auto;
-  margin-left: 250px; // Adjust for fixed sidebar width
+  // Adjust for fixed sidebar width
 `;
 
 const Layout = ({ children }) => {
