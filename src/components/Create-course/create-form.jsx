@@ -286,6 +286,7 @@ import SidebarLayout from "@/src/common/sidebar-layout";
 import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import { Button } from "react-bootstrap";
 
 function CourseForm() {
   const [bannerImage, setBannerImage] = useState(null);
@@ -391,14 +392,15 @@ function CourseForm() {
   return (
     <SidebarLayout>
       <main className="col-sm-10 p-0">
-        <div className="d-flex gap-5 content-center pt-5">
-          <section
+        <div className="d-flex gap-3 content-center pt-5">
+          {/* <section
             className="instructor-portfolio pt-5 wow fadeInUp border-2"
             data-wow-duration=".8s"
             data-wow-delay=".2s"
           >
             <div className="instruc-sidebar mb-20 col-xl- col-lg- p-5 border-2">
               <div className="">
+              <Button> <i className="fi fi-rr-briefcase"></i>Course List</Button>
                 <ul className="col">
                   <li>
                     <Link href="/course-list">
@@ -410,8 +412,10 @@ function CourseForm() {
                 </ul>
               </div>
             </div>
-          </section>
-          <section
+          </section> */}
+          {/* <Button> <i className="fi fi-rr-briefcase"></i>Course List</Button>   */}
+          <Button variant="primary" size="lg" className="buttonalign"><i className="fi fi-rr-briefcase"></i>  Course List</Button>
+          {/* <section
             className="instructor-portfolio wow fadeInUp"
             data-wow-duration=".8s"
             data-wow-delay=".2s"
@@ -429,7 +433,8 @@ function CourseForm() {
                 </ul>
               </div>
             </div>
-          </section>
+          </section> */}
+          <Button variant="primary" size="lg" className="buttonalign"><i className="fi fi-rr-briefcase"></i>Update Course</Button>
         </div>
 
         <ToastContainer />
@@ -456,7 +461,7 @@ function CourseForm() {
             <label htmlFor="course_language" className="form-label">
               Course Language
             </label>
-            <input
+            {/* <input
               type="text"
               className="form-control"
               id="course_language"
@@ -464,13 +469,22 @@ function CourseForm() {
               value={formData.course_language}
               onChange={handleInputChange}
               required
-            />
+            /> */}
+            <select  className="form-control"
+              id="course_language"
+              name="course_language"
+              value={formData.course_language}
+              onChange={handleInputChange}
+              required>
+                <option value="" disabled>Select Language</option>
+            <option value="English">English</option>
+            </select>
           </div>
           <div className="mb-3">
             <label htmlFor="level" className="form-label">
               Level
             </label>
-            <input
+            {/* <input
               type="text"
               className="form-control"
               id="level"
@@ -478,13 +492,24 @@ function CourseForm() {
               value={formData.level}
               onChange={handleInputChange}
               required
-            />
+            /> */}
+            <select  className="form-control"
+              id="level"
+              name="level"
+              value={formData.level}
+              onChange={handleInputChange}
+              required>
+                <option value="" disabled>Select Level</option>
+            <option value="Beginner">Beginner(1 to 3 years)</option>
+            <option value="Intermediate">Intermediate(4 t0 5 years)</option> 
+            <option value="Expert">Expert(5 + years)</option>
+            </select>
           </div>
           <div className="mb-3">
             <label htmlFor="category" className="form-label">
               Course Category
             </label>
-            <input
+            {/* <input
               type="text"
               className="form-control"
               id="category"
@@ -492,7 +517,22 @@ function CourseForm() {
               value={formData.category}
               onChange={handleInputChange}
               required
-            />
+            /> */}
+            <select className="form-control"
+              id="category"
+              name="category"
+              value={formData.category}
+              onChange={handleInputChange}
+              required >
+                <option value="" disabled>Select Category</option>
+            <option value="IT/Software">IT/Software</option>
+            <option value="Plumbing">Plumbing</option> 
+            <option value="Electrician">Electrician</option>
+            <option value="Hardware">Hardware</option>
+            <option value="Devops">Devops</option>
+            <option value="SoftSkills">SoftSkills</option>
+            <option value="HomeCare">HomeCare</option>
+            </select>
           </div>
           <div className="mb-3">
             <label htmlFor="time_spent_on_course" className="form-label">
@@ -523,7 +563,7 @@ function CourseForm() {
           </div>
           <div className="mb-3">
             <label htmlFor="requirements" className="form-label">
-              Requirements
+             Prerequisite Requirements
             </label>
             <textarea
               className="form-control"
@@ -538,14 +578,26 @@ function CourseForm() {
             <label htmlFor="target_audience" className="form-label">
               Target Audience
             </label>
-            <textarea
+            {/* <textarea
               className="form-control"
               id="target_audience"
               name="target_audience"
               value={formData.target_audience}
               onChange={handleInputChange}
               required
-            />
+            /> */}
+            <select 
+              className="form-control"
+              id="target_audience"
+              name="target_audience"
+              value={formData.target_audience}
+              onChange={handleInputChange}
+              required>
+                <option value="" disabled>Select Target</option>
+            <option value="Any Graduate">Any Graduate</option>
+            <option value="Tech Graduate">Tech Graduate</option>
+            <option value="No Requirement">No Requirement</option>
+            </select>
           </div>
           <div className="mb-3">
             <label htmlFor="course_description" className="form-label">

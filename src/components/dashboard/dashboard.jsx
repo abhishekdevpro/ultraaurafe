@@ -107,7 +107,7 @@ const Dashboard = () => {
             <ul className=" fs-6 mt-3" >
               {[
                 { path: "/", label: "Home", icon: "home" },
-                { path: "/create-course", label: "Create Course", icon: "briefcase" },
+                { path: "/trainer/create-course", label: "Create Course", icon: "briefcase" },
                 { path: "/dashboard-form", label: "Trainer Profile", icon: "user" },
                 { path: "/sign-in", label: "Logout", icon: "sign-out" },
               ].map(({ path, label, icon }) => (

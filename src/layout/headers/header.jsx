@@ -140,6 +140,7 @@ const Header = () => {
                           <div className="user-name mr-2">
                             {profileData.first_name} {profileData.last_name}
                           </div>
+                          <div><img src='https://api.novajobs.us/${profileData.photo}' alt="56"/></div>
                           <button
                             className="logout-btn flex items-center text-gray-700 hover:text-gray-900 d-none d-md-block"
                             onClick={handleLogout}
