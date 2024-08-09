@@ -228,7 +228,7 @@
 
 import React, { useState } from "react";
 import styled from "styled-components";
-import PDFViewerModal from "./PDFViewerModal";
+import PDFViewerModal from "./PdfViewerModal";
 
 const SectionHeader = styled.div`
   cursor: pointer;
