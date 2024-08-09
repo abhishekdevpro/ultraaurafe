@@ -180,6 +180,7 @@
 
 
 // components/Sidebar.js
+
 import React, { useState, useEffect } from "react";
 import { Nav, Button } from "react-bootstrap";
 import styled from "styled-components";
@@ -297,11 +298,20 @@ const Sidebar = () => {
   const [userEmail, setUserEmail] = useState(""); // Optional, if email is needed
   const [student,setStudent] =useState({})
 
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    // Check if window is defined (browser environment)
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("token");
+      setToken(storedToken);
+    }
+  }, []); 
+  console.log("Token",token)
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
         // You should replace 'YOUR_TOKEN' with the actual token you are using
-        const token = localStorage.getItem("token"); 
         const response = await axios.get(
           "https://api.novajobs.us/api/students/profile",
           {
@@ -362,7 +372,7 @@ const Sidebar = () => {
         <Link href="/dashboard" passHref>
           <StyledLink>Courses</StyledLink>
         </Link>
-        <Link href="/dashboard/uploadresume" passHref>
+        <Link href={`https://airesume.novajobs.us/${token}` }passHref>
           <StyledLink>Upload Resume</StyledLink>
         </Link>
         <Link href="/dashboard/Skills" passHref>

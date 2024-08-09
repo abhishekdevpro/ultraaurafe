@@ -38,7 +38,8 @@ function Login() {
         });
         if (response.status === 200) {
           // Ensure this matches your API response structure
-          localStorage.setItem("token", response.data.data.token);
+          const tokenKey = role === "student" ? "token" : "trainerToken";
+          localStorage.setItem(tokenKey, response.data.data.token);
 
           toast.success("Logged-in successfully!");
           router.push(role === "student" ? "/dashboard" : "/trainer");
