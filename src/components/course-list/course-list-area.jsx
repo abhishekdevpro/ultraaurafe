@@ -9,7 +9,7 @@ const CourseListArea = () => {
   useEffect(() => {
     const fetchCourseListData = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("trainerToken");
         if (!token) {
           throw new Error("Token not found in localStorage");
         }

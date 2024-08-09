@@ -345,7 +345,7 @@ function CourseForm() {
     });
     submissionData.append("course_banner_image", bannerImage);
 
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("trainerToken");
 
     const config = {
       headers: {

@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   const fetchProfileData = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("trainerToken");
       const response = await axios.get(
         "https://api.novajobs.us/api/trainers/profile",
         {

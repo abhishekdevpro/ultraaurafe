@@ -23,6 +23,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Layout from "@/src/components/admin-dashboard";
 import MyCourses from "@/src/components/course-details/MyCourses";
 import Breadcrumb from "@/src/components/bredcrumb/breadcrumb";
+import CourseArea from "@/src/components/course-details/course-area";
 
 const DashboardWrapper = styled.div`
   padding: 2rem 0;
@@ -49,6 +50,7 @@ const dashboard = () => {
             <Row>
               <Col>
                 <MyCourses />
+                <CourseArea />
               </Col>
             </Row>
           </Container>
