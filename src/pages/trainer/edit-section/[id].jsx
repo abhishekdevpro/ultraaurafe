@@ -46,7 +46,7 @@ const index = () => {
     e.preventDefault();
 
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("trainerToken");
       if (!token) {
         toast.error("User not authenticated. Please login.");
         return;
