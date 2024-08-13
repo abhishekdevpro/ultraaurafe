@@ -9,7 +9,7 @@ const choose_data = {
     <>
       Why You Choose Our
       <br />
-      Ultra Aura Online learnin
+      Ultra Aura Online learning
     </>
   ),
   des: 'Dramatically supply transparent deliverables before & can backward comp internal or "organic" sources.',

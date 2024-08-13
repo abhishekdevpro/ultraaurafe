@@ -75,7 +75,8 @@ const CourseSidebar = ({ courseId, isEnrolled }) => {
     style={{ 
       backgroundColor: '#007bff', 
       borderColor: '#007bff', 
-      color: '#fff', 
+      color: '#fff',
+      width:"100%", 
       padding: '10px 20px', 
       fontSize: '1.1rem', 
       borderRadius: '5px', 

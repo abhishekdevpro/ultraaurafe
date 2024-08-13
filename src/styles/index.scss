@@ -1,16 +1,13 @@
 /* styles/globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
 @import "node_modules/react-modal-video/scss/modal-video.scss";
 @import "slick-carousel/slick/slick.css";
 @import "~bootstrap/scss/bootstrap";
 @import "/public/assets/scss/main.scss";
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap');
 *{
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: "Chivo", 'Times New Roman', Times, serif;
 }
+
 .image-container {
     height: 100%;
   }
@@ -39,11 +36,12 @@
     height: auto;
   }
   .header-custom {
-    background-color: #245d51 !important;
+    background-color: #050a30 !important;
     color: white !important;
   }
   
   .header-custom .navbar-brand {
+    background-color: #050a30 !important;
     color: white !important;
   }
 
