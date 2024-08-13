@@ -24,7 +24,7 @@ const AddSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("trainerToken");
 
     const config = {
       headers: {

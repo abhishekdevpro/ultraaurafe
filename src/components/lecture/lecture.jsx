@@ -173,7 +173,7 @@ const Lecture = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("trainerToken");
     const formData = new FormData();
 
     formData.append("lecture_name", lecture_name);

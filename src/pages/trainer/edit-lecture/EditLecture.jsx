@@ -405,7 +405,7 @@ const EditLecture = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("trainerToken");
     const fetchLectureById = async (lectureId) => {
       try {
         const response = await axios.get(
@@ -456,7 +456,7 @@ const EditLecture = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("trainerToken");
     const formData = new FormData();
 
     formData.append("lecture_name", lectureName);

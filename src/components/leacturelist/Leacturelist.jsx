@@ -12,7 +12,7 @@ const LectureList = () => {
   useEffect(() => {
     const fetchLectures = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("trainerToken");
         const response = await axios.get(
           `https://api.novajobs.us/api/trainers/lectures/${courseId}`,
           {
@@ -52,7 +52,7 @@ const LectureList = () => {
         sections.map((section) => (
           <div
             key={section.id}
-            className="mb-4 border border-success rounded  border-3  border-success p-2  border-opacity-50 p-2"
+            className="mb-4 border border-success rounded  border-3  border-success  border-opacity-50 p-2"
           >
             <div className="d-flex justify-content-between align-items-center">
               <h3 className="badge rounded fs-5 px-4 py-2 text-bg-success ">
