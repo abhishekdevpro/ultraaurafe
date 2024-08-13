@@ -1030,7 +1030,14 @@ const CourseArea = () => {
                 </CourseThumb>
                 <CourseContent>
                 <Title>
-                    <Link href={item.course_link || "#"}>{item.course_title}</Link>
+                    <Link href={{
+                      pathname: `/course-details/${item.id}`,
+                      query: {
+                        trainer_id: item.trainer_id,
+                        course_banner_image: item.course_banner_image,
+                      },
+                    }}
+                    as={`/course-details/${item.id}`}>{item.course_title}</Link>
                   </Title>
                   <CategoryBox>
                     <Link

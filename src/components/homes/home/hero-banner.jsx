@@ -5,7 +5,7 @@ const HeroBanner = () => {
     return (
         <>
      <section className="banner-area fix p-relative align-super">
-         <div className="banner-bg"   style={{backgroundImage: `url(/assets/img/banner/banner-01.jpg)`}}>
+         <div className="banner-bg"   style={{backgroundImage: `url(/assets/img/banner/hero-bg2.png)`}}>
             <div className="container align-super">
                <div className="row">
                   <div className="col-xl-6 col-lg-6 col-md-8">

@@ -11,7 +11,7 @@ const CourseGrid = () => {
       <Breadcrumb title="Course Grid" subtitle="Course Grid" isDbbl="Course" />
       {/* <FeatureArea style_about={true} /> */}
       <CourseArea />
-      <SuitableArea style_2={true} />
+      {/* <SuitableArea style_2={true} /> */}
       <CounterArea />
     </>
   );

@@ -101,7 +101,7 @@
 
             & button {
                 &::after {
-                    background-color: rgba($color: #3E8454, $alpha: .14);
+                    background-color: rgba($color: #3533cd, $alpha: .14);
                 }
             }
         }
@@ -148,7 +148,7 @@
             -webkit-animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
             animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
             -webkit-box-shadow: 0 10px 15px rgba(25, 25, 25, 0.1);
-            background: var(--tp-common-white);
+            background: #3533cd;
         }
     }
     &__lang {
@@ -669,7 +669,7 @@ ul.bili_circle li::before {
 	-webkit-animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
 	animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
 	-webkit-box-shadow: 0 10px 15px rgba(25, 25, 25, 0.1);
-	background: var(--tp-border-2);
+	background: #050a30;
     padding-top: 10px;
     padding-bottom: 10px;
 }

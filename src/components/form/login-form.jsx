@@ -193,28 +193,33 @@ function Login() {
         }
       } catch (err) {
         console.log(err);
-        toast.error("An error occurred. Please try again.");
+        toast.error("Wrong Credentials!");
       }
     }
   };
   const handleForgotPassword = async (e) => {
     e.preventDefault();
-    const url = role === "student"
-      ? "https://api.novajobs.us/api/students/forget-password"
-      : "https://api.novajobs.us/api/trainers/forget-password";
+    const url =
+      role === "student"
+        ? "https://api.novajobs.us/api/students/forget-password"
+        : "https://api.novajobs.us/api/trainers/forget-password";
   
     if (!forgotPasswordEmail) {
       toast.error("Email is required");
       return;
     }
   
+    // Create a FormData object and append the email
+    const formData = new FormData();
+    formData.append("email", forgotPasswordEmail);
+  
     try {
-      const response = await axios.post(url, { email: forgotPasswordEmail }, {
+      const response = await axios.post(url, formData, {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       });
-      console.log(response)
+      console.log(response);
   
       if (response.data && response.data.message) {
         toast.success(response.data.message);
@@ -224,49 +229,75 @@ function Login() {
       setShowForgotPassword(false);
     } catch (err) {
       console.error("Error details:", err);
-      
+  
       if (err.response) {
         console.error("Error response:", err.response);
-        
+  
         if (err.response.status === 400) {
           // Handle 400 Bad Request error
-          const errorMessage = err.response.data.message || "Invalid request. Please check your input.";
+          const errorMessage =
+            err.response.data.message || "Invalid request. Please check your input.";
           toast.error(`Error: ${errorMessage}`);
         } else if (err.response.status === 404) {
-          toast.error("The forget password service is not available. Please contact support.");
+          toast.error(
+            "The forget password service is not available. Please contact support."
+          );
         } else {
           toast.error(`Error: ${err.response.data.message || "An unknown error occurred"}`);
         }
       } else if (err.request) {
-        toast.error("No response received from the server. Please check your internet connection.");
+        toast.error(
+          " Please check your internet connection."
+        );
       } else {
         toast.error("An error occurred. Please try again.");
       }
     }
   };
+  
   // const handleForgotPassword = async (e) => {
   //   e.preventDefault();
   //   const url = role === "student"
   //     ? "https://api.novajobs.us/api/students/forget-password"
   //     : "https://api.novajobs.us/api/trainers/forget-password";
-
+  
   //   if (!forgotPasswordEmail) {
   //     toast.error("Email is required");
-  //   } else {
-  //     try {
-  //       const response = await axios.post(url, { email: forgotPasswordEmail }, {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
-  //       if (response.status === 200) {
-  //         toast.success("Password reset link sent to your email!");
-  //         setShowForgotPassword(false);
+  //     return;
+  //   }
+  
+  //   try {
+  //     const response = await axios.post(url, { email: forgotPasswordEmail }, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     console.log(response)
+  
+  //     if (response.data && response.data.message) {
+  //       toast.success(response.data.message);
+  //     } else {
+  //       toast.success("Password reset link sent to your email!");
+  //     }
+  //     setShowForgotPassword(false);
+  //   } catch (err) {
+  //     console.error("Error details:", err);
+      
+  //     if (err.response) {
+  //       console.error("Error response:", err.response);
+        
+  //       if (err.response.status === 400) {
+  //         // Handle 400 Bad Request error
+  //         const errorMessage = err.response.data.message || "Invalid request. Please check your input.";
+  //         toast.error(`Error: ${errorMessage}`);
+  //       } else if (err.response.status === 404) {
+  //         toast.error("The forget password service is not available. Please contact support.");
   //       } else {
-  //         toast.error("Failed to send password reset link.");
+  //         toast.error(`Error: ${err.response.data.message || "An unknown error occurred"}`);
   //       }
-  //     } catch (err) {
-  //       console.log(err);
+  //     } else if (err.request) {
+  //       toast.error("No response received from the server. Please check your internet connection.");
+  //     } else {
   //       toast.error("An error occurred. Please try again.");
   //     }
   //   }
