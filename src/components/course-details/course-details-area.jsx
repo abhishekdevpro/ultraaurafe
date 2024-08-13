@@ -702,17 +702,45 @@ const CourseDetailsArea = ({ courseId, trainerId, courseBannerImage }) => {
     if (courseBannerImage) localStorage.setItem("courseBannerImage", courseBannerImage);
   }, [courseId]);
 
+  // const handleLectureClick = async (sectionId, lectureId, videoId) => {
+  //   if (videoId) {
+  //     try {
+  //       const videoUrl = `https://api.novajobs.us/api/trainers/streaming/${courseId}/${sectionId}/${lectureId}/${videoId}`;
+  //       setCurrentVideo(videoUrl);
+  //       console.log(currentVideo,'Current video link')
+  //     } catch (error) {
+  //       console.error("Error fetching video:", error);
+  //       setError("Failed to load video");
+  //     }
+  //   }
+  // };
+
   const handleLectureClick = async (sectionId, lectureId, videoId) => {
     if (videoId) {
       try {
-        const videoUrl = `https://api.novajobs.us/api/trainers/streaming/${courseId}/${sectionId}/${lectureId}/${videoId}`;
+        // Construct the URL for the API endpoint
+        const url = `https://api.novajobs.us/api/trainers/streaming/${courseId}/${sectionId}/${lectureId}/${videoId}`;
+  
+        // Optionally, if a token is required for this API call
+        const token = localStorage.getItem("token");
+        const headers = token ? { Authorization: token } : {};
+  
+        // Make the GET request to the API
+        const response = await axios.get(url, { headers });
+  
+        // Assume the API returns a video URL in the response data
+        const videoUrl = response.data.videoUrl;
+  
+        // Update the currentVideo state with the fetched video URL
         setCurrentVideo(videoUrl);
+        console.log(videoUrl, 'Current video link');
       } catch (error) {
         console.error("Error fetching video:", error);
         setError("Failed to load video");
       }
     }
   };
+  
 
   if (isLoading) return <LoadingSpinner />;
   if (error || !courseDetails) return <ErrorMessage error={error} />;
